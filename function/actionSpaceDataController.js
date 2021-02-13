@@ -6,9 +6,7 @@
         this.model=model;
 
         this.on('updateEditor',this.view.updateDomContent)
-        this.on('onclick',()=>{
-            console.log("oog")
-        })
+
     }
 
 

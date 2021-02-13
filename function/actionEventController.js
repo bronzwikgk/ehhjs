@@ -27,7 +27,6 @@
 //
 
 class actionEventController {
-
     constructor(context) {
         this._events = {};
         this.context = context
@@ -36,12 +35,12 @@ class actionEventController {
 
 
     on(evt, listener) {
+        console.log(evt);
         (this._events[evt] || (this._events[evt] = [])).push(listener);
         return this;
     }
 
     emit(evt, arg) {
-
         (this._events[evt] || []).slice().forEach(lsn => lsn(arg));
     }
 
@@ -51,12 +50,31 @@ class actionEventController {
         console.log(events)
 
         events.forEach((evt)=>{
-            this.emit(evt)
-            window[evt]=this._events[evt]
+            window[evt] = this.conductEvent
         })
     }
 
 
+
+    conductEvent = (e) => {
+        // console.log(e)
+        if (e.type === "mouseover") {
+            // console.log("Mouse moved")
+            //TODO
+            // this.emit(e.type, e.target)
+        } else if (e.type === "click") {
+            // console.log("click")
+            this.emit("click", e.target)
+        }
+        if (e.type === "contextmenu") {
+            e.preventDefault();
+
+        } else if (e.type === "input") {
+            this.emit('updateEditor',e.target.innerText)
+            console.log(e.target.innerText)
+        }
+
+    }
 
 
 }
