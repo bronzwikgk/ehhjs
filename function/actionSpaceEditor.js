@@ -51,11 +51,11 @@ var preload = {
 window.onload = loadActionEditor;
 
 function loadActionEditor() {
-    var actionSpacePreloads = new Entity(preload, document.getElementsByTagName('actionSpace')[0]);
-    console.log("actionSpacePreloads Loaded", actionSpacePreloads.entity);
-   // var actionSpace = document.getElementsByTagName('actionSpace')[0].appendChild(preLoadFiles.entity);
-    var actionSpace = new Entity(actionSpaceConfig, document.getElementsByTagName('actionSpace')[0]);
-    console.log("actionEditor Loaded", actionSpacePreloads.entity);
+   //  var actionSpacePreloads = new Entity(preload, document.getElementsByTagName('actionSpace')[0]);
+   //  console.log("actionSpacePreloads Loaded", actionSpacePreloads.entity);
+   // // var actionSpace = document.getElementsByTagName('actionSpace')[0].appendChild(preLoadFiles.entity);
+   //  var actionSpace = new Entity(actionSpaceConfig, document.getElementsByTagName('actionSpace')[0]);
+   //  console.log("actionEditor Loaded", actionSpacePreloads.entity);
 
 
     const model = new ActionSpaceEntityModel(),

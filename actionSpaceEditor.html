@@ -4,14 +4,103 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./beauty/action.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree&family=Montserrat&family=Open+Sans&family=Poppins"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>actionSpaceEditor Testing Page</title>
 </head>
 <body>
-<h4>this is the testing page for actionSpace Editor</h4>
-<actionSpace></actionSpace>
+<header>
+    <brand contenteditable>[ <b>everything happens here</b> ]</brand>
+    <input id="actionSearch" type="text" class="searchBar" value=" search here...">
+    <actionLinkBar>
+        <a class="tabBtn" data-element="action" href="#action">action</a>
+        <a class="tabBtn" data-element="people" href="#people">people</a>
+        <a class="tabBtn" data-element="setting" href="#setting">setting</a>
+    </actionLinkBar>
+</header>
+<div class="left-sidebar">
+    NavigationBar
+    <br>
+    <select name="Entity-select" id="selected-entity">
+        <option value="volvo">List</option>
+        <option value="saab">Of</option>
+        <option value="opel">Chosen</option>
+        <option value="audi">Entity</option>
+    </select>
+    <div class="menu">
+        <span>Work area</span>
+        <a href="#save" class="current save css">style<b>.css</b></a>
+        <a href="#" class="html">index<b>.html</b></a>
+        <a href="#" class="js">javascript<b>.js</b></a>
+        <a href="#" class="add"></a>
+    </div>
+</div>
+<actionSpace>
+
+    <div style="
+    display: grid;
+">
+        <toolbar>
+            <button name="button" type="div" class="topbar-button" data-cmd="justifyRight"><i
+                    class="fas fa-align-right" data-cmd="justifyRight"></i></button>
+            <button name="button" type="div" class="topbar-button" data-cmd="justifyLeft"><i
+                    class="fas fa-align-left" data-cmd="justifyLeft"></i>
+            </button>
+            <button name="button" type="button" class="topbar-button" data-cmd="justifyCenter"><i
+                    class="fas fa-align-center" data-cmd="justifyCenter"></i></button>
+            <button name="button" type="button" class="topbar-button" on="click" data-cmd="justifyFull"><i
+                    class="fas fa-align-justify" data-cmd="justifyFull"></i></button>
+            <button name="button" type="button" class="topbar-button" data-cmd="Bold">
+                <i class="fas fa-bold" data-cmd="Bold"></i>
+            </button>
+            <button name="button" type="button" class="topbar-button" data-cmd="italic"><i class="fas fa-italic"  data-cmd="italic"></i>
+            </button>
+            <button name="button" type="button" class="topbar-button" data-cmd="underline"><i
+                    class="fas fa-underline" data-cmd="underline"></i>
+            </button>
+            <button name="button" type="button" class="topbar-button" data-cmd="heading"><i
+                    class="fas fa-heading" data-cmd="heading"></i>
+            </button>
+            <button name="button" type="button" class="topbar-button" data-cmd="insertUnorderedList"><i
+                    class="fas fa-list-ul" data-cmd="insertUnorderedList"></i></button>
+            <button name="button" type="button" class="topbar-button" data-cmd="insertOrderedList"><i
+                    class="fas fa-list-ol" data-cmd="insertOrderedList"></i></button>
+            <button name="button" type="button" class="topbar-button" data-cmd="createLink"><i class="fas fa-link"  data-cmd="createLink"></i>
+            </button>
+            <button name="button" type="button" class="topbar-button" data-cmd="showCode"><i class="fas fa-code" data-cmd="showCode"></i>
+            </button>
+            <button name="button" type="button" class="topbar-button" data-cmd="redo"><i class="fas fa-redo" data-cmd="redo"></i>
+            </button>
+            <button name="button" type="button" class="topbar-button" data-cmd="undo"><i class="fas fa-undo" data-cmd="undo"></i>
+            </button>
+        </toolbar>
+        <contentInput class="code" id="editor" contenteditable>
+            <ol>
+                <li>
+                    this is where user will input
+                </li>
+            </ol>
+
+        </contentInput>
+    </div>
+    <contentOutput class="output" id="actionOutput-block">
+        this is where user should be able to prievew
+    </contentOutput>
+
+</actionSpace>
+<div class="right-sidebar" hidden>
+    Right Sidebar
+</div>
+<footer>
+    made with 🧠 & 🧡,
+    <br>during 🌧️ at <b>shunya.ek</b>, goa, india.
+    <br>with help from google & the world-wide-web tech community.
+</footer>
 <script src="function/actionSpaceEntityModel.js"></script>
 <script src="function/actionSpaceView.js"></script>
 <script src="function/actionEventController.js"></script>

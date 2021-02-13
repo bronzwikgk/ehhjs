@@ -7,6 +7,8 @@
 
         this.on('updateEditor',this.view.updateDomContent)
 
+        this.on('richTextWrap',this.view.wrapContent)
+        this.on('richTextStyle',this.view.applyStyle)
     }
 
 
