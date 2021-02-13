@@ -18,34 +18,34 @@ var preload = {
             class: 'preloadCSS'
         }
     ],
-    scripts: [
-        {
-            name: 'script',
-            type: 'text/javascript',
-            class: 'preloadScript',
-            id: 'actionSpaceView.js',
-            //type: "text/javascript",
-            src: "function/actionSpaceView.js"
-        },
-        {
-            name: 'script',
-            type: 'text/javascript',
-            class: 'preloadScript',
-            id: 'actionSpaceView.js',
-            //type: "text/javascript",
-            src: "function/actionEventController.js"
-        },
-    ],
-    form: [
-        {
-            name: 'script',
-            type: 'text/javascript',
-            class: 'preloadScript',
-            id: 'actionSpaceForm',
-            src: "form/actionSpaceForm.js"
-        }
-
-    ]
+    // scripts: [
+    //     {
+    //         name: 'script',
+    //         type: 'text/javascript',
+    //         class: 'preloadScript',
+    //         id: 'actionSpaceView.js',
+    //         //type: "text/javascript",
+    //         src: "function/actionSpaceView.js"
+    //     },
+    //     {
+    //         name: 'script',
+    //         type: 'text/javascript',
+    //         class: 'preloadScript',
+    //         id: 'actionSpaceView.js',
+    //         //type: "text/javascript",
+    //         src: "function/actionEventController.js"
+    //     },
+    // ],
+    // form: [
+    //     {
+    //         name: 'script',
+    //         type: 'text/javascript',
+    //         class: 'preloadScript',
+    //         id: 'actionSpaceForm',
+    //         src: "form/actionSpaceForm.js"
+    //     }
+    //
+    // ]
 }
 
 window.onload = loadActionEditor;
