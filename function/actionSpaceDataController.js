@@ -9,6 +9,8 @@
 
         this.on('richTextWrap',this.view.wrapContent)
         this.on('richTextStyle',this.view.applyStyle)
+        this.on('insertTag',this.view.insertTag)
+        this.on('save',this.model.saveToLocalStorage)
     }
 
 

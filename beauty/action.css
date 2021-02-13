@@ -106,10 +106,20 @@ contentInput{
 
 contentOutput{
     align-self: flex-start;
+
     padding: 3vh;
     background: #fafafa;
 }
 
+#actionOutput-block{
+    width: 700px !important;
+}
+
+#save-local{
+    width: min-content;
+    background-color: red;
+    border: 2px red;
+}
 .code {
     color: #080808;
     text-shadow: 2px 2px 0 rgba(0,0,0,.01);

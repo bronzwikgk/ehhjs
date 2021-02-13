@@ -102,6 +102,10 @@ class actionEventController {
                     //    TODO
                 } else if (cmd === "redo") {
                     //TODO
+                }else if(cmd==="save"){
+                    var key=document.getElementById('save-file-name').value.toString(),
+                        value=document.getElementById('editor').innerText
+                    this.emit('save',{key,value})
                 }
 
             }
@@ -113,6 +117,13 @@ class actionEventController {
             console.log(e.target)
             this.emit('updateEditor', e.target.innerText)
             console.log(e.target.innerText)
+        }
+        if (e.type==="keyup"){
+            if (e.path[0].id==="editor" && e.keyCode===13 ){
+                e.preventDefault()
+                this.emit("insertTag","br")
+            }
+
         }
 
     }
