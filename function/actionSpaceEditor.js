@@ -25,7 +25,7 @@ var preload = {
             class: 'preloadScript',
             id: 'actionSpaceView.js',
             //type: "text/javascript",
-            src: "function/actionSpaceView.js"   
+            src: "function/actionSpaceView.js"
         },
         {
             name: 'script',
@@ -44,16 +44,22 @@ var preload = {
             id: 'actionSpaceForm',
             src: "form/actionSpaceForm.js"
         }
-      
+
     ]
 }
 
-window.onload = loadActionEditor();
+window.onload = loadActionEditor;
 
-function loadActionEditor() { 
+function loadActionEditor() {
     var actionSpacePreloads = new Entity(preload, document.getElementsByTagName('actionSpace')[0]);
     console.log("actionSpacePreloads Loaded", actionSpacePreloads.entity);
    // var actionSpace = document.getElementsByTagName('actionSpace')[0].appendChild(preLoadFiles.entity);
     var actionSpace = new Entity(actionSpaceConfig, document.getElementsByTagName('actionSpace')[0]);
     console.log("actionEditor Loaded", actionSpacePreloads.entity);
+
+
+    const model = new ActionSpaceEntityModel(),
+        view = new ActionView(model),
+        controller = new ActionSpaceDataController(this,view,model)
+
 }

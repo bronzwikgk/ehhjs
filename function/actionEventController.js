@@ -30,7 +30,7 @@ class actionEventController {
     constructor(context) {
         this._events = {};
         this.context = context
-      //  this.createListeners(context)
+        this.createListeners(context)
     }
 
 
@@ -43,7 +43,36 @@ class actionEventController {
         (this._events[evt] || []).slice().forEach(lsn => lsn(arg));
     }
 
-    
+    createListeners(entity) {
+        console.log(entity)
+        let events = dataHelpers.find(entity, 'on')
+        console.log(events)
+
+        let a = events.forEach(this.create)
+    }
+
+    create = (entity) => {
+        window[entity] = this.conductEvent
+    }
+
+    conductEvent = (e) => {
+        if (e.type === "mouseover") {
+            // console.log("Mouse moved")
+            //TODO
+            // this.emit(e.type, e.target)
+        } else if (e.type === "click") {
+            // console.log("click")
+            this.emit("click", e.target)
+        }
+        if (e.type === "contextmenu") {
+            e.preventDefault();
+
+        } else if (e.type === "input") {
+            this.emit('updateEditor',e.target.innerText)
+            console.log(e.target.innerText)
+        }
+
+    }
 
 
 }

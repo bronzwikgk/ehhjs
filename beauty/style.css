@@ -1,203 +1,195 @@
-*{
-  box-sizing: border-box;
-  margin: 0px;
-  padding: 0px;
-  border:none;
-  outline:none;
-   word-wrap: break-word;
-   overflow-wrap: break-word;
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10+ and Edge */
-  user-select: none; /* Standard syntax */
-  transition: 50ms;
- }
-
- :root {
-  background: linear-gradient(135deg, #f0f0f0 , #f3eee6 );
-  font-size: 1.5vh;
-  font-family: 'poppins';
+body {
+  margin: 0;
+  font-size: 21px;
+  display: block;
 }
 
+*[contenteditable="true"]{display: inline-block;}
 
-[currentstate="mousemove"]{
-  
-}
-
-[currentstate="mousemove"]::before{
-  
-  font-size: 1.5vh;
-  content: attr(ehhId);
-  color: #1e2326;
-  position: fixed;
-  top:10Px;
-  left:10Px;
-  display:none;
-  background: white;
-  z-index: 1;
-;
-}
-
-[currentstate="click"]::before{
-  font-size: 1.5vh;
-  content: attr(ehhId);
-  display:block;
-  color: #1e2326;
-  z-index: 1;
-  position: fixed;
-  top:10Px;
-  left:10Px;
-  background: white;
-}
-
-*:focus{
-  border:none;
-  outline:none;
-}
-
-[contenteditable="true"]:active,
-[contenteditable="true"]:focus{
-  border:none;
-  outline:none;
-}
-
-body{
-  position: absolute; 
-  top=0;
-  left: 0;
-  height: 100vh;
-}
-
-ehh{
+.topbar {
+  overflow: hidden;
   position: fixed;
   top: 0;
-  left: 0;
-  display: grid;
-  padding-left: 5%;
-  grid-template-rows:  1fr auto;
-  z-index: 250;
-  height: 100vh;
- width: 100vw;
+  width: 100%;
+  font-size: 18px;
+  z-index: 10;
 }
 
-content{ 
-  padding-top: 5%;
-  padding-left: 5%;
- position: relative;
- display: grid;
- grid-column: 1 / 4;
-
-}
-
-section{ 
- display: grid;
-}
-
-container{
-  align-self: center;
-  position: relative;
-}
-
-footer {  
-  padding: 2rem;
-  text-align: right;
-  grid-column: 1 / 4;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.2vh;
-}
-
-.bar{
-  margin-top: 5px;
-  width: 550px;
-  display: block;
- 
-
-}
-
-.material-icons {
-  vertical-align:-14%;
-    pointer-events: none;
-    font-family: 'Material Icons';
-    font-size: 24px;
-    font-style: normal;
-    font-weight: normal;
-    letter-spacing: normal;
-    line-height: 1;
-    text-transform: none;
-    white-space: nowrap;
-    word-wrap: normal;
-    -webkit-font-feature-settings: 'liga';
-    -webkit-font-smoothing: antialiased;
-}
-
-.list{
-  width: 200px; 
-  z-index:10;
-  position: fixed;
-  display: block;
-  background: white;
-  transform:scale(1);
-  transform-origin:top left;
-}
-.list .item {
- width: 100%;
- text-align: left;
-}
-
-.list .item:hover {
-  background:#eeeeee ;
-}
-.list .item i {
-  margin-right:8px;
+.topbar-row {
+  max-width: 950px;
+  margin: auto;
   text-align: right;
 }
 
-button{
-  text-align: center;
-  width: 121px;
-  float: left;
-  background: white;
-  padding: 13px;
-  border-radius: 5px;
-  font-family: 'Bai Jamjuree', sans-serif;
-  font: size 1.3vh;;
-  color:black;  
+contentblock{
+  width: 700px !important;
 }
-
-
-h1{
-  font-family: 'Bai Jamjuree', sans-serif;
-  color: #1e2326;
-  font-size: 5vh;
-  margin-bottom: 34px;
-  font-weight: 200;
-  text-shadow: 1px 1px rgba(0, 0, 0, 0.02), 2px 2px rgba(0, 0, 0, 0.02), 3px 3px rgba(0, 0, 0, 0.02), 4px 4px rgba(0, 0, 0, 0.02), 0.125rem 0.125rem rgba(0, 0, 0, 0.02), 6px 6px rgba(0, 0, 0, 0.02), 7px 7px rgba(0, 0, 0, 0.02), 8px 8px rgba(0, 0, 0, 0.02), 9px 9px rgba(0, 0, 0, 0.02), 0.3125rem 0.3125rem rgba(0, 0, 0, 0.02), 11px 11px rgba(0, 0, 0, 0.02), 12px 12px rgba(0, 0, 0, 0.02), 13px 13px rgba(0, 0, 0, 0.02), 14px 14px rgba(0, 0, 0, 0.02), 0.625rem 0.625rem rgba(0, 0, 0, 0.02), 16px 16px rgba(0, 0, 0, 0.02), 17px 17px rgba(0, 0, 0, 0.02), 18px 18px rgba(0, 0, 0, 0.02);
+topmenu{
+  display: flex;
 }
-
-p{
-  text-align: left;
-  margin-top: 13px;
-  margin-bottom: 13px;
-  color: #1e2326;
-  display: block;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
-
-.toggle {
-  font-family: 'Material Icons';
-  content: "link";
-   position: absolute;
-  left: -34px;
+.topbar-button {
+  font-family: 'ubuntu', sans-serif;
+  color: var(--text);
+  font-size: 15px;
+  border: 0;
+  padding: 20px 24px 30px 21px;
   cursor: pointer;
-  z-index: 5;
+  background: var(--background);
+
+  height: 40px;
+  margin-top: 5px;
+}
+
+.topbar-button:hover {
+  outline: none;
+  color: #fcaf12;
+}
+
+.topbar-button.active {
+  color: #fcb312;
+}
+
+
+.container {
+  /*display: inline-block;*/
+  position: relative;
+  width: 100%;
+}
+
+.content {
+  font-family: 'Buenard', sans-serif;
+  font-size: 21px;
+  position: relative;
+  /*display: inline-block;*/
+  width: 100%;
+  min-height: 900px;
+  padding: 0 10px 10px;
+  margin-top: -4px;
+  overflow-wrap: break-word;
+  background: var(--background);
+  color: var(--text);
+  border: 0;
+  border-radius: 4px;
+  outline: 0px;
+}
+
+.editor {
+  font-family: 'Buenard', sans-serif;
   display: block;
-  
+  max-width: 900px;
+  height: 500px;
+  padding: 0 50px 50px 150px;
+  margin: 64px auto auto;
+
 }
 
-.active, .toggle:hover {
-  transform: rotate(-90deg);
+ehhoutput{
+  margin-left: 200px;
+}
+[contenteditable] {
+  background: var(--background);
+  color: var(--text);
+  height: 700px;
 }
 
-.collapsible{
-  overflow: hidden;
+.div-block{
+  width: 700px  ;
+
+  min-height: 40px;
+  height: min-content;
+  padding-bottom:10px;
+}
+actionEditorBlock{
+  min-height: 700px;
+  margin-right: 100px !important;
+  max-height: 700px;
+  /*overflow: auto;*/
+  display: flex;
+
+  width: 700px !important;
+  max-width: 700px    ;
+  border: 2px solid black;
+}
+#actionEditor-block{
+  height: 100%;
+}
+
+actionoutputblock{
+  min-height: 700px;
+  max-height: 700px;
+  /*overflow: auto;*/
+  display:inline-block;
+  max-width: 700px    ;
+  width: 700px !important;
+  border: 2px solid black;
+}
+#actionOutput-block{
+  height: 100%;
+}
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-menu a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+
+.dropdown-menu a:hover {background-color: #f1f1f1}
+
+actionview:hover .dropdown-menu {
+  display: block;
+}
+
+actionview:hover .action-view-button {
+  background-color: #c45252;
+}
+
+.action-view-button {
+  background-color: #ff9090;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+actionview{
+  width: fit-content;
+  padding: 0px 10px;
+}
+
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: grey;
+  /*overflow-x: hidden;*/
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: black;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.div-block{
+  width: 700px;
 }

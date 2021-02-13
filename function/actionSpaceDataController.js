@@ -1,4 +1,4 @@
-class ActionSpaceDataController extends ehhEvent {
+    class ActionSpaceDataController extends actionEventController {
 
     constructor(context, view,model) {
         super(context);

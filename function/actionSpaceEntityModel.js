@@ -3,7 +3,7 @@ class ActionSpaceEntityModel{
     }
 
     updateJson(data){
-        actionEditor.actionSpace.actionEditorBlock.divBlock[0].innerText=data
+        actionSpaceConfig.actionSpace.actionEditorBlock.divBlock[0].innerText=data
 
     }
 }

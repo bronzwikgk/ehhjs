@@ -1,9 +1,6 @@
-class ActionSpaceView {
-    model;
-    constructor(model, elements) {
+class ActionView {
+     constructor(model) {
         this.model = model
-        this.elements = elements
-
     }
 
     updateDomContent=(data)=> {
