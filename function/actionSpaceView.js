@@ -69,4 +69,16 @@ class ActionView {
         this.model.updateJson(wrappedText)
     }
 
+    autoComplete(){
+        let val= document.getElementById('editor').innerText.trim()
+        const input=val.split(/[^A-Za-z]/);
+        AutoComplete.checkSuggestion(input[input.length - 1], document.getElementById('editor'))
+        let event = new Event('input', {
+            bubbles: true,
+            cancelable: true,
+        });
+
+        document.getElementById('editor').dispatchEvent(event);
+
+    }
 }

@@ -26,7 +26,7 @@ const snippets = [
 ];
 
 class AutoComplete {
-    checkSuggestion(keyword, editor) {
+    static checkSuggestion(keyword, editor) {
         keyword = this.removeSpecialCharacters(keyword.trim());
 
         if (this._isContains(snippets, keyword)) {
@@ -48,14 +48,14 @@ class AutoComplete {
         }
     }
 
-    removeSpecialCharacters(keyword) {
+    static removeSpecialCharacters(keyword) {
         // console.log(keyword)
         const desired = keyword.replace(/[^\w\s]/gi, '');
         // console.log(desired.trim())
         return desired
     }
 
-    _isContains(json, value) {
+    static _isContains(json, value) {
         // console.log(value.trim())
         let contains = false;
         Object.keys(json).some(key => {
@@ -65,7 +65,7 @@ class AutoComplete {
         return contains;
     }
 
-    setCaretToEnd(target) {
+    static setCaretToEnd(target) {
         const range = document.createRange();
         const sel = window.getSelection();
         range.selectNodeContents(target);

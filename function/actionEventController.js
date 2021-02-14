@@ -123,6 +123,11 @@ class actionEventController {
                 e.preventDefault()
                 this.emit("insertTag","br")
             }
+            if (e.keyCode===9){
+                console.log("yp")
+                e.preventDefault()
+                this.emit('autoComplete')
+            }
 
         }
 
