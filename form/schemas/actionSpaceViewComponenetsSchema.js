@@ -196,7 +196,29 @@ var headerSignup = {
     'brand': brand,
   //  'menu': actionSpaceHeaderVistorMenu,
 }
-
+var directoryJSON = {
+    'li':{
+    'name':'li',
+    'span':{
+        'name':'span',
+        'class':'parent',
+        "innerText":'', //inner Text will be included
+    },
+    'list':{
+        'name':'ul',
+        'class':'nested',
+        'id':'' //id - Unique ID with which directory handle of this folder can ke retrieved from indexDB
+    }
+    }
+}
+var fileJSON = {
+    'name':'li',
+    'id':'', //id - Unique ID with which file handle of this file retrieved from indexDB
+    //'class':'file'//used for opening a file
+     "innerText":'',
+     //innerText - name of the file
+     'data-command': `[{"command":"file"}]`,
+}
 var leftSideNavBar= {
     name: 'section',
     id: "navigationSection",
@@ -243,9 +265,8 @@ var leftSideNavBar= {
                                     name: 'div',
                                     'class': "collection_name",
                                     'textContent': 'new actionStory',
-                                    'data-command': '[{"command":"new ","entity": "actionContent","value":"innerHTML"}]',
-                                }
-
+                                },
+                                'data-command': '[{"command":"FSNew","entity": "actionContent","value":"innerHTML"}]',
                             },
                             {
                                 name: 'div',
@@ -254,15 +275,13 @@ var leftSideNavBar= {
                                     name: 'i',
                                     'class': "material-icons icon mr - 10",
                                     'textContent': 'folder_open',
-                                    'data-command': `[{"command":"FSOpenDirectory"}]`,
                                 },
                                 item2: {
                                     name: 'div',
                                     'class': "collection_name",
                                     'textContent': 'add collection',
-                                    'onclick': "processFS.OpenDirectory(event);"
-                                }
-
+                                },
+                                'data-command': `[{"command":"FSOpenDirectory"}]`,
                             },
                             {
                                 name: 'div',
@@ -276,8 +295,8 @@ var leftSideNavBar= {
                                     name: 'div',
                                     'class': "collection_name",
                                     'textContent': 'save',
-                                }
-
+                                },
+                                'data-command': `[{"command":"FS_Save"}]`,
                             },
 
 
@@ -302,32 +321,10 @@ var leftSideNavBar= {
                     class: "collection",
                         innerHTML: `
                       <li><span class="parent collection">my collection</span>
-                      <ul class="nested">
-                      <li>story 1</li>
-                    <li>story 2</li>
-                    <li>story 3</li>
-                    <li>story 4</li>
-                    <li>
-                        <li><span class="parent">my Nested Stories</span>
-                            <ul class="nested">
-                                <li>story 1</li>
-                                <li>story 2</li>
-                                <li>story 3</li>
-                                <li>story 4</li>
-                            </ul>
-                        </li>
-                        errands
-                    </li>
-
-                    <li><span class="parent">recent Stories</span>
-                        <ul class="nested">
-                            <li>leaf</li>
-                            <li>leaf</li>
-
-                        </ul>
-                    </li>
-                </ul>
-            </li>
+                      <ul class="nested" id = "workspace">
+                      
+                     </ul>
+                     </li>
             <span class="hozintalLine"></span>
             <li><span class="parent">Recent Files</span>
                 <ul class="nested">

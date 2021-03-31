@@ -211,6 +211,7 @@ class ActionController extends ActionEvent {
             var dataCommandT = event.target.getAttribute('data-command');
             console.log(dataCommandT);
             var commandJSOn = JSON.parse(dataCommandT);
+            console.log(commandJSOn[0].command);
             //           console.log( "Command "+ JSON.stringify(commandJSOn));
             switch (commandJSOn[0].command) {
 
@@ -234,10 +235,8 @@ class ActionController extends ActionEvent {
                     processFS.saveFile(event); break;
                 case 'FS_SaveAs':
                     processFS.saveAsFile(event); break;
-                // case 'file':
-                //     this.file(event);break;
-                // case 'caret':
-                //     this.caret(event);break;
+                case 'file':
+                    this.Openfile(event);break;
                 // local storage
                 case 'new':
                     this.new1(event); break;
@@ -318,6 +317,13 @@ class ActionController extends ActionEvent {
 
             //console.log("yo")
         }
+    }
+    async Openfile(event){
+        event.preventDefault();
+        console.log("Clicked on a file");
+        console.log(event.target.getAttribute("id"));
+        var handleDirFile = await indexDB.get(event.target.getAttribute('id'));
+        processFS.Open(event,handleDirFile);
     }
     new1(event) {
         console.log("New One");

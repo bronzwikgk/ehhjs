@@ -16,13 +16,11 @@ const pickerOpts = {
 class processFS{
     static async NewFile(event){
         event.preventDefault();
-        if(!fileHandle || document.getElementById('textBox').innerText.length < 1){
-              ActionView.updateTitle(actionStoryTemplate.name);
-              ActionView.updateText(actionUserContent[0]['innerHTML']);   
+        if(!fileHandle){
+              ActionView.addInnerHTML(sampleIntroStory,document.getElementById('inlineContent')); 
         }else{
             if(confirm('You want to erase the content ?')){
-                ActionView.updateTitle(actionStoryTemplate.name);
-                ActionView.updateText(actionUserContent[0]['innerHTML']);    
+                ActionView.addInnerHTML(sampleIntroStory,document.getElementById('inlineContent')); 
             }
         }
     }
@@ -57,104 +55,87 @@ class processFS{
     }
     static async Open(event,handle){
         event.preventDefault();
-        if(!handle){
-            [fileHandle] = await window.showOpenFilePicker(pickerOpts);
-        }else{
-            fileHandle = handle;
+        try{
+            if(!handle){
+                [fileHandle] = await window.showOpenFilePicker(pickerOpts);
+            }else{
+                fileHandle = handle;
+            }
+            console.log(fileHandle);
+            var file = await fileHandle.getFile();var contents;
+            if(file['name'].includes('.json') || file['name'].includes('.txt')|| file['name'].includes('.html')|| file['name'].includes('.js')||file['name'].includes('.xml')){
+                contents = await file.text();
+                // ActionView.updateTitle(file['name']);
+                // ActionView.updateInnerText(contents);
+                ActionView.addInnerHTML(content,document.getElementById('inlineContent')); 
+            }else if(file['name'].includes('.xlx') || file['name'].includes('.xlsx')|| file['name'].includes('.csv')){
+                console.log("Work In Progress");
+            }else if(file['type'].includes('image') ||file['name'].includes('.JPG') ||file['name'].includes('.JPEG') ||file['name'].includes('.PNG')){
+               var reader = new FileReader();
+               reader.addEventListener("load", function () {
+                var image = new Image();
+                image.title = file.name;
+                image.width = '460';image.height = '380';
+                image.src = reader.result;
+                // ActionView.updateTitle(file['name']);
+                // ActionView.displayImage(image);
+              }, false);
+                reader.readAsDataURL(file);
+            }else if(file['name'].includes('mp4')){
+                var reader = new FileReader();
+                reader.addEventListener("load", function () {
+                 var html = '<video src="' + reader.result + '" width="460" height="380" controls></video>'
+                 ActionView.addInnerHTML(html,document.getElementById('inlineContent')); 
+                //  ActionView.updateTitle(file['name']);
+                //  ActionView.updateText(html);
+               }, false);
+               reader.readAsDataURL(file);
+            }else{
+                console.log("Not supported");
+            }
+        }catch(err){
+            console.log(err);
         }
-        console.log(fileHandle);
-        var file = await fileHandle.getFile();var contents;
-        if(file['name'].includes('.json') || file['name'].includes('.txt')|| file['name'].includes('.html')|| file['name'].includes('.js')||file['name'].includes('.xml')){
-            contents = await file.text();
-            ActionView.updateTitle(file['name']);
-            ActionView.updateInnerText(contents);
-        }else if(file['name'].includes('.xlx') || file['name'].includes('.xlsx')|| file['name'].includes('.csv')){
-            console.log("Work In Progress");
-        }else if(file['type'].includes('image') ||file['name'].includes('.JPG') ||file['name'].includes('.JPEG') ||file['name'].includes('.PNG')){
-           var reader = new FileReader();
-           reader.addEventListener("load", function () {
-            var image = new Image();
-            image.title = file.name;
-            image.width = '460';image.height = '380';
-            image.src = reader.result;
-            ActionView.updateTitle(file['name']);
-            ActionView.displayImage(image);
-          }, false);
-            reader.readAsDataURL(file);
-        }else if(file['name'].includes('mp4')){
-            var reader = new FileReader();
-            reader.addEventListener("load", function () {
-             var html = '<video src="' + reader.result + '" width="460" height="380" controls></video>'
-             ActionView.updateTitle(file['name']);
-             ActionView.updateText(html);
-           }, false);
-           reader.readAsDataURL(file);
-        }else{
-            console.log("Not supported");
-        }
-
     }
     static async OpenDirectory(event){
         event.preventDefault();
-        const dirHandle = await window.showDirectoryPicker();
-        ActionView.preLoader();
-        var dirID = processFS.uid();
-        await indexDB.set(dirID, dirHandle);
-        var input = JSON.parse(JSON.stringify(directoryJSON));
-        input['li']['span']['innerText'] = dirHandle.name;input['li']['list']['id'] = dirID;
-        var json = await processFS.jsonForDirectory(input['li']['list'] ,dirID);
-        console.log(input);
-        var data = new Entity(input, document.getElementById('workspace'));
-        ActionView.show();
-        var carets = document.querySelectorAll('.caret');
-        carets.forEach(caret =>{
-            caret.onclick = async function(event) {
-                event.preventDefault();
-                console.log(event.target.innerHTML);
-                this.classList.toggle('caret-down')
-                parent = this.parentElement;
-                parent.querySelector('.nested').classList.toggle('active')
-            }
-        })
-        var files = document.querySelectorAll('.file');
-        files.forEach(file =>{
-            file.addEventListener('click',async function(event){
-                event.preventDefault();
-                console.log(event.target.getAttribute("id"));
-                var handleDirFile = await indexDB.get(event.target.getAttribute('id'));
-                processFS.Open(event,handleDirFile);
-            });
-        })
+        try{
+            const dirHandle = await window.showDirectoryPicker();
+            var dirID = uid();
+            indexDB.set(dirID, dirHandle);
+            var input = JSON.parse(JSON.stringify(directoryJSON));
+            input['li']['span']['innerText'] = dirHandle.name;input['li']['list']['id'] = dirID;
+            var json = await processFS.jsonForDirectory(input['li']['list'] ,dirHandle);
+            console.log(input);
+            console.log(document.getElementById('workspace').innerHTML);
+            var data = new Entity(input, document.getElementById('workspace'));
+            console.log(document.getElementById('workspace').innerHTML);
+          //  await indexDB.set('workspace',document.getElementById('workspace').innerHTML);
+        }catch(err){
+            console.log(err);
+        }
+       
     }
-    static async jsonForDirectory(obj,parentID){
-        var parentHandle =await indexDB.get(parentID);
-        console.log(parentHandle);
+    static async jsonForDirectory(obj,parentHandle){
         for await(var entry of parentHandle.values()){
-            var id = processFS.uid();
+            var id = uid();
             if(entry.kind == 'directory'){
                 var directory = JSON.parse(JSON.stringify(directoryJSON));
                 directory['li']['span']['innerText'] = entry.name;directory['li']['list']['id'] = id;
                 var directoryHandle = await parentHandle.getDirectoryHandle(entry.name);
                 await indexDB.set(id,directoryHandle);
-                console.log(directory);
                 obj[entry.name] = directory;
                 console.log(obj[entry.name]['li']['list']);
-                await processFS.jsonForDirectory(obj[entry.name]['li']['list'], id);
+                await processFS.jsonForDirectory(obj[entry.name]['li']['list'], directoryHandle);
             }else if(entry.kind == 'file' && entry.name.includes('.')){
                 var fileData = JSON.parse(JSON.stringify(fileJSON));
                 fileData['id'] = id;fileData['innerText'] = entry.name;
                 var getfileHandle = await parentHandle.getFileHandle(entry.name);
                 await indexDB.set(id,getfileHandle);
                 obj[entry.name] = fileData;
-                console.log(obj);
             }
         }
+        console.log(obj);
         return obj;
     }
-    static uid() {
-        let timmy = Date.now().toString(36).toLocaleUpperCase();
-        let randy = parseInt(Math.random() * Number.MAX_SAFE_INTEGER);
-        randy = randy.toString(36).slice(0, 12).padStart(12, '0').toLocaleUpperCase();
-        return ''.concat(timmy, '-', randy);
-    }    
 }

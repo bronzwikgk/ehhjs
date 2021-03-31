@@ -73,7 +73,7 @@ class Entity {
         this.output = output;
         this.entity = process.processReq(input, output);
     }
-    static create(input, output, key, value,) {
+    static create(input, output, key, value) {
         //  console.log('create request for ',output,key)
         if (operate.is(output).includes("HTML")) { //Only HTML creation
             // var response = Object.create(output.constructor.prototype)
@@ -117,7 +117,7 @@ class Entity {
         if (!response) console.log("no response", output);
         return response;
     }
-    static append(input, output, key, value,) {
+    static append(input, output, key, value) {
         // console.log('appending', input,output)
 
         if (operate.is(output).includes("HTML")) { //Only HTML creation
