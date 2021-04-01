@@ -202,7 +202,7 @@ var directoryJSON = {
     'span':{
         'name':'span',
         'class':'parent',
-        "innerText":'', //inner Text will be included
+        "textContent":'', //inner Text will be included
     },
     'list':{
         'name':'ul',
@@ -215,7 +215,7 @@ var fileJSON = {
     'name':'li',
     'id':'', //id - Unique ID with which file handle of this file retrieved from indexDB
     //'class':'file'//used for opening a file
-     "innerText":'',
+     "textContent":'',
      //innerText - name of the file
      'data-command': `[{"command":"file"}]`,
 }
@@ -343,12 +343,10 @@ var leftSideNavBar= {
                     </li>
                     errands
             </li>
-
             <li><span class="parent">recent Stories</span>
                 <ul class="nested">
                     <li>leaf</li>
                     <li>leaf</li>
-
                 </ul>
             </li>
             </ul>
@@ -371,12 +369,10 @@ var leftSideNavBar= {
                     </li>
                     errands
             </li>
-
             <li><span class="parent">recent Stories</span>
                 <ul class="nested">
                     <li>leaf</li>
                     <li>leaf</li>
-
                 </ul>
             </li>
             </ul>
@@ -398,12 +394,10 @@ var leftSideNavBar= {
                     </li>
                     errands
             </li>
-
             <li><span class="parent">recent Stories</span>
                 <ul class="nested">
                     <li>leaf</li>
                     <li>leaf</li>
-
                 </ul>
             </li>
             </ul>
@@ -425,12 +419,10 @@ var leftSideNavBar= {
                     </li>
                     errands
             </li>
-
             <li><span class="parent">recent Stories</span>
                 <ul class="nested">
                     <li>leaf</li>
                     <li>leaf</li>
-
                 </ul>
             </li>
             </ul>
