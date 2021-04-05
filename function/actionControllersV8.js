@@ -436,6 +436,7 @@ class ActionController extends ActionEvent {
         var response = await HttpService.fetchRequest(scriptURL,HttpService.requestBuilder("POST",undefined,JSON.stringify(json)));
         alert(response.output);
         if(response.result == 'Success'){
+            localStorage.setItem('LoggedIn',true);
             window.location.href = '#action';
         }
     }
@@ -449,6 +450,7 @@ class ActionController extends ActionEvent {
         var response = await HttpService.fetchRequest(HttpService.urlBuilder(scriptURL,params),HttpService.requestBuilder("GET"));
         alert(response.output);
         if(response.result == 'Success'){
+            localStorage.setItem('LoggedIn',true);
             window.location.href = '#action';
         }
     }
