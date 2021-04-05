@@ -16,7 +16,6 @@ var brand = {
         }
     },   
 }
-
 var signupModelV2 = {
     formSection: {
         name: 'section',
@@ -69,7 +68,37 @@ var signupModelV2 = {
                         'placeholder': 'Enter Username',
                     }
                 },
-                item2: {
+                item2:{
+                    name: 'li',
+                    class: 'full-width item column',
+                    'labelPassword': {
+                        'name': 'label',
+                        class: 'alignSelf-left small',
+                        'for': 'password',
+                        'textContent': 'Password',
+                    },
+                    'inputPassword': {
+                        'name': 'input',
+                        'type': 'password',
+                        'id': 'password',
+                        'required': 'true',
+                        'placeholder': 'Enter Password',
+                    }
+                },
+                item3:{
+                    name: 'li',
+                    class: 'full-width item',
+                    'button': {
+                        'name': 'button',
+                        class: 'full-width',
+                        textLable: {
+                            name: 'lable',
+                            'textContent': 'SIGN UP',
+                        },
+                    'data-command': `[{"command":"Signup"}]`,
+                    },
+                },
+                item4: {
                     name: 'li',
                     class: 'full-width item',
                     'button': {
@@ -79,10 +108,11 @@ var signupModelV2 = {
                             name: 'lable',
                             'textContent': 'continue with email',
                         },
+                      
 
                     },
                 },
-                item3: {
+                item5: {
                     name: 'li',
                     class: 'full-width item',
                     'textMessage': {
@@ -106,7 +136,6 @@ var loginModelV2 = {
     formSection: {
         name: 'section',
         class: 'container row',
-
         form: {
             id: 'regForm',
             name: 'form',
@@ -154,7 +183,37 @@ var loginModelV2 = {
                         'placeholder': 'Enter Username',
                     }
                 },
-                item2: {
+                item2:{
+                    name: 'li',
+                    class: 'full-width item column',
+                    'labelPassword': {
+                        'name': 'label',
+                        class: 'alignSelf-left small',
+                        'for': 'password',
+                        'textContent': 'Password',
+                    },
+                    'inputPassword': {
+                        'name': 'input',
+                        'type': 'password',
+                        'id': 'password',
+                        'required': 'true',
+                        'placeholder': 'Enter Password',
+                    }
+                },
+                item3:{
+                    name: 'li',
+                    class: 'full-width item',
+                    'button': {
+                        'name': 'button',
+                        class: 'full-width',
+                        textLable: {
+                            name: 'lable',
+                            'textContent': 'LOG IN',
+                        },
+                    'data-command': `[{"command":"Login"}]`,
+                    },
+                },
+                item4: {
                     name: 'li',
                     class: 'full-width item',
                     'button': {
@@ -167,7 +226,7 @@ var loginModelV2 = {
 
                     },
                 },
-                item3: {
+                item5: {
                     name: 'li',
                     class: 'full-width item',
                     'textMessage': {

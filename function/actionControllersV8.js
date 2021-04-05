@@ -320,10 +320,16 @@ class ActionController extends ActionEvent {
 //          console.log(dataCommandT);
             var commandJson = JSON.parse(dataCommand);
             console.log("Command " + commandJson[0].command);
-            switch (commandJson[0].command) {
+            //           console.log( "Command "+ JSON.stringify(commandJSOn));
+            switch (commandJSOn[0].command) {
                 case "new":
                     console.log("new")
                     this.new1(event); break;
+                //signup,login
+                case 'Signup':
+                    this.SignUp(event);break;
+                case 'Login':
+                    this.LogIn(event);break;
                 case 'google':
                     Authorization.oAuth(event, 'json'); break;
                 //sheet
@@ -418,6 +424,32 @@ class ActionController extends ActionEvent {
             //event.target.previousElementSibling('visibility',true)
 
             //console.log("yo")
+        }
+    }
+    async SignUp(event){
+        event.preventDefault();
+        var scriptURL = 'https://script.google.com/macros/s/AKfycbwsQKVAizOzowKsOxKeF58_N445t_ZIgqS-fjl7xYYHPUjZnjk7zNVvUgC8LjGDuKFc-w/exec';
+        var json = {
+            'Username':document.getElementById('username').value,
+            'Password':document.getElementById('password').value,
+        };
+        var response = await HttpService.fetchRequest(scriptURL,HttpService.requestBuilder("POST",undefined,JSON.stringify(json)));
+        alert(response.output);
+        if(response.result == 'Success'){
+            window.location.href = '#action';
+        }
+    }
+    async LogIn(event){
+        event.preventDefault();
+        var scriptURL = 'https://script.google.com/macros/s/AKfycbwsQKVAizOzowKsOxKeF58_N445t_ZIgqS-fjl7xYYHPUjZnjk7zNVvUgC8LjGDuKFc-w/exec';
+        var params = {
+            'Username':document.getElementById('username').value,
+            'Password':document.getElementById('password').value
+        };
+        var response = await HttpService.fetchRequest(HttpService.urlBuilder(scriptURL,params),HttpService.requestBuilder("GET"));
+        alert(response.output);
+        if(response.result == 'Success'){
+            window.location.href = '#action';
         }
     }
     async Openfile(event){
