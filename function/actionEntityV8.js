@@ -1,70 +1,3 @@
-var entityModelV2 = {
-    'name': {
-        value: 'input.nameTagName',
-        'process': [
-            {
-                'objectModel': 'operate',
-                'method': 'isInsideArray',
-                'arguments': 'HTMLElementList'
-            }
-        ]
-    },
-    // description : "",
-    'id': {
-        value: 'input.id',
-        'operator': [
-            {
-                'method': 'isInsideArray',
-                'arguments': 'HTMLElementList'
-            }
-        ]
-    },
-    'entityType': {
-        value: 'operate.is(input)',
-        'operator': [
-            {
-                'method': 'isOptional',
-                'arguments': 'value',
-            }
-        ]
-    },
-    resource: {
-        value: 'input.url',
-        operate: ['isUrl'],
-    },
-    attributes: {
-        value: null,
-        operate: [find('input.attributes', ['class', 'style', 'src'])],
-    },
-    content: '',
-    'contentMimeType': '',//[HTML,JSON,TEXT,JAVASCRIPT],
-    resourceBinding: ''
-}
-
-var entityModel4Html = {
-    tagName: "tagName",
-    attributes: { 'class': "class.value", 'style': "style.value", 'src': "" },
-    children: ['all'],
-}
-
-var copy2 = {
-    reqName: 'copy2',
-    objectModel: 'processV6',
-    method: 'iterate',
-    arguments: [
-        { 'previous': 'response' },
-        entityModel4Html,
-        {
-            params: {
-                maxDepth: 5,
-                maxChildren: 120,
-                response: {},// option to choose what kind of response do we want. isOneOf([",{},[],an HTML element,"andSelf means return the output"])
-                callback: 'setEntityReq',
-            }
-        }
-    ],
-
-}
 
 class Entity {
     constructor(input, output) {
@@ -175,4 +108,4 @@ class Entity {
     } 
 }
 
-console.log("I am loaded > entity",)
+//console.log("I am loaded > entity",)

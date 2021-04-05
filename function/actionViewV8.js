@@ -5,14 +5,20 @@ class ActionView {
         this._actionView = new Entity(viewModel, parent);
         //  console.log(" new View ", this._actionView.entity);
     }
+    static setAttribute(input, key, value) {
+        input.key = value;
+        return input;
+    }
     appendChild(input,target){
         target.appendChild('input');
         return input;
     }
-    replaceChild(input, target) {
+    replaceChild([input, target]) {
+    //  console.log("replaceChild",input,target)
         var newChild = new Entity(input, document.createElement('div'));
 //        console.log("here", newChild.entity, "target", target.entity.innerHTML);
-        target.entity.innerHTML = newChild.entity.innerHTML;   
+        target.innerHTML = newChild.entity.innerHTML;
+        return target;
      }
 
     /**
@@ -82,7 +88,63 @@ class ActionView {
         }
     }
     return { x, y };
-}
+     }
+     getCaretCharacterOffsetWithin(element) {
+         var caretOffset = 0;
+         var doc = element.ownerDocument || element.document;
+         var win = doc.defaultView || doc.parentWindow;
+         var sel;
+         if (typeof win.getSelection != "undefined") {
+             sel = win.getSelection();
+             if (sel.rangeCount > 0) {
+                 var range = win.getSelection().getRangeAt(0);
+                 var preCaretRange = range.cloneRange();
+                 preCaretRange.selectNodeContents(element);
+                 preCaretRange.setEnd(range.endContainer, range.endOffset);
+                 caretOffset = preCaretRange.toString().length;
+             }
+         } else if ((sel = doc.selection) && sel.type != "Control") {
+             var textRange = sel.createRange();
+             var preCaretTextRange = doc.body.createTextRange();
+             preCaretTextRange.moveToElementText(element);
+             preCaretTextRange.setEndPoint("EndToEnd", textRange);
+             caretOffset = preCaretTextRange.text.length;
+         }
+         return caretOffset;
+     }
+     pasteHtmlAtCaret(html) {
+         var sel, range;
+         if (window.getSelection) {
+             // IE9 and non-IE
+             sel = window.getSelection();
+             if (sel.getRangeAt && sel.rangeCount) {
+                 range = sel.getRangeAt(0);
+                 range.deleteContents();
+
+                 // Range.createContextualFragment() would be useful here but is
+                 // non-standard and not supported in all browsers (IE9, for one)
+                 var el = document.createElement("div");
+                 el.innerHTML = html;
+                 var frag = document.createDocumentFragment(), node, lastNode;
+                 while ((node = el.firstChild)) {
+                     lastNode = frag.appendChild(node);
+                 }
+                 range.insertNode(frag);
+
+                 // Preserve the selection
+                 if (lastNode) {
+                     range = range.cloneRange();
+                     range.setStartAfter(lastNode);
+                     range.collapse(true);
+                     sel.removeAllRanges();
+                     sel.addRange(range);
+                 }
+             }
+         } else if (document.selection && document.selection.type != "Control") {
+             // IE < 9
+             document.selection.createRange().pasteHTML(html);
+         }
+     }
 }
 
     
