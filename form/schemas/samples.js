@@ -35,8 +35,8 @@ var sampleActionStory= {
 //     lastUpdated: dayjs().format(),
 // }
 
-const invoiceSample = {
-    "$schema": "http://json-schema.org/draft-04/schema#",
+var invoiceSample = {
+  //  "$schema": "http://json-schema.org/draft-04/schema#",
         "title": "InvoiceInputModel",
             "type": "object",
                 "properties": {

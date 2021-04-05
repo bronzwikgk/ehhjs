@@ -3,7 +3,7 @@ var newActionStoryReq = {
     name: 'newActionStory',
     objectModel: 'actionSpaceViewInstance',
     method: 'replaceChild',
-    argument: ['sampleActionStory', 'activeActionStory'],
+    argument: ['invoiceSample', 'activeActionStory'],
  }
 
 /**
