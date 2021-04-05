@@ -37,17 +37,5 @@ function test(response) {
 var actionSpaceElementInstanceIndom = document.getElementById('actionSpaceContainer');
 var actionSpaceViewInstance = new ActionView(actionSpaceViewModel[0].model, actionSpaceElementInstanceIndom);
 //console.log(actionSpaceInstace._actionView.entity)
-<<<<<<< HEAD
-var actionEventInstance = new ActionEvent(actionSpaceInstance,window);
-var actionSpaceController = new ActionController(actionSpaceInstance,actionSpaceViewModel[0].model,actionEventInstance);
-var actionSpaceController = new ActionController(actionSpaceInstance);
-// var workspace =await indexDB.get('workspace');
-// if(workspace != undefined && document.getElementById('workspace') !== null){
-//     console.log(workspace);
-//     document.getElementById('workspace').innerHTML = workspace;
-// }
-
-=======
  var actionEventInstance = new ActionEvent(actionSpaceViewInstance, window);
  var actionSpaceController = new ActionController(actionSpaceViewInstance, actionSpaceViewModel[0].model, actionEventInstance);
->>>>>>> main
