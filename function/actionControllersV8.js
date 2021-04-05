@@ -321,7 +321,7 @@ class ActionController extends ActionEvent {
             var commandJson = JSON.parse(dataCommand);
             console.log("Command " + commandJson[0].command);
             //           console.log( "Command "+ JSON.stringify(commandJSOn));
-            switch (commandJSOn[0].command) {
+            switch (commandJson[0].command) {
                 case "new":
                     console.log("new")
                     this.new1(event); break;
