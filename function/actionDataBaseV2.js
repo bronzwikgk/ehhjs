@@ -4,6 +4,7 @@ class indexDB{
         return new Promise((resolve, reject) => {
             // @ts-ignore - file size hacks
             request.oncomplete = request.onsuccess = () => resolve(request.result);
+         
             // @ts-ignore - file size hacks
             request.onabort = request.onerror = () => reject(request.error);
         });
@@ -28,8 +29,11 @@ class indexDB{
      * @param customStore Method to get a custom store. Use with caution (see the docs).
      */
     static get(key, customStore = indexDB.defaultGetStore()) {
+        var response = customStore('readonly', (store) => ActionEngine.promisifyRequest(store.get(key)))
+    
         
-        return customStore('readonly', (store) => indexDB.promisifyRequest(store.get(key)));
+   //    console.log("get indexdb",response)
+        return response;
     }
     /**
      * Set a value with a key.
@@ -41,7 +45,7 @@ class indexDB{
     static set(key, value, customStore = indexDB.defaultGetStore()) {
         return customStore('readwrite', (store) => {
             store.put(value, key);
-            return indexDB.promisifyRequest(store.transaction);
+            return ActionEngine.promisifyRequest(store.transaction);
         });
     }
     

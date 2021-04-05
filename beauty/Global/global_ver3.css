@@ -113,5 +113,11 @@ align-self: flex-start;
 .small{
   font-size: 12px;
 }
+.medium{
+  font-size: 21px;
+  font-weight: bold;
+  
+  margin-bottom: 1em;
+}
 
 

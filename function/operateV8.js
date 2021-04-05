@@ -33,13 +33,14 @@ class operate {
     //Find iside an object, array or Object, returns if find keys
     static find(entity, keyTofind, lookat) {
        // console.log("yo")
-      //  console.log("finding", keyTofind, "in", entity, lookat);
+   // console.log("finding", keyTofind, "in", entity, lookat);
 
         var result = Object[lookat](entity).filter(function (key, index, self) {
 
-           // console.log(key, index, self);
+            //console.log(keyTofind, key, index, self, !key.indexOf(keyTofind));
             return !key.indexOf(keyTofind);
         });
+      // console.log("found result", result)
         return result;
     }
 
@@ -98,6 +99,8 @@ class operate {
     // Returns if a value is an object
     static isObject(value) { return value && typeof value === 'object' && value.constructor === Object; }
     static isHTML(argA) { return operate.is(argA).includes("HTML") }
+    //Retuns if a values is either of null or undefined
+    static isUseless(value) { return value === null || typeof value === 'undefined'; }
     // Returns if a value is null
     static isNull(value) { return value === null; }
     // Returns if a value is undefined 
@@ -128,6 +131,7 @@ class operate {
         }
         return false;
     }
+    static isNegative(x) { return x < 0; }
     static isChild(argA, argB) { }
     static isParent(argA, argB) { }
     static isEven(argA) { return numbers.every(function (e) { return e % 2 == 0; }); }

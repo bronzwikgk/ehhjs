@@ -16,7 +16,6 @@ var brand = {
         }
     },   
 }
-
 var signupModelV2 = {
     formSection: {
         name: 'section',
@@ -69,7 +68,37 @@ var signupModelV2 = {
                         'placeholder': 'Enter Username',
                     }
                 },
-                item2: {
+                item2:{
+                    name: 'li',
+                    class: 'full-width item column',
+                    'labelPassword': {
+                        'name': 'label',
+                        class: 'alignSelf-left small',
+                        'for': 'password',
+                        'textContent': 'Password',
+                    },
+                    'inputPassword': {
+                        'name': 'input',
+                        'type': 'password',
+                        'id': 'password',
+                        'required': 'true',
+                        'placeholder': 'Enter Password',
+                    }
+                },
+                item3:{
+                    name: 'li',
+                    class: 'full-width item',
+                    'button': {
+                        'name': 'button',
+                        class: 'full-width',
+                        textLable: {
+                            name: 'lable',
+                            'textContent': 'SIGN UP',
+                        },
+                    'data-command': `[{"command":"Signup"}]`,
+                    },
+                },
+                item4: {
                     name: 'li',
                     class: 'full-width item',
                     'button': {
@@ -79,10 +108,11 @@ var signupModelV2 = {
                             name: 'lable',
                             'textContent': 'continue with email',
                         },
+                      
 
                     },
                 },
-                item3: {
+                item5: {
                     name: 'li',
                     class: 'full-width item',
                     'textMessage': {
@@ -106,7 +136,6 @@ var loginModelV2 = {
     formSection: {
         name: 'section',
         class: 'container row',
-
         form: {
             id: 'regForm',
             name: 'form',
@@ -154,7 +183,37 @@ var loginModelV2 = {
                         'placeholder': 'Enter Username',
                     }
                 },
-                item2: {
+                item2:{
+                    name: 'li',
+                    class: 'full-width item column',
+                    'labelPassword': {
+                        'name': 'label',
+                        class: 'alignSelf-left small',
+                        'for': 'password',
+                        'textContent': 'Password',
+                    },
+                    'inputPassword': {
+                        'name': 'input',
+                        'type': 'password',
+                        'id': 'password',
+                        'required': 'true',
+                        'placeholder': 'Enter Password',
+                    }
+                },
+                item3:{
+                    name: 'li',
+                    class: 'full-width item',
+                    'button': {
+                        'name': 'button',
+                        class: 'full-width',
+                        textLable: {
+                            name: 'lable',
+                            'textContent': 'LOG IN',
+                        },
+                    'data-command': `[{"command":"Login"}]`,
+                    },
+                },
+                item4: {
                     name: 'li',
                     class: 'full-width item',
                     'button': {
@@ -167,7 +226,7 @@ var loginModelV2 = {
 
                     },
                 },
-                item3: {
+                item5: {
                     name: 'li',
                     class: 'full-width item',
                     'textMessage': {
@@ -225,33 +284,33 @@ var leftSideNavBar= {
     class: "column",
     inside_navigationSection: {
         name: 'div', id: "inside_navigationSection",
-        sideBar_header: {
-            name: 'div',
-            id:'side_bar_header',
-            class: "justify_SpaceBetween container",
-            brand: {
-                name: 'div',
-                class: "brand_logo",
-                textContent: 'Sunil Kumar',
-                    },
-            sideBarControlMenu: {
-                name: 'div',
-                class: "HeaderControl align_center justify_center",
-                button1: {
-                    name: 'button',class: "mode_toggle_btn mr-15", id: "MainHeaderHamburger1",
-                        },
-                button2: {
-                    name: 'i','class': "material-icons",'textContent': 'add_box',
-                        },
-            },
+        // sideBar_header: {
+        //     name: 'div',
+        //     id:'side_bar_header',
+        //     class: "justify_SpaceBetween container",
+        //     brand: {
+        //         name: 'div',
+        //         class: "brand_logo",
+        //         textContent: 'Sunil Kumar',
+        //             },
+        //     sideBarControlMenu: {
+        //         name: 'div',
+        //         class: "HeaderControl align_center justify_center",
+        //         button1: {
+        //             name: 'button',class: "mode_toggle_btn mr-15", id: "MainHeaderHamburger1",
+        //                 },
+        //         button2: {
+        //             name: 'i','class': "material-icons",'textContent': 'add_box',
+        //                 },
+        //     },
 
-        },
+        // },
         sideBar_CollectionList: {
             name: 'div',
-                class: 'collection_list',
+             //   class: 'collection_list',
                     collectionItem: {
                 name: 'div',
-                    class: "collection",
+                   // class: "collection",
                         items: [
                             {
                                 name: 'div',
@@ -265,8 +324,29 @@ var leftSideNavBar= {
                                     name: 'div',
                                     'class': "collection_name",
                                     'textContent': 'new actionStory',
+                                    'onclick': "engine.executeSynReq(newActionStoryReq);"
+
+                                  //  'data-command': '[{"command":"new ","entity": "actionContent","value":"innerHTML"}]',
+                                }
+
+                            },
+                            {
+                                name: 'div',
+                                class: 'item',
+                                item1: {
+                                    name: 'i',
+                                    'class': "material-icons icon mr - 10",
+                                    'textContent': 'upload_file',
                                 },
-                                'data-command': '[{"command":"FSNew","entity": "actionContent","value":"innerHTML"}]',
+                                item2: {
+                                    name: 'div',
+                                    'class': "collection_name",
+                                    'textContent': 'open file',
+                                    'onclick': "engine.executeSynReq(openFileReqModel,event);"
+
+                                    //  'data-command': '[{"command":"new ","entity": "actionContent","value":"innerHTML"}]',
+                                }
+
                             },
                             {
                                 name: 'div',
@@ -280,8 +360,10 @@ var leftSideNavBar= {
                                     name: 'div',
                                     'class': "collection_name",
                                     'textContent': 'add collection',
-                                },
-                                'data-command': `[{"command":"FSOpenDirectory"}]`,
+                                    //'data-command': '[{"command":"new ","entity": "actionContent","value":"innerHTML"}]',
+                                    'onclick': "engine.executeSynReq(openFolderReqModel,event);"
+                                }
+
                             },
                             {
                                 name: 'div',
@@ -299,7 +381,6 @@ var leftSideNavBar= {
                                 'data-command': `[{"command":"FS_Save"}]`,
                             },
 
-
                         ]
             }
         },
@@ -310,21 +391,48 @@ var leftSideNavBar= {
 
         sideBar_Collection_withDropDown: {
             name: 'div',
-                class: 'collection_list_with_drop_down',
+                class: 'collection_list',
                     collectionTitle: {
-                name: 'div',
-                    class: "miniHeading",
+                        name: 'div',
+                        class: "medium",
                         textContent: "actionStories & Collections",
                     },
             collectionItem: {
                 name: 'div',
-                    class: "collection",
+                class: "container column",
+            //     <li><span class="parent collection">my collection</span>
+            //     <ul class="nested" id = "workspace">
+                
+            //    </ul>
+            //    </li>
                         innerHTML: `
-                      <li><span class="parent collection">my collection</span>
-                      <ul class="nested" id = "workspace">
-                      
-                     </ul>
-                     </li>
+                      <li class='row item justify_SpaceBetween'><span class="parent ">my collection</span>
+                      <ul class="nested container column">
+                      <li class='item row'>story 1</li>
+                    <li class='item row'>story 2</li>
+                    <li class='item row' >story 3</li>
+                    <li class='item row'>story 4</li>
+                    <li class='item row' >
+                        <li class='item row'><span class="parent">my Nested Stories</span>
+                            <ul class="nested">
+                                <li class='item row'>story 1</li>
+                                <li class='item row'>story 2</li>
+                                <li class='item row'>story 3</li>
+                                <li class='item row'>story 4</li>
+                            </ul>
+                        </li>
+                        errands
+                    </li>
+
+                    <li><span class="parent">recent Stories</span>
+                        <ul class="nested">
+                            <li>leaf</li>
+                            <li>leaf</li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </li>
             <span class="hozintalLine"></span>
             <li><span class="parent">Recent Files</span>
                 <ul class="nested">
@@ -432,44 +540,33 @@ var leftSideNavBar= {
         sideBar_footer: {
             name: 'div',
                 id: "SidebarFooter",
-                    newCollectionBtn: {
-                name: 'div',
-                    class: 'newCollectionBtn flex align_center',
-                        id: '',
-                            'textContent': 'add Collections',
-                                items: [
-                                    {
-                                        name: 'i',
-                                        'class': "material-icons",
-                                        'textContent': 'library_add',
-                                    },
-
-                                ]
-
-
-            },
-            footerIcons: {
-                name: 'div',
-                    class: 'footerIcon flex align_center',
-                        id: 'footerIcon',
-                            items: [
-                                {
-                                    name: 'i',
-                                    'class': "material-icons",
-                                    'textContent': 'favorite',
-                                }, {
-                                    name: 'i',
-                                    'class': "material-icons",
-                                    'textContent': 'download_for_offline',
-                                }, {
-                                    name: 'i',
-                                    'class': "material-icons",
-                                    'textContent': 'settings',
-                                },
-                            ]
+                   
+            // footerIcons: {
+            //     name: 'div',
+            //     class: 'container IconList ',
+            //     id:'footerIcons',
+            //     itemCollection: {
+            //         name: 'ul',
+            //         class:'justify_SpaceBetween container',
+            //         favouriteIcon: {
+            //             name: 'i',
+            //             'class': "material-icons",
+            //             'textContent': 'favorite',
+            //         }, 
+            //         download:{
+            //             name: 'i',
+            //             'class': "material-icons",
+            //             'textContent': 'download_for_offline',
+            //         },
+            //         setting: {
+            //             name: 'i',
+            //             'class': "material-icons",
+            //             'textContent': 'settings',
+            //         },
+            //     }
 
 
-            },
+            // },
 
         },
 
@@ -690,7 +787,36 @@ var workSpaceBody = {
         editor: {
             name: 'div',
             class: 'container column',
-            id:'editor',
+            id: 'editor',
+            card: {
+                name: 'div',
+                class: 'card container column',
+                id: 'autoSuggest',
+                //    style: 'visibility:hidden',
+                CardHeader: {
+                    name: 'div',
+                    class: 'medium',
+                    textContent: 'Auto Suggest curated for you'
+                },
+                itemCollection: {
+                    name: 'datalist',
+                    class: 'container column',
+                    items: {
+                        name: 'div',
+                        class: 'item',
+                        textContent: 'I am an item',
+                    },
+                    items2: {
+                        name: 'div',
+                        class: 'item',
+                        textContent: 'I am second Item',
+                    },
+                    
+
+                }
+
+
+            },
             // tabs: {
             //     name: 'div',
             //     class: 'container',
@@ -738,6 +864,7 @@ var workSpaceBody = {
                 class: 'container column',
                 id: 'content',
                 contentEditable: 'true',
+            
                 activeActionStory: {
                     name: 'div',
                     class: 'container column',
@@ -745,7 +872,7 @@ var workSpaceBody = {
                     block: {
                         name: 'div',
                         class: 'blocks',
-                        id:'blocks',
+                        id:'blocks+Index',
                         li: {
                             name: 'span',
                             class: 'inlineContent',
@@ -795,4 +922,28 @@ var footer= {
         name: 'p',
         textContent: 'https://www.0dot1.live',
     }
+}
+var card = {
+    name: 'div',
+    class: 'card container',
+    style:'visibility:hidden',
+    CardHeader: {
+        name: 'div',
+        class: 'h2',
+        textContent: 'Auto Suggest curated for you'
+    },
+    itemCollection: {
+        name: 'span',
+        class: 'container coloumn',
+              
+        items: {
+            name: 'div',
+            class: 'item',
+            textContent:'I am an item',
+            
+        }
+
+    }
+    
+    
 }

@@ -1,1 +1,0 @@
-let testingServerServiceUrl = "https://script.google.com/macros/s/AKfycbyb5N580eqaGTz5iMNC4joFgWshYePsqnDzOlnaGc3eFycgZB_eqZLA5PKQAaMYy9nd/exec/exec";
