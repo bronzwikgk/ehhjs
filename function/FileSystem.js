@@ -104,7 +104,7 @@ class processFS{
             var dirID = uid();
             indexDB.set(dirID, dirHandle);
             var input = JSON.parse(JSON.stringify(directoryJSON));
-            input['li']['span']['textContent'] = dirHandle.name;input['li']['list']['id'] = dirID;
+            input['li']['span']['innerText'] = dirHandle.name;input['li']['list']['id'] = dirID;
             var json = await processFS.jsonForDirectory(input['li']['list'] ,dirHandle);
             console.log(input);
             console.log(document.getElementById('workspace').innerHTML);
@@ -121,7 +121,8 @@ class processFS{
             var id = uid();
             if(entry.kind == 'directory'){
                 var directory = JSON.parse(JSON.stringify(directoryJSON));
-                directory['li']['span']['textContent'] = entry.name;directory['li']['list']['id'] = id;
+                directory['li']['span']['innerText'] = entry.name;
+                directory['li']['list']['id'] = id;
                 var directoryHandle = await parentHandle.getDirectoryHandle(entry.name);
                 await indexDB.set(id,directoryHandle);
                 obj[entry.name] = directory;
@@ -129,7 +130,7 @@ class processFS{
                 await processFS.jsonForDirectory(obj[entry.name]['li']['list'], directoryHandle);
             }else if(entry.kind == 'file' && entry.name.includes('.')){
                 var fileData = JSON.parse(JSON.stringify(fileJSON));
-                fileData['id'] = id;fileData['textContent'] = entry.name;
+                fileData['id'] = id;fileData['innerText'] = entry.name;
                 var getfileHandle = await parentHandle.getFileHandle(entry.name);
                 await indexDB.set(id,getfileHandle);
                 obj[entry.name] = fileData;
@@ -137,5 +138,5 @@ class processFS{
         }
         console.log(obj);
         return obj;
-    }  
+    }
 }
