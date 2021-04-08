@@ -398,7 +398,7 @@ var leftSideNavBar= {
                                     name: 'div',
                                     'class': "collection_name",
                                     'textContent': 'Get Data from Sheet',
-                                    'data-command': `[{"command":"namedRange"}]`,
+                                    'data-command': `[{"command":"getData"}]`,
                                 },
                                 
                             },
@@ -1318,4 +1318,49 @@ var newItemJSON ={
                 'textContent':''
             }
         }
+}
+var GetDatafromSheet = {
+    'div':{
+        'name':'div',
+        'class':'modal-content',
+        'br1':{
+            'name':'br'
+        },
+        'h1':{
+            'name':'h1',
+            'textContent':'Get Data from Sheet',
+        },
+        'br2':{
+            'name':'br'
+        },
+        'label':{
+            'name':'label',
+            'innerHTML':'<b>Named Range</b>'
+        },
+        'br3':{
+            'name':'br'
+        },
+        'input':{
+            'name':'input',
+            'type':'text',
+            'required':'true',
+            'placeholder':'Enter Named Range(Eg, SheetName!A1:D10)',
+            'id':'NamedRange'
+        },
+        'br4':{
+            'name':'br'
+        },
+        'submit':{
+            'name':'button',
+            'style':'width:100%',
+            'data-command': `[{"command":"namedRange"}]`,
+            'innerHTML':'<b>Get Data from Sheet</b>'
+        },
+        'br5':{
+            'name':'br'
+        },
+        'br6':{
+            'name':'br'
+        },
+    }
 }

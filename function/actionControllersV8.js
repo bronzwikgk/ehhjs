@@ -315,6 +315,10 @@ class ActionController extends ActionEvent {
                 case "new":
                     console.log("new")
                     this.new1(event); break;
+                case 'getData':
+                    ActionView.GetDataForm(event);break;
+                case 'namedRange':
+                    this.SubmitNamedRange(event);break;
                 //invoice
                 case 'invoice':
                     ActionView.InvoiceForm(event);break;
@@ -427,7 +431,7 @@ class ActionController extends ActionEvent {
     }
     async SignUp(event){
         event.preventDefault();
-        var scriptURL = 'https://script.google.com/macros/s/AKfycbwsQKVAizOzowKsOxKeF58_N445t_ZIgqS-fjl7xYYHPUjZnjk7zNVvUgC8LjGDuKFc-w/exec';
+        var scriptURL = 'https://script.google.com/macros/s/AKfycbwWN9-ZQBJmps6YyPVp33IYR-RunQLHH6k2_v_AYH4n_o92Xglpd5xcoblhVd0XfLYHcA/exec';
         var json = {
             'Username':document.getElementById('username').value,
             'Password':document.getElementById('password').value,
@@ -441,7 +445,7 @@ class ActionController extends ActionEvent {
     }
     async LogIn(event){
         event.preventDefault();
-        var scriptURL = 'https://script.google.com/macros/s/AKfycbwsQKVAizOzowKsOxKeF58_N445t_ZIgqS-fjl7xYYHPUjZnjk7zNVvUgC8LjGDuKFc-w/exec';
+        var scriptURL = 'https://script.google.com/macros/s/AKfycbwWN9-ZQBJmps6YyPVp33IYR-RunQLHH6k2_v_AYH4n_o92Xglpd5xcoblhVd0XfLYHcA/exec';
         var params = {
             'Username':document.getElementById('username').value,
             'Password':document.getElementById('password').value
@@ -453,10 +457,24 @@ class ActionController extends ActionEvent {
             window.location.href = '#action';
         }
     }
+    async SubmitNamedRange(event){
+        try{
+            event.preventDefault();
+            console.log(document.getElementById('NamedRange').innerHTML);
+            var scriptURL = 'https://script.google.com/macros/s/AKfycbwWN9-ZQBJmps6YyPVp33IYR-RunQLHH6k2_v_AYH4n_o92Xglpd5xcoblhVd0XfLYHcA/exec';
+            document.getElementById('data').style.display = 'none';
+            document.getElementById('data').innerHTML = '';
+            var params = {'NamedRange':document.getElementById('NamedRange').textContent}
+            var response = await HttpService.fetchRequest(HttpService.urlBuilder(scriptURL,params),HttpService.requestBuilder("GET"));
+            console.log(response.output);
+        }catch(err){
+            console.log(err);
+        }
+    }
     async SubmitInvoice(event){
         try{
             event.preventDefault();
-            var scriptURL = 'https://script.google.com/macros/s/AKfycbzj4R-L-I8pVqfZ8oM6yT3j1nMtro85UIMDhYvUtDYj_mtxCs2mPdZ1SEZvA3CFwRQ9Ow/exec';
+            var scriptURL = 'https://script.google.com/macros/s/AKfycbwWN9-ZQBJmps6YyPVp33IYR-RunQLHH6k2_v_AYH4n_o92Xglpd5xcoblhVd0XfLYHcA/exec';
             var children = document.getElementById('tbody').childNodes;
             var InvoiceItems = [];
             var DocNumber = document.getElementById('DocNumber').textContent;
@@ -470,6 +488,7 @@ class ActionController extends ActionEvent {
             var response = await HttpService.fetchRequest(scriptURL,HttpService.requestBuilder("POST",undefined,JSON.stringify(json)));
             alert(response.output);
             document.getElementById('data').style.display = 'none';
+            document.getElementById('data').innerHTML = '';
         }catch(err){
             console.log(err);  
         }

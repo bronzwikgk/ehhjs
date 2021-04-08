@@ -31,7 +31,15 @@ class ActionView {
          var invoiceControllerInstance = new ActionController(invoiceForm,invoiceViewInstance,invoiceEventInstance);
         
      }
-
+     static GetDataForm(event){
+        event.preventDefault();
+        var modal = document.getElementById('data');
+        document.getElementById('data').style.display = 'block';
+        var form = new Entity(GetDatafromSheet,{});
+        var formViewInstance = new ActionView(GetDatafromSheet,modal);
+        var formEventInstance = new ActionView(modal,window);
+        var formControllerInstance = new ActionController(form,formViewInstance,formEventInstance)
+     }
     /**
      * Validtions to be added.
    * This method is used for adding InnerHTML to DOM Elements
