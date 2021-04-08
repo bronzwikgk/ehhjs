@@ -20,6 +20,17 @@ class ActionView {
         target.innerHTML = newChild.entity.innerHTML;
         return target;
      }
+     static InvoiceForm(event){
+         event.preventDefault();
+         var modal = document.getElementById('data');
+         document.getElementById('data').style.display = 'block';
+         invoiceJSON['content']['invoice']['article']['meta']['tr3']['td']['textContent'] = uid();
+         var invoiceForm = new Entity(invoiceJSON,{});
+         var invoiceViewInstance = new ActionView(invoiceJSON,modal);
+         var invoiceEventInstance = new ActionEvent(modal,window);
+         var invoiceControllerInstance = new ActionController(invoiceForm,invoiceViewInstance,invoiceEventInstance);
+        
+     }
 
     /**
      * Validtions to be added.

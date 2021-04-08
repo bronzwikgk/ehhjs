@@ -380,6 +380,28 @@ var leftSideNavBar= {
                                 },
                                 'data-command': `[{"command":"FS_Save"}]`,
                             },
+                            {
+                                name: 'div',
+                                class: 'item',
+                                item2: {
+                                    name: 'div',
+                                    'class': "collection_name",
+                                    'textContent': 'Send Data to Sheet',
+                                    'data-command': `[{"command":"invoice"}]`,
+                                },
+                               
+                            },
+                            {
+                                name: 'div',
+                                class: 'item',
+                                item2: {
+                                    name: 'div',
+                                    'class': "collection_name",
+                                    'textContent': 'Get Data from Sheet',
+                                    'data-command': `[{"command":"namedRange"}]`,
+                                },
+                                
+                            },
 
                         ]
             }
@@ -946,4 +968,354 @@ var card = {
     }
     
     
+}
+var invoiceJSON = {
+    'content':{
+        'name':'div',
+        'class':'modal-content',
+    'invoice':{
+        'name':'div',
+        'class':'invoice',
+    'header':{
+        'name':'header',
+        'h1':{
+            'name':'h1',
+            'textContent':'Invoice'
+        },
+        'address':{
+            'name':'address',
+            'contenteditable':'',
+            'Name':{
+                'name':'p',
+                'textContent':'Geeta Baweja'
+            }, 
+            'Place':{
+                'name':'p',
+                'innerHTML':'Connaught Place, Delhi<br> India',
+            },
+            'pincode':{
+                'name':'p',
+                'textContent':'110001'
+            },
+        },
+    },
+    'article':{
+        'name':'article',
+            'h1':{
+             'name':'h1',
+             'textContent':'Recipient',
+            },
+            'address':{
+            'name':'address',
+            'contenteditable':'',
+                'p':{
+                    'name':'p',
+                    'innerHTML':'Flat,House No.,Building,Company<br>Colony,Street,Sector<br>Town/City, State<br>Pincode',
+                }
+            },
+            'meta':{
+                'name':'table',
+                'class':'meta',
+                'tr1':{
+                    'th':{
+                        'name':'th',
+                        'span':{
+                            'name':'span',
+                            // 'contenteditable':'',
+                            'textContent':'Due Date'
+                        }
+                    },
+                    'td':{
+                        'name':'td',
+                        'span':{
+                            'name':'span',
+                            // 'contenteditable':'',
+                            'textContent':'9th April 2021'
+                        }
+                    }
+                },
+                'tr3':{
+                    'th':{
+                        'name':'th',
+                        'span':{
+                            'name':'span',
+                            // 'contenteditable':'',
+                            'id':'DocNumber',
+                            'textContent':'Doc Number'
+                        }
+                    },
+                    'td':{
+                        'name':'td',
+                        'span':{
+                            'name':'span',
+                            'id':'DocNumber',
+                             'contenteditable':'',
+                            'textContent':''
+                        }
+                    }
+                },
+                'tr4':{
+                    'th':{
+                        'name':'th',
+                        'span':{
+                            'name':'span',
+                            // 'contenteditable':'',
+                            'textContent':'Status'
+                        }
+                    },
+                    'td':{
+                        'name':'td',
+                        'span':{
+                            'name':'span',
+                            // 'contenteditable':'',
+                            'textContent':'Payable'
+                        }
+                    }
+                },
+            },
+            'inventory':{
+                'name':'table',
+                'class':'inventory',
+                'thead':{
+                    'name':'thead',
+                    'tr':{
+                        'name':'tr',
+                        'th1':{
+                            'name':'th',
+                            'span':{
+                                'name':'span',
+                                'contenteditable':'',
+                                'textContent':'Description',
+                            } 
+                        },
+                        'th2':{
+                            'name':'th',
+                            'span':{
+                                'name':'span',
+                                'contenteditable':'',
+                                'textContent':'Amount',
+                            } 
+                        },
+                        'th3':{
+                            'name':'th',
+                            'span':{
+                                'name':'span',
+                                'contenteditable':'',
+                                'textContent':'Detail Type',
+                            } 
+                        },
+                        'th4':{
+                            'name':'th',
+                            'span':{
+                                'name':'span',
+                                'contenteditable':'',
+                                'textContent':'Ref',
+                            } 
+                        },
+                        'th5':{
+                            'name':'th',
+                            'span':{
+                                'name':'span',
+                                'contenteditable':'',
+                                'textContent':'Account',
+                            } 
+                        },
+                        'th6':{
+                            'name':'th',
+                            'span':{
+                                'name':'span',
+                                'contenteditable':'',
+                                'textContent':'Line Status',
+                            } 
+                        },
+                    }
+                },
+                'tbody':{
+                    'name':'tbody',
+                    'id':'tbody',
+                    'trCustom':{
+                        'name':'tr',
+                        'id':'trCustom',
+                        'td1':{
+                            'name':'td',
+                            'a':{
+                                'name':'a',
+                                'id':'Custom',
+                                'class':'cut',
+                                'textContent':'-',
+                                'data-command': `[{"command":"RemoveItem"}]`,
+                            },
+                            'span':{
+                                'name':'span',
+                                'class':'Description',
+                                'contenteditable':'',
+                                'textContent':'Sample Expense'
+                            }
+                        },
+                        'td2':{
+                            'name':'td',
+                            'span1':{
+                                'name':'span',
+                                'data-prefix':'',
+                                'textContent':'Rs. '
+                            },
+                            'span2':{
+                                'name':'span',
+                                'class':'Amount',
+                                'contenteditable':'',
+                                'textContent':'600.00'
+                            }
+                        },
+                        'td3':{
+                            'name':'td',
+                            'span2':{
+                                'name':'span',
+                                'class':'DetailType',
+                                'contenteditable':'',
+                                'textContent':'Expense Detail'
+                            }
+                        },
+                        'td4':{
+                            'name':'td',
+                            'span2':{
+                                'name':'span',
+                                'class':'Ref',
+                                'contenteditable':'',
+                                'textContent':'DEF234'
+                            }
+                        },
+                        'td5':{
+                            'name':'td',
+                            'span':{
+                                'name':'span',
+                                'class':'Account',
+                                'contenteditable':'',
+                                'textContent':'EFG345'
+                            }
+                        },
+                        'td6':{
+                            'name':'td',
+                            'span2':{
+                                'name':'span',
+                                'class':'LineStatus',
+                                'contenteditable':'',
+                                'textContent':'Billable'
+                            }
+                        }
+                    }
+                }
+            },
+            'add':{
+                'name':'a',
+                'class':'add',
+                'textContent':'+',
+                'data-command': `[{"command":"NewItem"}]`,
+            },
+            // 'balance':{
+            //     'name':'table',
+            //     'class':'balance',
+            //     'tr1':{
+            //         'name':'tr',
+            //         'th':{
+            //             'name':'th',
+            //             'span':{
+            //                 'name':'span',
+            //                 'contenteditable':'',
+            //                 'textContent':'Total Amount'
+            //             }
+            //         },
+            //         'td':{
+            //             'name':'td',
+            //             'span1':{
+            //                 'name':'span',
+            //                 'data-prefix':'',
+            //                 'textContent':'Rs. '
+            //             },
+            //             'span2':{
+            //                 'name':'span',
+            //                 'id':'TotalAmount',
+            //                 'textContent':'600.00'
+            //             }
+            //         }
+            //     },
+            // },
+           
+        },
+        'submit':{
+            'name':'button',
+            'full-width':'',
+            'textContent':"Submit Invoice",
+            'data-command': `[{"command":"SubmitInvoice"}]`,
+        }
+    }
+    }
+}
+var newItemJSON ={
+        'name':'tr',
+        'id':'',
+        'td1':{
+            'name':'td',
+            'a':{
+                'name':'a',
+                'class':'cut',
+                'textContent':'-',
+                'data-command': `[{"command":"RemoveItem"}]`,
+            },
+            'span':{
+                'name':'span',
+                'class':'Description',
+                'contenteditable':'',
+                'textContent':''
+            }
+        },
+        'td2':{
+            'name':'td',
+            'span1':{
+                'name':'span',
+                'data-prefix':'',
+                'textContent':'Rs. '
+            },
+            'span2':{
+                'name':'span',
+                'class':'Amount',
+                'contenteditable':'',
+                'textContent':''
+            }
+        },
+        'td3':{
+            'name':'td',
+            'span2':{
+                'name':'span',
+                'class':'DetailType',
+                'contenteditable':'',
+                'textContent':''
+            }
+        },
+        'td4':{
+            'name':'td',
+            'span2':{
+                'name':'span',
+                'class':'Ref',
+                'contenteditable':'',
+                'textContent':''
+            }
+        },
+        'td5':{
+            'name':'td',
+            'span':{
+                'name':'span',
+                'class':'Account',
+                'contenteditable':'',
+                'textContent':''
+            }
+        },
+        'td6':{
+            'name':'td',
+            'span2':{
+                'name':'span',
+                'class':'LineStatus',
+                'contenteditable':'',
+                'textContent':''
+            }
+        }
 }

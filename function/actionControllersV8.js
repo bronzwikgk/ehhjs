@@ -191,17 +191,6 @@ class ActionController extends ActionEvent {
             }  
         }
     }
-    formSubmit(event) {
-        if (!isValid)
-            event.preventDefault();
-        console.log('Target ID :- ' + e.getAttribute('id'));
-        switch (event.getAttribute('id')) {
-            case 'get':
-                Sync.get(e); console.log(event.target); break;
-            case 'set':
-                Sync.send(e); console.log(event.target); break;
-        }
-    }
     onKeyPress(entity) {//used for typing
         var match = {};
         var currentSelection = window.getSelection();
@@ -312,7 +301,8 @@ class ActionController extends ActionEvent {
         /**
          * check if the target entity has any click or data - command set, if yes, then process it.
          */
-        console.log("Clicked" + event.target.classList);
+        console.log(event.target);
+        //console.log("Clicked :- " + event.target.hasAttribute('data-command'));
      //   event.preventDefault();
         if (event.target.hasAttribute("data-command")) {
   
@@ -325,6 +315,15 @@ class ActionController extends ActionEvent {
                 case "new":
                     console.log("new")
                     this.new1(event); break;
+                //invoice
+                case 'invoice':
+                    ActionView.InvoiceForm(event);break;
+                case 'NewItem':
+                    this.NewItem(event);break;
+                case 'RemoveItem':
+                    this.RemoveItem(event);break;
+                case 'SubmitInvoice':
+                    this.SubmitInvoice(event);break;
                 //signup,login
                 case 'Signup':
                     this.SignUp(event);break;
@@ -453,6 +452,41 @@ class ActionController extends ActionEvent {
             localStorage.setItem('LoggedIn',true);
             window.location.href = '#action';
         }
+    }
+    async SubmitInvoice(event){
+        try{
+            event.preventDefault();
+            var scriptURL = 'https://script.google.com/macros/s/AKfycbzj4R-L-I8pVqfZ8oM6yT3j1nMtro85UIMDhYvUtDYj_mtxCs2mPdZ1SEZvA3CFwRQ9Ow/exec';
+            var children = document.getElementById('tbody').childNodes;
+            var InvoiceItems = [];
+            var DocNumber = document.getElementById('DocNumber').textContent;
+            for(var i = 0;i < children.length ; i++){
+                var item = [DocNumber,document.getElementsByClassName('Description')[i].textContent,document.getElementsByClassName('Amount')[i].textContent,
+                            document.getElementsByClassName('DetailType')[i].textContent,document.getElementsByClassName('Ref')[i].textContent,
+                            document.getElementsByClassName('Account')[i].textContent,document.getElementsByClassName('LineStatus')[i].textContent,];
+                InvoiceItems.push(item);
+            }
+            var json = {'array':InvoiceItems};
+            var response = await HttpService.fetchRequest(scriptURL,HttpService.requestBuilder("POST",undefined,JSON.stringify(json)));
+            alert(response.output);
+            document.getElementById('data').style.display = 'none';
+        }catch(err){
+            console.log(err);  
+        }
+    }
+    RemoveItem(event){
+            event.preventDefault();
+            var Id = 'tr' + event.target.getAttribute('id');console.log(Id);
+            var element = document.getElementById(Id);
+            if(element !== null)
+                element.parentNode.removeChild(element);
+    }
+    NewItem(event){
+        event.preventDefault();
+        var ItemId = uid();
+        newItemJSON['td1']['a']['id'] = ItemId;newItemJSON['id'] = 'tr'+ ItemId;
+        var json = {};json[ItemId] = newItemJSON;
+        var newItem = new Entity(json,document.getElementById('tbody'));
     }
     async Openfile(event){
         event.preventDefault();
