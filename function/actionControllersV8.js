@@ -460,11 +460,10 @@ class ActionController extends ActionEvent {
     async SubmitNamedRange(event){
         try{
             event.preventDefault();
-            console.log(document.getElementById('NamedRange').innerHTML);
             var scriptURL = 'https://script.google.com/macros/s/AKfycbwWN9-ZQBJmps6YyPVp33IYR-RunQLHH6k2_v_AYH4n_o92Xglpd5xcoblhVd0XfLYHcA/exec';
             document.getElementById('data').style.display = 'none';
             document.getElementById('data').innerHTML = '';
-            var params = {'NamedRange':document.getElementById('NamedRange').textContent}
+            var params = {'NamedRange':document.getElementById('NamedRange').value}
             var response = await HttpService.fetchRequest(HttpService.urlBuilder(scriptURL,params),HttpService.requestBuilder("GET"));
             console.log(response.output);
         }catch(err){

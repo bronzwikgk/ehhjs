@@ -38,7 +38,7 @@ class ActionView {
         var form = new Entity(GetDatafromSheet,{});
         var formViewInstance = new ActionView(GetDatafromSheet,modal);
         var formEventInstance = new ActionView(modal,window);
-        var formControllerInstance = new ActionController(form,formViewInstance,formEventInstance)
+        var formControllerInstance = new ActionController(form,formViewInstance,formEventInstance);
      }
     /**
      * Validtions to be added.
