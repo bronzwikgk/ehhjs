@@ -8,7 +8,16 @@
 //   console.error(err);
 // }
 
-
+//Slices an array in to the smaller array of chunkSize. 
+//Option to make it percentage wise has to be done.
+function sliceIntoChunks(arr, chunkSize) {
+    const res = [];
+    for (let i = 0; i < arr.length; i += chunkSize) {
+        const chunk = arr.slice(i, i + chunkSize);
+        res.push(chunk);
+    }
+    return res;
+}
 
 
 function* createIndex() {

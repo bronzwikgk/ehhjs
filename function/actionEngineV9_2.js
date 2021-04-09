@@ -6,6 +6,9 @@ class ActionEngine {
         this._request = [];// has to be synced with Local Storage or indexDb 
         this._request['StorageLimit'] = 20; // This denotates how many request will we save in buffer.
     }
+     doSomething(n, callback) {
+         setTimeout(function () { callback(null, true); }, n);
+     }
     get(key,parent) {
        // console.log("for Initaition", key, objectModel, objectModel[key])
         if (parent[key]) {
@@ -31,7 +34,7 @@ class ActionEngine {
         } else {
             var argument = req.argument;
         }
-//Build Arguments
+                //Build Arguments
         for (var i = 0; i < argument.length; i++) {
           //  console.log(argument[i]);
             argument[i] = this.get(argument[i], window);
@@ -154,8 +157,6 @@ class ActionEngine {
        // console.log(req);
         return req;
     }
-
-  
     static promisifyRequest(request) {
         return new Promise((resolve, reject) => {
             // @ts-ignore - file size hacks
