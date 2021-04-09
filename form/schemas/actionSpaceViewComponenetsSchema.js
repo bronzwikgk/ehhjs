@@ -386,8 +386,8 @@ var leftSideNavBar= {
                                 item2: {
                                     name: 'div',
                                     'class': "collection_name",
-                                    'textContent': 'Send Data to Sheet',
-                                    'data-command': `[{"command":"invoice"}]`,
+                                    'textContent':'Invoice Form',
+                                    'data-command': `[{"command":"modal","entity":"invoiceForm"}]`,
                                 },
                                
                             },
@@ -397,8 +397,19 @@ var leftSideNavBar= {
                                 item2: {
                                     name: 'div',
                                     'class': "collection_name",
-                                    'textContent': 'Get Data from Sheet',
-                                    'data-command': `[{"command":"getData"}]`,
+                                    'textContent': 'Export to Sheet',
+                                    'data-command': `[{"command":"modal","entity":"export"}]`,
+                                },
+                                
+                            },
+                            {
+                                name: 'div',
+                                class: 'item',
+                                item2: {
+                                    name: 'div',
+                                    'class': "collection_name",
+                                    'textContent': 'Import from Sheet',
+                                    'data-command': `[{"command":"modal","entity":"import"}]`,
                                 },
                                 
                             },
@@ -973,6 +984,19 @@ var invoiceJSON = {
     'content':{
         'name':'div',
         'class':'modal-content',
+    'div1':{
+            'name':'div',
+            'class':'closeContainer',
+            'span':{
+                'name':'span',
+                'data-command': `[{"command":"closeModal"}]`,
+                'class':'close',
+                'textContent':'x',
+            },
+    },
+    'br':{
+        'name':'br',
+    },
     'invoice':{
         'name':'div',
         'class':'invoice',
@@ -1319,47 +1343,146 @@ var newItemJSON ={
             }
         }
 }
-var GetDatafromSheet = {
+var ImportFromSheet = {
     'div':{
         'name':'div',
         'class':'modal-content',
         'br1':{
             'name':'br'
         },
+        'div1':{
+            'name':'div',
+            'class':'closeContainer',
+            'span':{
+                'name':'span',
+                'data-command': `[{"command":"closeModal"}]`,
+                'class':'close',
+                'textContent':'x',
+            },
+        },
         'h1':{
             'name':'h1',
-            'textContent':'Get Data from Sheet',
+            'textContent':'Import from Sheet',
         },
         'br2':{
             'name':'br'
         },
-        'label':{
+        'label1':{
             'name':'label',
-            'innerHTML':'<b>Named Range</b>'
+            'innerHTML':'<b>Spreadsheet ID</b>'
         },
         'br3':{
             'name':'br'
         },
-        'input':{
+        'input1':{
+            'name':'input',
+            'type':'text',
+            'required':'true',
+            'placeholder':'Enter SpreadsheetID',
+            'id':'spreadsheetID'
+        },
+        'br4':{
+            'name':'br'
+        },
+        'label2':{
+            'name':'label',
+            'innerHTML':'<b>Named Range</b>'
+        },
+        'br5':{
+            'name':'br'
+        },
+        'input2':{
             'name':'input',
             'type':'text',
             'required':'true',
             'placeholder':'Enter Named Range(Eg, SheetName!A1:D10)',
             'id':'NamedRange'
         },
-        'br4':{
+        'br6':{
             'name':'br'
         },
         'submit':{
             'name':'button',
             'style':'width:100%',
             'data-command': `[{"command":"namedRange"}]`,
-            'innerHTML':'<b>Get Data from Sheet</b>'
+            'innerHTML':'<b>Submit</b>'
+        },
+        'br7':{
+            'name':'br'
+        },
+        'br8':{
+            'name':'br'
+        },
+    }
+}
+var ExportToSheet = {
+    'div':{
+        'name':'div',
+        'class':'modal-content',
+        'br1':{
+            'name':'br'
+        },
+        'div1':{
+            'name':'div',
+            'class':'closeContainer',
+            'span':{
+                'name':'span',
+                'data-command': `[{"command":"closeModal"}]`,
+                'class':'close',
+                'textContent':'x',
+            },
+        },
+        'h1':{
+            'name':'h1',
+            'textContent':'Export to Sheet',
+        },
+        'br2':{
+            'name':'br'
+        },
+        'label1':{
+            'name':'label',
+            'innerHTML':'<b>Spreadsheet ID</b>'
+        },
+        'br3':{
+            'name':'br'
+        },
+        'input1':{
+            'name':'input',
+            'type':'text',
+            'required':'true',
+            'placeholder':'Enter SpreadsheetID',
+            'id':'spreadsheetID'
+        },
+        'br4':{
+            'name':'br'
+        },
+        'label2':{
+            'name':'label',
+            'innerHTML':'<b>Sheet Name</b>'
         },
         'br5':{
             'name':'br'
         },
+        'input2':{
+            'name':'input',
+            'type':'text',
+            'required':'true',
+            'placeholder':'Enter Sheet Name',
+            'id':'sheetName'
+        },
         'br6':{
+            'name':'br'
+        },
+        'submit':{
+            'name':'button',
+            'style':'width:100%',
+            'data-command': `[{"command":"sendData"}]`,
+            'innerHTML':'<b>Submit</b>'
+        },
+        'br7':{
+            'name':'br'
+        },
+        'br8':{
             'name':'br'
         },
     }

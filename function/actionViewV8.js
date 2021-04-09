@@ -20,25 +20,29 @@ class ActionView {
         target.innerHTML = newChild.entity.innerHTML;
         return target;
      }
-     static InvoiceForm(event){
+     static modalForm(event,type){
          event.preventDefault();
          var modal = document.getElementById('data');
          document.getElementById('data').style.display = 'block';
-         invoiceJSON['content']['invoice']['article']['meta']['tr3']['td']['textContent'] = uid();
-         var invoiceForm = new Entity(invoiceJSON,{});
-         var invoiceViewInstance = new ActionView(invoiceJSON,modal);
-         var invoiceEventInstance = new ActionEvent(modal,window);
-         var invoiceControllerInstance = new ActionController(invoiceForm,invoiceViewInstance,invoiceEventInstance);
-        
+         var json = {};
+         if( type == 'invoiceForm'){
+            json = invoiceJSON;
+            json['content']['invoice']['article']['meta']['tr3']['td']['textContent'] = uid();
+         }else if(type == 'import'){
+            json = ImportFromSheet;
+         }else if(type == 'export'){
+            json = ExportToSheet;
+         }
+         var modalForm = new Entity(json,{});
+         var modalViewInstance = new ActionView(json,modal);
+         var modalEventInstance = new ActionEvent(modal,window);
+         var modalControllerInstance = new ActionController(modalForm,modalViewInstance,modalEventInstance);
+         console.log(modal.innerHTML);
      }
-     static GetDataForm(event){
-        event.preventDefault();
-        var modal = document.getElementById('data');
-        document.getElementById('data').style.display = 'block';
-        var form = new Entity(GetDatafromSheet,{});
-        var formViewInstance = new ActionView(GetDatafromSheet,modal);
-        var formEventInstance = new ActionView(modal,window);
-        var formControllerInstance = new ActionController(form,formViewInstance,formEventInstance);
+     static closeModal(event){
+         event.preventDefault();
+        document.getElementById('data').style.display = 'none';
+        document.getElementById('data').innerHTML = '';
      }
     /**
      * Validtions to be added.

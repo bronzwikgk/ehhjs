@@ -301,8 +301,6 @@ class ActionController extends ActionEvent {
         /**
          * check if the target entity has any click or data - command set, if yes, then process it.
          */
-        console.log(event.target);
-        //console.log("Clicked :- " + event.target.hasAttribute('data-command'));
      //   event.preventDefault();
         if (event.target.hasAttribute("data-command")) {
   
@@ -315,19 +313,22 @@ class ActionController extends ActionEvent {
                 case "new":
                     console.log("new")
                     this.new1(event); break;
-                case 'getData':
-                    ActionView.GetDataForm(event);break;
-                case 'namedRange':
-                    this.SubmitNamedRange(event);break;
+               
                 //invoice
-                case 'invoice':
-                    ActionView.InvoiceForm(event);break;
+                case 'modal':
+                    ActionView.modalForm(event,commandJson[0].entity);break;
+                case 'closeModal':
+                    ActionView.closeModal(event);break;
                 case 'NewItem':
                     this.NewItem(event);break;
                 case 'RemoveItem':
                     this.RemoveItem(event);break;
                 case 'SubmitInvoice':
                     this.SubmitInvoice(event);break;
+                case 'namedRange':
+                        this.SubmitNamedRange(event);break;
+                case 'sendData':
+                        this.SendData(event);break;
                 //signup,login
                 case 'Signup':
                     this.SignUp(event);break;
@@ -431,7 +432,7 @@ class ActionController extends ActionEvent {
     }
     async SignUp(event){
         event.preventDefault();
-        var scriptURL = 'https://script.google.com/macros/s/AKfycbwWN9-ZQBJmps6YyPVp33IYR-RunQLHH6k2_v_AYH4n_o92Xglpd5xcoblhVd0XfLYHcA/exec';
+        var scriptURL = 'https://script.google.com/macros/s/AKfycbyyo9fbrAloOlSFgdsLIuxCAUxJd_n10druHThZIPDZ0B-OUTh_euXUSjZ8lvfEEJI3/exec';
         var json = {
             'Username':document.getElementById('username').value,
             'Password':document.getElementById('password').value,
@@ -445,7 +446,7 @@ class ActionController extends ActionEvent {
     }
     async LogIn(event){
         event.preventDefault();
-        var scriptURL = 'https://script.google.com/macros/s/AKfycbwWN9-ZQBJmps6YyPVp33IYR-RunQLHH6k2_v_AYH4n_o92Xglpd5xcoblhVd0XfLYHcA/exec';
+        var scriptURL = 'https://script.google.com/macros/s/AKfycbyyo9fbrAloOlSFgdsLIuxCAUxJd_n10druHThZIPDZ0B-OUTh_euXUSjZ8lvfEEJI3/exec';
         var params = {
             'Username':document.getElementById('username').value,
             'Password':document.getElementById('password').value
@@ -460,12 +461,25 @@ class ActionController extends ActionEvent {
     async SubmitNamedRange(event){
         try{
             event.preventDefault();
-            var scriptURL = 'https://script.google.com/macros/s/AKfycbwWN9-ZQBJmps6YyPVp33IYR-RunQLHH6k2_v_AYH4n_o92Xglpd5xcoblhVd0XfLYHcA/exec';
-            document.getElementById('data').style.display = 'none';
-            document.getElementById('data').innerHTML = '';
-            var params = {'NamedRange':document.getElementById('NamedRange').value}
+            var scriptURL = 'https://script.google.com/macros/s/AKfycbxZpY6Q-AgidnWTND5wPmvcjtmzEE22EtFDlxaRpyHDMUY_lpabyPUBcj5sjJQq79rgzw/exec';
+            console.log(document.getElementById('data').innerHTML);
+            var params = {'SpreadsheetId':document.getElementById('spreadsheetID').value,'NamedRange':document.getElementById('NamedRange').value}
+            ActionView.closeModal(event);
             var response = await HttpService.fetchRequest(HttpService.urlBuilder(scriptURL,params),HttpService.requestBuilder("GET"));
-            console.log(response.output);
+            //console.log(response.output);
+        }catch(err){
+            console.log(err);
+        }
+    }
+    async SendData(event){
+        try{
+            event.preventDefault();
+            console.log(document.getElementById('data').innerHTML);
+            var scriptURL = 'https://script.google.com/macros/s/AKfycbxZpY6Q-AgidnWTND5wPmvcjtmzEE22EtFDlxaRpyHDMUY_lpabyPUBcj5sjJQq79rgzw/exec';
+            var json = {'SpreadsheetId':document.getElementById('spreadsheetID').value,'SheetName':document.getElementById('sheetName').value,'array':[[1,2,3],[1,2,3,4]]};
+            ActionView.closeModal(event);
+            var response = await HttpService.fetchRequest(scriptURL,HttpService.requestBuilder("POST",undefined,JSON.stringify(json)));
+            alert(response.output);
         }catch(err){
             console.log(err);
         }
@@ -473,7 +487,7 @@ class ActionController extends ActionEvent {
     async SubmitInvoice(event){
         try{
             event.preventDefault();
-            var scriptURL = 'https://script.google.com/macros/s/AKfycbwWN9-ZQBJmps6YyPVp33IYR-RunQLHH6k2_v_AYH4n_o92Xglpd5xcoblhVd0XfLYHcA/exec';
+            var scriptURL = 'https://script.google.com/macros/s/AKfycbxZpY6Q-AgidnWTND5wPmvcjtmzEE22EtFDlxaRpyHDMUY_lpabyPUBcj5sjJQq79rgzw/exec';
             var children = document.getElementById('tbody').childNodes;
             var InvoiceItems = [];
             var DocNumber = document.getElementById('DocNumber').textContent;
@@ -484,10 +498,10 @@ class ActionController extends ActionEvent {
                 InvoiceItems.push(item);
             }
             var json = {'array':InvoiceItems};
+            ActionView.closeModal(event);
             var response = await HttpService.fetchRequest(scriptURL,HttpService.requestBuilder("POST",undefined,JSON.stringify(json)));
             alert(response.output);
-            document.getElementById('data').style.display = 'none';
-            document.getElementById('data').innerHTML = '';
+            
         }catch(err){
             console.log(err);  
         }
