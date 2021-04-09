@@ -8,7 +8,29 @@
 //   console.error(err);
 // }
 
+//https://github.com/google/data-layer-helper
+//https://sites.google.com/site/scriptsexamples/custom-methods/2d-arrays-library
 
+
+//return true if all items are the same in two unordered Array need to add a return of mismatch values as option.
+function compareTwoArray_(arr1, arr2) {
+    arr1.sort();
+    arr2.sort();
+    if (arr1.length !== arr2.length) return false;
+    for (let i = 0; i < arr1.length; i++) {
+        if (arr1[i] !== arr2[i]) return false;
+    }
+    return true;
+}
+
+
+function checkHeaders(allHeaders, headersPassed, requiredHeaders) {
+
+    if (!requiredHeaders.every(iteme => headersPassed.includes(items))) return false;
+    if (!headersPassed.every(iteme => allHeaders.includes(items))) return false;
+    return true;
+
+}
 
 
 function* createIndex() {
