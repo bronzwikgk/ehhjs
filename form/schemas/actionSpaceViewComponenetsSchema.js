@@ -1041,6 +1041,7 @@ var invoiceJSON = {
                 'name':'table',
                 'class':'meta',
                 'tr1':{
+                    'name':'tr',
                     'th':{
                         'name':'th',
                         'span':{
@@ -1059,12 +1060,12 @@ var invoiceJSON = {
                     }
                 },
                 'tr3':{
+                    'name':'tr',
                     'th':{
                         'name':'th',
                         'span':{
                             'name':'span',
                             // 'contenteditable':'',
-                            'id':'DocNumber',
                             'textContent':'Doc Number'
                         }
                     },
@@ -1073,12 +1074,13 @@ var invoiceJSON = {
                         'span':{
                             'name':'span',
                             'id':'DocNumber',
-                             'contenteditable':'',
+                            'contenteditable':'',
                             'textContent':''
                         }
                     }
                 },
                 'tr4':{
+                    'name':'tr',
                     'th':{
                         'name':'th',
                         'span':{

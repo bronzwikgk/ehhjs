@@ -27,7 +27,8 @@ class ActionView {
          var json = {};
          if( type == 'invoiceForm'){
             json = invoiceJSON;
-            json['content']['invoice']['article']['meta']['tr3']['td']['textContent'] = uid();
+            json['content']['invoice']['article']['meta']['tr3']['td']['span']['textContent'] = uid();
+            console.log(json);
          }else if(type == 'import'){
             json = ImportFromSheet;
          }else if(type == 'export'){
@@ -37,7 +38,6 @@ class ActionView {
          var modalViewInstance = new ActionView(json,modal);
          var modalEventInstance = new ActionEvent(modal,window);
          var modalControllerInstance = new ActionController(modalForm,modalViewInstance,modalEventInstance);
-         console.log(modal.innerHTML);
      }
      static closeModal(event){
          event.preventDefault();
