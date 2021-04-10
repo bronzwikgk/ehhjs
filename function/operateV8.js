@@ -8,7 +8,6 @@ class operate {
     static isInside(entity2SearchIn, string2Search, options) {
         console.log(Object.values(entity2SearchIn), string2Search)
     }
-
     // operate to check if the input is not null or undefined to be added
     static isEmpty(argA) { return Object.keys(argA).length === 0 ? true : false }
     static isNotEmpty(argA) { return argA !== '' && argA !== null && typeof argA !== 'undefined' ? true : false }

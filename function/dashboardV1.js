@@ -1,10 +1,10 @@
 var response2;
-indexDB.set('recentStories', recentStories);
-indexDB.set('userDashboard', userDashboard);
+//indexDB.set('recentStories', recentStories);
+//indexDB.set('userDashboard', userDashboard);
 //console.log(userDashboard)
 var newStorageInstance = new StorageHelper('userDashboard', userDashboard);
 //console.log(newStorageInstance);
-//var activeListernersInstance = new ActionEvent(activeListerners);
+
 //console.log(activeListernersInstance);
 
 //var currentSessionHistory = newStorageInstance.set('currentSessionHistory',[window.location]);
@@ -15,7 +15,8 @@ var newStorageInstance = new StorageHelper('userDashboard', userDashboard);
 var actionSpaceElementInstanceIndom = document.getElementById('actionSpaceContainer');
 var actionSpaceInstance = new Entity(userDashboard, actionSpaceElementInstanceIndom);
 //console.log(activeListerners['window'])
-var actionEventInstance = new ActionEvent(activeListerners['window']);
+var actionEventInstance = new ActionEvent('window',activeListerners['window']);
+actionEventInstance.createListeners('document',activeListerners['window']);
 //var actionControllerInstance = new ActionController(actionSpaceInstance.Entity, actionSpaceInstance,actionEventInstance);
 
 

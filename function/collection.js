@@ -1,3 +1,4 @@
+
 class Collection {
     constructor() {
       this._array = [];

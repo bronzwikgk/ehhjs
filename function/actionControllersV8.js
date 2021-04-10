@@ -19,7 +19,7 @@ class ActionController extends ActionEvent {
     //     document.addEventListener('mouseout', e => this.emit('handleEvent', e));
     //     window.addEventListener('load', e => this.emit('handleEvent', e));
     //     window.addEventListener('beforeunload', e => this.emit('handleEvent', e));
-      window.addEventListener('hashchange', this.emit('handleEvent', e));
+      window.addEventListener('hashchange', e => this.emit('handleEvent', e));
     //     window.addEventListener('popstate', e => this.emit('handleEvent', e));
     //     window.addEventListener('mouseover', e => this.emit('handleEvent', e));
     //     window.addEventListener('storage', e => this.emit('handleEvent', e));
@@ -31,7 +31,7 @@ class ActionController extends ActionEvent {
     }
     handleEvent(event) {
       
-      console.log(event.type)
+      console.log(event)
         switch (event.type) {
             case 'load':
                  // console.log(event.type)

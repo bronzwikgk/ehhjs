@@ -56,8 +56,6 @@ static closeModal(event){
    document.getElementById('data').innerHTML = '';
 }
 }
-
-
 /**
  * @file get/set caret position and insert text
  * @author islishude

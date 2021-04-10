@@ -92,6 +92,47 @@ function obj_to_array(arg) {
     return Object.entries(arg).map(([key, value]) => `${key}: ${value}`);
 }
 
+  /**
+  * This method, walks through all the key's of an javascript object.
+  * Be it a string || object ||array || Object, 
+  *
+  * 
+  * @param {*} req.Input input argument if no options it just initiates it by finding it in default ObjectModel of actionSpaceInstance. 
+  * In Development window is treated as the default object.
+  * @param {*} req.params: optional parameters for when visiting each key
+  * @param {*} req.params
+  * 
+  */
+   function eachKey(req) {
+    //  if (!req['currentDepth']) { req['currentDepth'] = 0;console.log("it's a fresh start")}     
+    if(typeof req==='object') {
+        for(var key in req) {
+            //  req['currentDepth'] = req['currentDepth'] + 1; // add a break || continue condition to exit if more than max Depth
+            if(req.hasOwnProperty(key)) {
+
+                var buffer=this.get(req[key],window);
+                if(operate.isUseless(buffer)===false) {
+                    // console.log("iam Here raw", key, req[key]);
+                    req[key]=buffer;
+                    console.log("iam Here Intiated",key,req[key]);
+                }
+
+                if(operate.isString(req[key])) {
+                    //  console.log("found string",key,req[key]) 
+                }
+                else if(operate.isObject(req[key])) {
+                    //  console.log("found Object", key, req[key])
+                }
+                else if(operate.isArray(req[key])) {
+                    //  console.log("found Array", key, req[key])
+                }
+            }
+            //f(m,loc,expr,val,path);
+        }
+    }
+    // console.log(req);
+    return req;
+}
 class process {
     static processReq(input, output, key, value) {
        // console.log("process req", input, output, operate.is(input),typeof input)
