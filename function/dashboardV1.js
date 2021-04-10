@@ -16,8 +16,9 @@ var actionSpaceElementInstanceIndom = document.getElementById('actionSpaceContai
 var actionSpaceInstance = new Entity(userDashboard, actionSpaceElementInstanceIndom);
 //console.log(activeListerners['window'])
 var actionEventInstance = new ActionEvent('window',activeListerners['window']);
-actionEventInstance.createListeners('document',activeListerners['document']);
-//var actionControllerInstance = new ActionController(actionSpaceInstance.Entity, actionSpaceInstance,actionEventInstance);
+//actionEventInstance.createListeners('document',activeListerners['document']);
+
+//var actionControllerInstance = new ActionController(actionSpaceInstance.Entity, actionSpaceInstance);
 
 
 

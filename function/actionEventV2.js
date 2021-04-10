@@ -9,17 +9,17 @@ class ActionEvent {
        }
 
     createListeners(entity,activeListerners) {
+    // console.log([arguments])
         this._activeEntity.push(window[entity]);
-        entity=window[entity];
-        
+        var objectModel=window[entity];
+      //  console.log(objectModel);
         Object.keys(activeListerners).forEach((key) => {
-            
-            console.log(key,entity[key],activeListerners, activeListerners[key]);
-            entity[key] = activeListerners[key];
-            //this.test(activeListerners.key);
-            //entity[key] = activeListerners.key;
+            //this._activeListners.push(key);
+            objectModel[key] = this.handleEvent // Need to use Emit instead of a direct call    
         })
+
     }
+
     test(){
         console.log("test",arguments);
     }
@@ -45,6 +45,18 @@ class ActionEvent {
     }
     handleEvent(e) {
         console.log("event Happened",e.type,e.target);
+
+
+
+
+
+
+
+
+
+
+
+        
     }
 
 }

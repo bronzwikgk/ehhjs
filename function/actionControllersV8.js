@@ -1,13 +1,14 @@
 //Clean up the eventListers. From a registerd Array. Store in LocalStorage.
 const scriptURL = 'https://script.google.com/macros/s/AKfycbyksfkMoE9H3AKbDcSKeyHT3Pyc2HBmId3ftF0hoH4BY4-7Bs9HjsWNIwV523Oz32v-fA/exec';
 class ActionController extends ActionEvent {
-    constructor(view,model,actionEvent) {
+    constructor(view,model) {
         super()
-        this.model = model
-        this.view = view
-        this.actionEvent = actionEvent;
-        this.bufferRange = '';
-      //  this.createListeners(document);
+        
+    //     this.model = model
+    //     this.view = view
+    //   //  this.actionEvent = actionEvent;
+    //     this.bufferRange = '';
+    //   //  this.createListeners(document);
         //this.activeListerners = this.createListeners(window);
         //console.log("Listeners",this.activeListerners);
         //   window.addEventListener('change', e => this.emit('change', e));
@@ -19,7 +20,7 @@ class ActionController extends ActionEvent {
     //     document.addEventListener('mouseout', e => this.emit('handleEvent', e));
     //     window.addEventListener('load', e => this.emit('handleEvent', e));
     //     window.addEventListener('beforeunload', e => this.emit('handleEvent', e));
-      window.addEventListener('hashchange', e => this.emit('handleEvent', e));
+    //  window.addEventListener('hashchange', e => this.emit('handleEvent', e));
     //     window.addEventListener('popstate', e => this.emit('handleEvent', e));
     //     window.addEventListener('mouseover', e => this.emit('handleEvent', e));
     //     window.addEventListener('storage', e => this.emit('handleEvent', e));
@@ -30,8 +31,8 @@ class ActionController extends ActionEvent {
 
     }
     handleEvent(event) {
-      
-      console.log(event)
+      console.log("event Happened",e.type,e.target);
+        
         switch (event.type) {
             case 'load':
                  // console.log(event.type)
