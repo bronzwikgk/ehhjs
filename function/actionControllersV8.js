@@ -12,26 +12,26 @@ class ActionController extends ActionEvent {
         //console.log("Listeners",this.activeListerners);
         //   window.addEventListener('change', e => this.emit('change', e));
         //window.addEventListener('event', e => this.emit('click', e))
-        document.addEventListener('mouseenter', e => this.emit('handleEvent', e));
-        document.addEventListener('readystatechange', e => this.emit('handleEvent', e));
-        document.addEventListener('DOMContentLoaded', e => this.emit('handleEvent', e));
-        document.addEventListener('mouseleave', e => this.emit('handleEvent', e));
-        document.addEventListener('mouseout', e => this.emit('handleEvent', e));
-        window.addEventListener('load', e => this.emit('handleEvent', e));
-        window.addEventListener('beforeunload', e => this.emit('handleEvent', e));
-        window.addEventListener('hashchange', e => this.emit('handleEvent', e));
-        window.addEventListener('popstate', e => this.emit('handleEvent', e));
-        window.addEventListener('mouseover', e => this.emit('handleEvent', e));
-        window.addEventListener('storage', e => this.emit('handleEvent', e));
-        window.addEventListener('click', e => this.emit('handleEvent', e));
-        window.addEventListener('keydown', e => this.emit('handleEvent', e));
-        window.addEventListener('keypress', e => this.emit('handleEvent', e));
-        window.addEventListener('keyup', e => this.emit('handleEvent', e));
+    //     document.addEventListener('mouseenter', e => this.emit('handleEvent', e));
+    //     document.addEventListener('readystatechange', e => this.emit('handleEvent', e));
+    //     document.addEventListener('DOMContentLoaded', e => this.emit('handleEvent', e));
+    //     document.addEventListener('mouseleave', e => this.emit('handleEvent', e));
+    //     document.addEventListener('mouseout', e => this.emit('handleEvent', e));
+    //     window.addEventListener('load', e => this.emit('handleEvent', e));
+    //     window.addEventListener('beforeunload', e => this.emit('handleEvent', e));
+      window.addEventListener('hashchange', this.emit('handleEvent', e));
+    //     window.addEventListener('popstate', e => this.emit('handleEvent', e));
+    //     window.addEventListener('mouseover', e => this.emit('handleEvent', e));
+    //     window.addEventListener('storage', e => this.emit('handleEvent', e));
+    //   //  window.addEventListener('click','handleEvent');
+    //     window.addEventListener('keydown', e => this.emit('handleEvent', e));
+    //     window.addEventListener('keypress', e => this.emit('handleEvent', e));
+    //     window.addEventListener('keyup', e => this.emit('handleEvent', e));
 
     }
     handleEvent(event) {
       
-      //  console.log(event.type)
+      console.log(event.type)
         switch (event.type) {
             case 'load':
                  // console.log(event.type)
@@ -528,3 +528,34 @@ class ActionController extends ActionEvent {
         window.location.href = '../';
     }
 }
+
+function callExternalMethod (elem) {
+    var method, args;
+
+    // [data-method] is a string of the method to call. Could be a single function (myFunc), or a property of an object (app.myFunc)
+    if (elem.getAttribute('data-method')) {
+        method = elem.getAttribute('data-method').split('.');
+    }
+
+    // [data-method-arguments] is a array-like string of the arguments to pass to the method separated with a ,
+    if (elem.getAttribute('data-method-arguments')) {
+        args = elem.getAttribute('data-method-arguments').split(',');
+    }
+
+    if (method && args) {
+        // Strip any leading & trailing argument whitespace, just in case
+        for (var i = 0; i < args.length; i++) {
+            args[i] = args[i].replace(/(^\s+|\s+$)/g, '');
+        }
+
+        // If it's a single function to call 
+        if (method.length === 1) {
+            // Access and call the appropriate method and pass in the arguments as an array
+            window[method[0]].apply(this, args);
+        }
+        else {
+            // Otherwise do the same for methods as object properties
+            window[method[0]][method[1]].apply(this, args);
+        }
+    }
+};
