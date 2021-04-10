@@ -1,14 +1,13 @@
 var activeListerners = {
     'window': {
-        'onhashchange': 'callback',
-        'onclick':'callback',
+        'onhashchange': 'handleEvent',
+        'onclick':'handleEvent',
     },
     'document': {
-        'onDOMContentLoaded': '',
-        'onload': '',
-        'onbeforeunload':'',
-        'onunload':''
-        
+        'onDOMContentLoaded': 'handleEvent',
+        'onload': 'handleEvent',
+        'onbeforeunload':'handleEvent',
+        'onunload':'handleEvent'
     }
 }
 
