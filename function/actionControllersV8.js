@@ -528,3 +528,34 @@ class ActionController extends ActionEvent {
         window.location.href = '../';
     }
 }
+
+function callExternalMethod (elem) {
+    var method, args;
+
+    // [data-method] is a string of the method to call. Could be a single function (myFunc), or a property of an object (app.myFunc)
+    if (elem.getAttribute('data-method')) {
+        method = elem.getAttribute('data-method').split('.');
+    }
+
+    // [data-method-arguments] is a array-like string of the arguments to pass to the method separated with a ,
+    if (elem.getAttribute('data-method-arguments')) {
+        args = elem.getAttribute('data-method-arguments').split(',');
+    }
+
+    if (method && args) {
+        // Strip any leading & trailing argument whitespace, just in case
+        for (var i = 0; i < args.length; i++) {
+            args[i] = args[i].replace(/(^\s+|\s+$)/g, '');
+        }
+
+        // If it's a single function to call 
+        if (method.length === 1) {
+            // Access and call the appropriate method and pass in the arguments as an array
+            window[method[0]].apply(this, args);
+        }
+        else {
+            // Otherwise do the same for methods as object properties
+            window[method[0]][method[1]].apply(this, args);
+        }
+    }
+};

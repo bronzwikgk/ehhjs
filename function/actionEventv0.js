@@ -1,5 +1,8 @@
-class actionEventController {
-    listeners = {};  // key-value pair
+class ActionEventController {
+    constructor() {
+        
+    }
+    
     /**
      * 
      * @param {*} event : event Name
