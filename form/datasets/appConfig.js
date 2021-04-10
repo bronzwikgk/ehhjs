@@ -4,25 +4,30 @@ var activeListerners = {
         'onbeforeunload':'handleEvent',
         'onhashchange':'handleEvent',
         'onpopstate':'handleEvent',
-        'onclick':'handleEvent',
-        'onclick':'handleEvent',
         'onstorage':'handleEvent',
-
-
-    },
-    'document': {
+      //  'onmousemove':'handleevent',
         'onDOMContentLoaded': 'handleEvent',
         'onload': 'handleEvent',   
         'onreadystatechange':'handleEvent',
-        'onmouseleave':'handleEvent',
-        'onmouseout':'handleEvent',
-        'onbeforeunload':'handleEvent',
+        // 'onmouseenter':'handleEvent',
+        // 'onmouseover':'handleEvent',
+        // 'onmouseleave':'handleEvent',
+        
+        // 'onmouseout':'handleEvent',
+        // 'onbeforeunload':'handleEvent',
         'onunload':'handleEvent',
         'onkeydown':'handleEvent',
         'onkeyup':'handleEvent',
         'onkeypress':'handleEvent',
+        'onclick':'handleEvent',
+    },
+    'document': {
+        
     }
 }
+var activeEvents = [
+{}
+]
 //document.addEventListener('mouseenter', e => this.emit('handleEvent', e));
     
 
