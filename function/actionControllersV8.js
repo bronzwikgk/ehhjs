@@ -12,26 +12,26 @@ class ActionController extends ActionEvent {
         //console.log("Listeners",this.activeListerners);
         //   window.addEventListener('change', e => this.emit('change', e));
         //window.addEventListener('event', e => this.emit('click', e))
-        document.addEventListener('mouseenter', e => this.emit('handleEvent', e));
-        document.addEventListener('readystatechange', e => this.emit('handleEvent', e));
-        document.addEventListener('DOMContentLoaded', e => this.emit('handleEvent', e));
-        document.addEventListener('mouseleave', e => this.emit('handleEvent', e));
-        document.addEventListener('mouseout', e => this.emit('handleEvent', e));
-        window.addEventListener('load', e => this.emit('handleEvent', e));
-        window.addEventListener('beforeunload', e => this.emit('handleEvent', e));
-        window.addEventListener('hashchange', e => this.emit('handleEvent', e));
-        window.addEventListener('popstate', e => this.emit('handleEvent', e));
-        window.addEventListener('mouseover', e => this.emit('handleEvent', e));
-        window.addEventListener('storage', e => this.emit('handleEvent', e));
-        window.addEventListener('click', e => this.emit('handleEvent', e));
-        window.addEventListener('keydown', e => this.emit('handleEvent', e));
-        window.addEventListener('keypress', e => this.emit('handleEvent', e));
-        window.addEventListener('keyup', e => this.emit('handleEvent', e));
+    //     document.addEventListener('mouseenter', e => this.emit('handleEvent', e));
+    //     document.addEventListener('readystatechange', e => this.emit('handleEvent', e));
+    //     document.addEventListener('DOMContentLoaded', e => this.emit('handleEvent', e));
+    //     document.addEventListener('mouseleave', e => this.emit('handleEvent', e));
+    //     document.addEventListener('mouseout', e => this.emit('handleEvent', e));
+    //     window.addEventListener('load', e => this.emit('handleEvent', e));
+    //     window.addEventListener('beforeunload', e => this.emit('handleEvent', e));
+      window.addEventListener('hashchange', this.emit('handleEvent', e));
+    //     window.addEventListener('popstate', e => this.emit('handleEvent', e));
+    //     window.addEventListener('mouseover', e => this.emit('handleEvent', e));
+    //     window.addEventListener('storage', e => this.emit('handleEvent', e));
+    //   //  window.addEventListener('click','handleEvent');
+    //     window.addEventListener('keydown', e => this.emit('handleEvent', e));
+    //     window.addEventListener('keypress', e => this.emit('handleEvent', e));
+    //     window.addEventListener('keyup', e => this.emit('handleEvent', e));
 
     }
     handleEvent(event) {
       
-      //  console.log(event.type)
+      console.log(event.type)
         switch (event.type) {
             case 'load':
                  // console.log(event.type)
