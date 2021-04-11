@@ -41,8 +41,8 @@ class ActionEvent {
         return true;
     }
     handleEvent(e) {
-        console.log("event Happened",e.type,e.target);
-          
+      //  console.log("event Happened",e.type,e.target);
+        console.log(EventCommandMapReq);
           switch (e.type) {
               case 'load':
                    // console.log(event.type)

@@ -43,5 +43,12 @@ var actionSpaceViewModel = [
         actorRole: 'visitor',
         model: basicsignUpLayoutVisitorV1,
     },
+    {
+        keyword: 'dashboard',
+        name: 'dashboard',
+        id: 'dashboard',
+        actorRole: 'user',
+        model: userDashboard,
+    },
 ]
 //console.log(actionSpaceViewModel)
