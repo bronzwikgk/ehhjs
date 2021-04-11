@@ -36,7 +36,7 @@ class operate {
 
         var result = Object[lookat](entity).filter(function (key, index, self) {
             if (partial === true) {
-               // console.log("searching partial match", keyTofind, key, key.toLowerCase().includes(keyTofind))
+              //  console.log("searching partial match", keyTofind, key, key.toLowerCase().includes(keyTofind))
 
                 return key.toLowerCase().includes(keyTofind);
             } else {

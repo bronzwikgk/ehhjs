@@ -15,7 +15,7 @@ var activeListerners = {
         
         // 'onmouseout':'handleEvent',
         // 'onbeforeunload':'handleEvent',
-        'onunload':'handleEvent',
+        'onpopstate':'handleEvent',
         'onkeydown':'handleEvent',
         'onkeyup':'handleEvent',
         'onkeypress':'handleEvent',
@@ -32,12 +32,13 @@ var EventCommandMapReq = [
   },
   {
     keyword: 'hashchange',
-    callback: [' actionSpaceController.onRouteChange'],
+    callback: [' actionSpaceController.onHashChange'],
   },
   {
     keyword: 'popstate',
-    callback: [' actionSpaceController.onRouteChange'],
+   callback: [' actionSpaceController.onPopState'],
   },
+  
 ]
 
 
