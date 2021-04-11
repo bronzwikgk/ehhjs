@@ -1,4 +1,4 @@
-
+var partial = true;
 //console.log("app", app)
 class ActionEvent {
     constructor(entity, activeListerners) {
@@ -7,6 +7,7 @@ class ActionEvent {
        this._activeListners = [];
        this._events = {};
         this.createListeners(entity, activeListerners);
+        this._objectModels = [];
         //console.log(this);
        }
     createListeners(entity,activeListerners) {
@@ -16,9 +17,8 @@ class ActionEvent {
      //   console.log(objectModel,activeListerners);
         Object.keys(activeListerners).forEach((key) => {
             this._activeListners.push(key);
-            objectModel[key] = this.handleEvent // Need to use Emit instead of a direct call    
+            objectModel[key] = this.handleEvent // Need to use Emit instead of a direct call //Also Binding
         })
-
     }
     addListener(eventName, fn) {
     console.log("add listner",eventName, fn);
@@ -40,122 +40,74 @@ class ActionEvent {
         });
         return true;
     }
-    handleEvent(e) {
-      //  console.log("event Happened",e.type,e.target);
-        console.log(EventCommandMapReq);
-          switch (e.type) {
-              case 'load':
-                   // console.log(event.type)
-  
-                  this.onRouteChange();
-                  //  console.log("click", event.type, event.target)
-                  break;
-              case 'beforeunload':
-                 // console.log(event.type)
-  
-                  this.onRouteChange(e);
-                  //  console.log("click", event.type, event.target)
-                  break;
-              case 'readystatechange':
-               //   console.log(event.type)
-                  this.onRouteChange(e);
-                  //  console.log("click", event.type, event.target)
-                  break;
-              case 'DOMContentLoaded':
-                 // console.log(event.type)
-                  this.onRouteChange(e);
-                  //  console.log("click", event.type, event.target)
-                  break;
-              case 'hashchange':
-                  actionSpaceController.onRouteChange(e);
-                  //  console.log("click", event.type, event.target)
-                  break;
-              case 'click':
-                 
-                  actionSpaceController.onClick(e);
-                  //  console.log("click", event.type, event.target)
-                  break;
-              case 'submit':
-                  this.onSubmit(event);
-              case 'selectstart':
-                  //console.log("selectstart", event.type, event.target)
-                  break;
-              case 'keydown':
-                
-                  this.onKeyDown(event)
-                // console.log("keydown", event.type,event.key, event.target)
-                  break;
-              case 'keypress':
-                  // this.emit('keypress', event)
-                  this.onKeyPress(event)
-                 // console.log("keypress", event.type,event.key ,event.target)
-                  break;
-              case 'keyup':
-                  this.onKeyUp(event)
-                  //  console.log("message", event.type, event.target)
-                  break;
-              case 'mouseover':
-                  this.onMouseOver(event);
-                  //console.log("mouseover", event.type, event.target)
-                  break;
-              case 'mouseenter':
-                  this.onMouseEnter(event);
-                  //console.log("mouseover", event.type, event.target)
-                  break;
-              case 'mouseleave':
-                  this.onMouseLeave(event);
-                  //console.log("mouseover", event.type, event.target)
-                  break;
-              case 'mouseout':
-                  this.onMouseLeave(event);
-                  //console.log("mouseover", event.type, event.target)
-                  break;
-              case 'storage':
-                  console.log("storage", event.type, event.target)
-                  console.log(Object.keys(actionStorageInstance.entity))
-  
-                  break;
-              default:
-              // console.log("I don't know such values",event.type);
-          }
-          // console.log("handler", event.type, event.target.getAttribute('name'))
-          //  window.postMessage()
-  
-          //filter the registerd events paired with Target
-  
-      }
-    onRouteChange(e) {
-        //  console.log("event occoured",e.type);
-          var routeKeyword;
-          if (document.location.hash) {
-             // console.log("it's a hash Change", document.location.hash.substring(1));
-              routeKeyword = document.location.hash.substring(1);
-          } else if (document.location.search) {
-            //  console.log("it's a search Change", document.location.search.substring(1));
-              routeKeyword = document.location.search.substring(1);
-          } else {
-             // console.log("no idea");
-          }
-  
-        //  const hashLocation = window.location.hash.substring(1);
-        
-          if (routeKeyword) {
-             // console.log(hashLocation);
-              var routeModel = operate.findMatchingInArrayOfObject(actionSpaceViewModel, 'keyword', routeKeyword, 'values');
-             // console.log(routeModel[0].model, this.view._actionView)
-              //console.log(routeModel)
-              if (routeModel.length !=0) {
-                  this.view.replaceChild([routeModel[0].model, this.view._actionView.entity]);
-              } else {
-                  console.log('no route found');
-              }  
-          }
+    registerObjectModels(objectModel) {
+        this._objectModels.push(objectModel);
     }
+    handleEvent(e) {
+        console.log("event",e.type)
+    //    console.log("this._activeEntity", Object.getOwnPropertyNames(actionEventInstance.__proto__));
+        var methodsInstance = Object.getOwnPropertyNames(actionEventInstance.__proto__);
+       
+      //  var registerdEvents = operate.findMatchingInArrayOfObject(EventCommandMapReq, 'keyword', e.type, 'values',);
+       // console.log(registerdEvents)
+     
+       // console.log(methodsInstance.includes('onClick'), e.type );
+        var matchedMethod = operate.find(methodsInstance, e.type, 'values', partial);
+      //  console.log(matchedMethod);
+        if (matchedMethod.length > 0) {
+            actionEventInstance.__proto__[matchedMethod[0]](e); //make the call to the respective function
+        }
+
+    }
+    onPopState(e) {
+        console.log(e.type)
+    }
+    
+   
+    onHashChange(e) {
+         e.preventDefault();
+       // console.log("event occoured", e.type);
+        var actionEngineMethods = Object.getOwnPropertyNames(engine.__proto__);
+      //  console.log(actionEngineMethods);
+
+        if (window.location.hash) {
+          console.log()
+        }
+        var hashCommand = window.location.hash.split(":")[0];
+
+        var matchedMethod = operate.find(actionEngineMethods, hashCommand.substring(1), 'values', partial);
+  
+        if (matchedMethod.length > 0) {
+            console.log(hashCommand, "matchedMethod", matchedMethod);
+            engine[matchedMethod[0]](document.location.hash); //make the call to the respective function
+        }
+
+
+    }
+
     onClick(e) {
+       
         /**
          * check if the target entity has any click or data - command set, if yes, then process it.
          */
-        console.log("Clicked" + e.target.classList);
+    //  console.log("Clicked    " + e.target.parentElement);
+        e.preventDefault();
+
+        if (e.target.hasAttribute('href')) {
+                  //   console.log("link found", href)
+                var href = e.target.getAttribute('href');
+                e.target.setAttribute('state', 'currentState = clicked');
+                this.conductRoute(href);
+
+            } else if (e.target.parentElement.hasAttribute('href')) {
+                  //   console.log("link found", href)
+                var href = e.target.parentElement.getAttribute('href');
+                e.target.parentElement.setAttribute('state', 'currentState = clicked');
+                this.conductRoute(href);
+            }
+       
+       
+       
         //   e.preDefault();
         if (e.target.hasAttribute("data-command")) {
 
@@ -244,8 +196,23 @@ class ActionEvent {
             document.getElementById('navigationSection').classList.toggle('hide')
             document.getElementById('navigationSection').classList.toggle('active')
         }
-
+ return;
     }
+    conductRoute(hash) {
+        console.log("conducting route", hash)
+        var reqModel = hash.split(":")[1].split("[")[0];
+        var argumentsTemp = hash.split(":")[1].split("[")[0];
+        var currentRoute = window.location.href;
+        var url = currentRoute + HttpService.buildEncodedUri(window[reqModel]);
+       
+        console.log(url);
+      //  window.location.href = currentRoute + uri
+        window.history.pushState("objec", "[everyThing Happens here]", url);
+      //  window.location.assign(currentRoute + uri);
+       // e.preventDefault()
+    }
+    
+    
 
 }
 
@@ -279,28 +246,5 @@ function onLocationChange(e) {
 
 }
 
-function conductRoute(route) {
-    console.log("route", route);
-
-    if (route.state && route.expires_in && route.token_type) {
-        //  console.log("route",route.state,route.token_type);
-        var url = 'https://www.googleapis.com/drive/v3/about?fields=user&';
-        fetchHttpRequest(url, route);
-    }
-
-
-    var routeHref = window.location.href;
-
-    const pathNameSplit = window.location.pathname.split('/');
-
-    // console.log(pathNameSplit);
-
-    const pathSegments = pathNameSplit.length > 1 ? pathNameSplit.slice(1) : '';
-
-    //  console.log(pathSegments);
-
-
-
-}
 
 

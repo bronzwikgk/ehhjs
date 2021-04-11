@@ -6,7 +6,7 @@ var recentStories = {
     class: 'container row full-width',
     recentStoriesCollection: {
         name: 'span',
-        
+
         class: 'container row full-width justify_SpaceBetween',
         id: 'recentStoriesCollectionView',
         ehhColors: {
@@ -58,6 +58,5 @@ var recentStories = {
             location: '',
         },
     },
-  
+
 }
-//console.log(recentStories);

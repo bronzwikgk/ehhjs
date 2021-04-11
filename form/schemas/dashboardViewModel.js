@@ -1,26 +1,28 @@
 
 var leftSideNavBar = {
     name: 'section',
+    id:'leftSideNavBar',
     section1: {
         name: 'span',
         itemCollection1: {
             name: 'a',
+            id:'recentFilesShortCut',
             class: 'item row align_center justify_SpaceBetween',
-            'href': '#load:?workspaceBody/recentStories',
+            'href': `#action:loadObject2Dom[storage,recentStories,workspacebody]`,
             item1: {
                 name: 'i',
                 'class': "material-icons icon",
                 'textContent': 'schedule',
             },
             item2: {
-                name: 'div',
+                name: 'span',
                 'class': "collection_name",
                 'textContent': 'recent stories',
             }
         },
         itemCollection2: {
             name: 'a',
-            'href': '#load:?workspaceBody/drafts',
+            'href': `#action:loadObject2Dom[storage,draft,workspacebody]`,
             class: 'item row justify_SpaceBetween',
             item1: {
                 name: 'i',
@@ -327,9 +329,9 @@ var workspaceHeader = {
     
 }
 var workSpaceBody = {
-    workSpaceBodyHeader: {
+    workSpaceBody: {
         name: 'div',
-        id: 'workSpaceBodyHeader',
+        id: 'workSpaceBody',
         class: 'container card-collection ',
         menu: {
             name: 'span',
@@ -509,7 +511,6 @@ var workSpaceBody = {
     }
  
 }
-
 var userDashboardWorkSpaceBody = {
     name: 'div',
     class:'container full-width ',

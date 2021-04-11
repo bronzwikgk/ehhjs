@@ -4,8 +4,18 @@ class ActionEngine {
     this._currentReq=[]; // need to be set in database A quick generator Pattenr .
     this._response ;
   }
+  
+   // this method taken in a Hash path. With a syntax of Command [ arguments ]
+   
+  hashAction(req, result) {
 
-  executeSynReq(req, result) {
+
+    
+    
+    var reqModel = req.slice(":");
+    console.log(reqModel,req, typeof req)
+  }
+  action(req, result) {
     //  console.log("execute req", req)
     //testing if the req is an object
     if (operate.isObject(req) != true) {
@@ -188,14 +198,14 @@ class ActionEngine {
         return self[rule](value);
     });
 };
-validateSomeTrue(value, rules) {
+  validateSomeTrue(value, rules) {
     var self = this;
     return rules.some(function (rule) {
         return self[rule](value);
     });
 };
 
-validate (value, key,params) {
+  validate (value, key,params) {
     if (this.validateAllTrue(value, key.validator)) {
         if (params['onTrue'] === 'true') {
             //doThis
@@ -214,9 +224,9 @@ validate (value, key,params) {
 }
 
 var engine = new ActionEngine();
-var DOMJson = engine.processReq(singleReq);
-console.log("here",DOMJson)
+//var DOMJson = engine.processReq(singleReq);
+console.log("engine is chalu",)
 
-engine.processReq(actionFlowModelReq)
+//engine.processReq(actionFlowModelReq)
 
-engine.processReq(setInnerHTML)
+//engine.processReq(setInnerHTML)

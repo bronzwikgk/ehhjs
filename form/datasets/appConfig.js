@@ -32,16 +32,15 @@ var EventCommandMapReq = [
   },
   {
     keyword: 'hashchange',
-    callback: ['locationChange'],
+    callback: [' actionSpaceController.onRouteChange'],
+  },
+  {
+    keyword: 'popstate',
+    callback: [' actionSpaceController.onRouteChange'],
   },
 ]
-var handleEventReq = {
-  
-}
 
-var activeEvents = [
-{}
-]
+
 //document.addEventListener('mouseenter', e => this.emit('handleEvent', e));
     
 

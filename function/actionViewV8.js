@@ -13,8 +13,8 @@ class ActionView {
         target.appendChild('input');
         return input;
     }
-    replaceChild([input, target]) {
-    //  console.log("replaceChild",input,target)
+    load([input, target]) {
+     console.log("load view",input,target)
         var newChild = new Entity(input, document.createElement('div'));
 //        console.log("here", newChild.entity, "target", target.entity.innerHTML);
         target.innerHTML = newChild.entity.innerHTML;

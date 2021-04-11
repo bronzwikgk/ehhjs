@@ -1,11 +1,22 @@
+var hashActionReqForURIBuild;
 //It replaces the current ActionStory from Dom blank || template.
 var newActionStoryReq = {
     name: 'newActionStory',
     objectModel: 'actionSpaceViewInstance',
-    method: 'replaceChild',
+    method: 'load',
     argument: ['sampleActionStory', 'activeActionStory'],
  }
-
+var loadObject2Dom = {
+    name: 'loadObject2Dom',
+    objectModel: 'actionSpaceViewInstance',
+    method: 'load',
+    argument: ['input', 'target'],
+    callBack: {
+        objectModel: 'StorageHelper',
+        method: 'set',
+        arguments:['input','input']
+    }
+}
 /**
  * List of request required
  * get an element from dom, get Mulitple with andThen and callbacks,
@@ -70,6 +81,14 @@ var entityModel4Html = {
     children: ['all'],
 }
 
+
+var loadReqModel = {
+    objectModel: 'this.view',
+    method: 'load',
+    arguments: [`StorageHelper[get]('recentFiles')`, `document.getElementbyId('')`],
+    response:{}
+    ,
+}
 var copy2 = {
     reqName: 'copy2',
     objectModel: 'processV6',

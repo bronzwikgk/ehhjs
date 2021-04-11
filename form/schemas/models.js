@@ -82,3 +82,12 @@ const pickerOpts = {
     excludeAcceptAllOption: true,
     multiple: false
 };
+
+const recentFiles = [
+    {
+        name: '',
+        title:'',
+        id: '',
+        actionContent:'',
+    }
+]

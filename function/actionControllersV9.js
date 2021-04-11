@@ -1,14 +1,13 @@
 //Clean up the eListers. From a registerd Array. Store in LocalStorage.
 const scriptURL = 'https://script.google.com/macros/s/AKfycbyksfkMoE9H3AKbDcSKeyHT3Pyc2HBmId3ftF0hoH4BY4-7Bs9HjsWNIwV523Oz32v-fA/exec';
-class ActionController extends ActionEvent {
-    constructor(view, model, objectModel, actionEvents) {
-        super(objectModel, actionEvents);
+class ActionController {
+    constructor(view, model, actionEvents) {
         this.model = model
         this.view = view
         this.actionEvents = actionEvents;
-         this.bufferRange = '';
-   
+        this.bufferRange = '';
     }
+  
     // handleEvent(e) {
     //   console.log("event Caught",e.type,e.target);
         
@@ -114,7 +113,7 @@ class ActionController extends ActionEvent {
            // console.log(routeModel[0].model, this.view._actionView)
             //console.log(routeModel)
             if (routeModel.length !=0) {
-                this.view.replaceChild([routeModel[0].model, this.view._actionView.entity]);
+                this.view.load([routeModel[0].model, this.view._actionView.entity]);
             } else {
                 console.log('no route found');
             }  

@@ -30,19 +30,25 @@ class operate {
         return argB.indexOf(argA) > -1 ? true : false;
     }
     //Find iside an object, array or Object, returns if find keys
-    static find(entity, keyTofind, lookat) {
+    static find(entity, keyTofind, lookat, partial) {
        // console.log("yo")
-  //  console.log("finding", keyTofind, "in", entity, lookat);
+  //console.log("finding", keyTofind, "in", entity, lookat,partial);
 
         var result = Object[lookat](entity).filter(function (key, index, self) {
+            if (partial === true) {
+               // console.log("searching partial match", keyTofind, key, key.toLowerCase().includes(keyTofind))
 
-          //  console.log(keyTofind, key, index, self);
-            return !key.indexOf(keyTofind);
+                return key.toLowerCase().includes(keyTofind);
+            } else {
+    //            console.log(">>>>", keyTofind, key, index,);
+                return !key.indexOf(keyTofind);
+            }
+           
         });
-      // console.log("found result", result)
+   //  console.log("found result", result)
         return result;
     }
-
+    
 
     static findMatchingInArrayOfObject(entity,keyTofind,value2Match, lookat) {
       
