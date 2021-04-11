@@ -3,7 +3,7 @@ var activeListerners = {
         'onload': 'handleEvent',
         'onbeforeunload':'handleEvent',
         'onhashchange':'handleEvent',
-        'onpopstate':'handleEvent',
+       
         'onstorage':'handleEvent',
       //  'onmousemove':'handleevent',
         'onDOMContentLoaded': 'handleEvent',
@@ -25,6 +25,16 @@ var activeListerners = {
         
     }
 }
+var EventCommandMapReq = [
+  {
+    keyword: 'click',
+    callback: ['onClick'],
+  },
+  {
+    keyword: 'hashchange',
+    callback: ['locationChange'],
+  },
+]
 var handleEventReq = {
   
 }

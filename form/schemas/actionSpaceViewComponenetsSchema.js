@@ -255,7 +255,6 @@ var headerSignup = {
     'brand': brand,
   //  'menu': actionSpaceHeaderVistorMenu,
 }
-
 var leftSideNavBar= {
     name: 'section',
     id: "navigationSection",
@@ -1020,48 +1019,7 @@ var workSpaceBody = {
 
 
             },
-            // tabs: {
-            //     name: 'div',
-            //     class: 'container',
-            //     id: 'storyTabs',
-            //     items: {
-            //         file1: {
-            //             name: 'button',
-            //             textContent: 'file1',
-            //             close: {
-            //                 name: 'i',
-            //                 class: "material-icons",
-            //                 id: 'close',
-            //                 textContent: 'close',
-            //             },
-
-            //         },
-            //         file2: {
-            //             name: 'button',
-            //             textContent: 'file2',
-            //             close: {
-            //                 name: 'i',
-            //                 class: "material-icons",
-            //                 id: 'close',
-            //                 textContent: 'close',
-            //             },
-
-            //         },
-            //         file3: {
-            //             name: 'button',
-            //             textContent: 'file3',
-            //             close: {
-            //                 name: 'i',
-            //                 class: "material-icons",
-            //                 id: 'close',
-            //                 textContent: 'close',
-            //             },
-
-            //         },
-            //     }
-
-
-            // },
+           
             content: {
                 name: 'div',
                 class: 'container column',

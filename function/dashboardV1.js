@@ -13,13 +13,12 @@ var newStorageInstance = new StorageHelper('userDashboard', userDashboard);
 //console.log(newStorageInstance.entity)
 
 var actionSpaceElementInstanceIndom = document.getElementById('actionSpaceContainer');
-
-
-
 var actionSpaceViewInstance = new ActionView(userDashboard, actionSpaceElementInstanceIndom);
+
 //console.log(actionSpaceInstace._actionView.entity)
-var actionEventInstance = new ActionEvent('window', activeListerners['window']);
-var actionSpaceController = new ActionController(actionSpaceViewInstance, userDashboard, actionEventInstance);
+//var actionEventInstance = new ActionEvent('window', activeListerners['window']);
+var actionSpaceController = new ActionController(actionSpaceViewInstance, userDashboard, 'window', activeListerners['window']);
+console.log(actionSpaceController);
 
 
 

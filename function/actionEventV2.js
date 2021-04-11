@@ -2,17 +2,18 @@
 //console.log("app", app)
 class ActionEvent {
     constructor(entity, activeListerners) {
-        
+     //   console.log(entity, activeListerners);
        this._activeEntity = [],
        this._activeListners = [];
        this._events = {};
-         this.createListeners(entity,activeListerners);
+        this.createListeners(entity, activeListerners);
+        //console.log(this);
        }
     createListeners(entity,activeListerners) {
     // console.log([arguments])
         this._activeEntity.push(window[entity]);
         var objectModel=window[entity];
-      //  console.log(objectModel);
+     //   console.log(objectModel,activeListerners);
         Object.keys(activeListerners).forEach((key) => {
             this._activeListners.push(key);
             objectModel[key] = this.handleEvent // Need to use Emit instead of a direct call    
@@ -66,12 +67,12 @@ class ActionEvent {
                   //  console.log("click", event.type, event.target)
                   break;
               case 'hashchange':
-                  this.onRouteChange(e);
+                  actionSpaceController.onRouteChange(e);
                   //  console.log("click", event.type, event.target)
                   break;
               case 'click':
                  
-                  this.onClick(event);
+                  actionSpaceController.onClick(e);
                   //  console.log("click", event.type, event.target)
                   break;
               case 'submit':
@@ -149,7 +150,102 @@ class ActionEvent {
                   console.log('no route found');
               }  
           }
-      }
+    }
+    onClick(e) {
+        /**
+         * check if the target entity has any click or data - command set, if yes, then process it.
+         */
+        console.log("Clicked" + e.target.classList);
+        //   e.preDefault();
+        if (e.target.hasAttribute("data-command")) {
+
+            var dataCommand = e.target.getAttribute('data-command');
+            //          console.log(dataCommandT);
+            var commandJson = JSON.parse(dataCommand);
+            console.log("Command " + commandJson[0].command);
+            switch (commandJson[0].command) {
+
+                case 'modal':
+                    ActionView.modalForm(e, commandJson[0].entity); break;
+                case 'closeModal':
+                    ActionView.closeModal(e); break;
+                case 'NewItem':
+                    this.NewItem(e); break;
+                case 'RemoveItem':
+                    this.RemoveItem(e); break;
+                case 'SubmitInvoice':
+                    this.SubmitInvoice(e); break;
+                case 'importFromSheet':
+                    this.importFromSheet(e); break;
+                case 'exportToSheet':
+                    this.exportToSheet(e); break;
+                //signup,login
+                case 'Signup':
+                    this.SignUp(e); break;
+                case 'Login':
+                    this.LogIn(e); break;
+                case "new":
+                    console.log("new")
+                    this.new1(e); break;
+                case 'google':
+                    Authorization.oAuth(e, 'json'); break;
+                //sheet
+
+                //File System
+                case 'FSOpenDirectory':
+                    processFS.OpenDirectory(e); break;
+                case 'FSNew':
+                    processFS.NewFile(e); break;
+                case 'FSOpen':
+                    processFS.readFile(e); break;
+                case 'FS_Save':
+                    processFS.saveFile(e); break;
+                case 'FS_SaveAs':
+                    processFS.saveAsFile(e); break;
+                // case 'file':
+                //     this.file(e);break;
+                // case 'caret':
+                //     this.caret(e);break;
+                // local storage
+
+                case 'save':
+                    this.save(e); break;
+                case 'cloud':
+                    this.load(e); break;
+                case 'download':
+                    this.download(e); break;
+                case 'delete':
+                    this.delete(e); break;
+                case 'logout':
+                    this.logout(e); break;
+                case 'keyup':
+                    this.onKeyUp(e); break;
+                case 'mouseover':
+                    this.onMouseOver(e); break;
+                case 'storage':
+                    console.log("storage", e.type, e.target)
+                    console.log(Object.keys(actionStorageInstance.entity))
+                    break;
+                default:
+                // console.log("I don't know such values",e.type);
+            }
+        }
+        if (e.target.classList.contains('editable')) {
+            // console.log("clickedOn", entity.target.id, entity.target.classList.contains('editable')) // TO check if it's content
+            e.target.setAttribute('contentEditable', 'true');
+            //entity.target.setAttribute('State', "contentEditable");
+        }
+        if (e.target.classList.contains('parent')) {
+            console.log("yo")
+            e.target.parentElement.querySelector(".nested").classList.toggle("active");
+            e.target.classList.toggle("parent-down");
+        }
+        if (e.target.id == 'MainHeaderHamburger1') {
+            document.getElementById('navigationSection').classList.toggle('hide')
+            document.getElementById('navigationSection').classList.toggle('active')
+        }
+
+    }
 
 }
 

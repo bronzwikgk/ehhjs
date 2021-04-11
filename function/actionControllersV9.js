@@ -1,121 +1,100 @@
-//Clean up the eventListers. From a registerd Array. Store in LocalStorage.
+//Clean up the eListers. From a registerd Array. Store in LocalStorage.
 const scriptURL = 'https://script.google.com/macros/s/AKfycbyksfkMoE9H3AKbDcSKeyHT3Pyc2HBmId3ftF0hoH4BY4-7Bs9HjsWNIwV523Oz32v-fA/exec';
 class ActionController extends ActionEvent {
-    constructor(view,model) {
-        super()
-        
-    //     this.model = model
-    //     this.view = view
-    //  this.actionEvent = actionEvent;
-    //     this.bufferRange = '';
-    //   //  this.createListeners(document);
-        //this.activeListerners = this.createListeners(window);
-        //console.log("Listeners",this.activeListerners);
-        //   window.addEventListener('change', e => this.emit('change', e));
-        //window.addEventListener('event', e => this.emit('click', e))
-    //     document.addEventListener('mouseenter', e => this.emit('handleEvent', e));
-    //     document.addEventListener('readystatechange', e => this.emit('handleEvent', e));
-    //     document.addEventListener('DOMContentLoaded', e => this.emit('handleEvent', e));
-    //     document.addEventListener('mouseleave', e => this.emit('handleEvent', e));
-    //     document.addEventListener('mouseout', e => this.emit('handleEvent', e));
-    //     window.addEventListener('load', e => this.emit('handleEvent', e));
-    //     window.addEventListener('beforeunload', e => this.emit('handleEvent', e));
-    //  window.addEventListener('hashchange', e => this.emit('handleEvent', e));
-    //     window.addEventListener('popstate', e => this.emit('handleEvent', e));
-    //     window.addEventListener('mouseover', e => this.emit('handleEvent', e));
-    //     window.addEventListener('storage', e => this.emit('handleEvent', e));
-    //   //  window.addEventListener('click','handleEvent');
-    //     window.addEventListener('keydown', e => this.emit('handleEvent', e));
-    //     window.addEventListener('keypress', e => this.emit('handleEvent', e));
-    //     window.addEventListener('keyup', e => this.emit('handleEvent', e));
-
+    constructor(view, model, objectModel, actionEvents) {
+        super(objectModel, actionEvents);
+        this.model = model
+        this.view = view
+        this.actionEvents = actionEvents;
+         this.bufferRange = '';
+   
     }
-    // handleEvent(event) {
-    //   console.log("event Happened",e.type,e.target);
+    // handleEvent(e) {
+    //   console.log("event Caught",e.type,e.target);
         
-    //     switch (event.type) {
+    //     switch (e.type) {
     //         case 'load':
-    //              // console.log(event.type)
+    //              // console.log(e.type)
 
-    //             this.onRouteChange(event);
-    //             //  console.log("click", event.type, event.target)
+    //             this.onRouteChange(e);
+    //             //  console.log("click", e.type, e.target)
     //             break;
     //         case 'beforeunload':
-    //            // console.log(event.type)
+    //            // console.log(e.type)
 
-    //             this.onRouteChange(event);
-    //             //  console.log("click", event.type, event.target)
+    //             this.onRouteChange(e);
+    //             //  console.log("click", e.type, e.target)
     //             break;
     //         case 'readystatechange':
-    //          //   console.log(event.type)
-    //             this.onRouteChange(event);
-    //             //  console.log("click", event.type, event.target)
+    //          //   console.log(e.type)
+    //             this.onRouteChange(e);
+    //             //  console.log("click", e.type, e.target)
     //             break;
     //         case 'DOMContentLoaded':
-    //            // console.log(event.type)
-    //             this.onRouteChange(event);
-    //             //  console.log("click", event.type, event.target)
+    //            // console.log(e.type)
+    //             this.onRouteChange(e);
+    //             //  console.log("click", e.type, e.target)
     //             break;
     //         case 'hashchange':
-    //             this.onRouteChange(event);
-    //             //  console.log("click", event.type, event.target)
+    //             this.onRouteChange(e);
+    //             //  console.log("click", e.type, e.target)
     //             break;
     //         case 'click':
                
-    //             this.onClick(event);
-    //             //  console.log("click", event.type, event.target)
+    //             this.onClick(e);
+    //             //  console.log("click", e.type, e.target)
     //             break;
     //         case 'submit':
-    //             this.onSubmit(event);
+    //             this.onSubmit(e);
     //         case 'selectstart':
-    //             //console.log("selectstart", event.type, event.target)
+    //             //console.log("selectstart", e.type, e.target)
     //             break;
     //         case 'keydown':
               
-    //             this.onKeyDown(event)
-    //           // console.log("keydown", event.type,event.key, event.target)
+    //             this.onKeyDown(e)
+    //           // console.log("keydown", e.type,e.key, e.target)
     //             break;
     //         case 'keypress':
-    //             // this.emit('keypress', event)
-    //             this.onKeyPress(event)
-    //            // console.log("keypress", event.type,event.key ,event.target)
+    //             // this.emit('keypress', e)
+    //             this.onKeyPress(e)
+    //            // console.log("keypress", e.type,e.key ,e.target)
     //             break;
     //         case 'keyup':
-    //             this.onKeyUp(event)
-    //             //  console.log("message", event.type, event.target)
+    //             this.onKeyUp(e)
+    //             //  console.log("message", e.type, e.target)
     //             break;
     //         case 'mouseover':
-    //             this.onMouseOver(event);
-    //             //console.log("mouseover", event.type, event.target)
+    //             this.onMouseOver(e);
+    //             //console.log("mouseover", e.type, e.target)
     //             break;
     //         case 'mouseenter':
-    //             this.onMouseEnter(event);
-    //             //console.log("mouseover", event.type, event.target)
+    //             this.onMouseEnter(e);
+    //             //console.log("mouseover", e.type, e.target)
     //             break;
     //         case 'mouseleave':
-    //             this.onMouseLeave(event);
-    //             //console.log("mouseover", event.type, event.target)
+    //             this.onMouseLeave(e);
+    //             //console.log("mouseover", e.type, e.target)
     //             break;
     //         case 'mouseout':
-    //             this.onMouseLeave(event);
-    //             //console.log("mouseover", event.type, event.target)
+    //             this.onMouseLeave(e);
+    //             //console.log("mouseover", e.type, e.target)
     //             break;
     //         case 'storage':
-    //             console.log("storage", event.type, event.target)
+    //             console.log("storage", e.type, e.target)
     //             console.log(Object.keys(actionStorageInstance.entity))
 
     //             break;
     //         default:
-    //         // console.log("I don't know such values",event.type);
+    //         // console.log("I don't know such values",e.type);
     //     }
-    //     // console.log("handler", event.type, event.target.getAttribute('name'))
+    //     // console.log("handler", e.type, e.target.getAttribute('name'))
     //     //  window.postMessage()
 
-    //     //filter the registerd events paired with Target
+    //     //filter the registerd es paired with Target
 
     // }
     onRouteChange(e) {
-      //  console.log("event occoured",e.type);
+      //  console.log("e occoured",e.type);
         var routeKeyword;
         if (document.location.hash) {
            // console.log("it's a hash Change", document.location.hash.substring(1));
@@ -163,17 +142,17 @@ class ActionController extends ActionEvent {
             
             if (match['byCode'].length == 0 && match['byKey'].length == 0) {
                //console.log("No match", match, match.length, entity.code)
-                entity.preventDefault(entity);
+                entity.preDefault(entity);
                 var appendingBuffer = entity.key;
                // console.log("appending ", entity.key)
                
             } else {
                 if (match['byCode'].length > 0) {
-                    entity.preventDefault(entity);
+                    entity.preDefault(entity);
                     var replaceContent = replaceKeyPress[entity.code]['content'];
 
                 } else if (match['byKey'].length > 0) {
-                    entity.preventDefault(entity);
+                    entity.preDefault(entity);
                     var replaceContent = replaceKeyPress[entity.key]['content'];
                 }
                 
@@ -197,7 +176,7 @@ class ActionController extends ActionEvent {
         var match;
         //console.log("key pressed",entity.target,)
         // console.log(entity.key + ":::: key pressed");
-       // entity.preventDefault(entity);
+       // entity.preDefault(entity);
         // if (entity.key) {
 
         //     //  console.log("bufferRange", this.bufferRange);
@@ -247,142 +226,142 @@ class ActionController extends ActionEvent {
     onKeyUp(entity) {
        // console.log("key was up")
     }
-    onClick(event) {
+    onClick(e) {
         /**
          * check if the target entity has any click or data - command set, if yes, then process it.
          */
-        console.log("Clicked" + event.target.classList);
-     //   event.preventDefault();
-        if (event.target.hasAttribute("data-command")) {
+        console.log("Clicked" + e.target.classList);
+     //   e.preDefault();
+        if (e.target.hasAttribute("data-command")) {
   
-            var dataCommand = event.target.getAttribute('data-command');
+            var dataCommand = e.target.getAttribute('data-command');
 //          console.log(dataCommandT);
             var commandJson = JSON.parse(dataCommand);
             console.log("Command " + commandJson[0].command);
             switch (commandJson[0].command) {
                 
                 case 'modal':
-                    ActionView.modalForm(event,commandJson[0].entity);break;
+                    ActionView.modalForm(e,commandJson[0].entity);break;
                 case 'closeModal':
-                    ActionView.closeModal(event);break;
+                    ActionView.closeModal(e);break;
                 case 'NewItem':
-                    this.NewItem(event);break;
+                    this.NewItem(e);break;
                 case 'RemoveItem':
-                    this.RemoveItem(event);break;
+                    this.RemoveItem(e);break;
                 case 'SubmitInvoice':
-                    this.SubmitInvoice(event);break;
+                    this.SubmitInvoice(e);break;
                 case 'importFromSheet':
-                        this.importFromSheet(event);break;
+                        this.importFromSheet(e);break;
                 case 'exportToSheet':
-                        this.exportToSheet(event);break;
+                        this.exportToSheet(e);break;
                 //signup,login
                 case 'Signup':
-                    this.SignUp(event);break;
+                    this.SignUp(e);break;
                 case 'Login':
-                    this.LogIn(event);break;
+                    this.LogIn(e);break;
                 case "new":
                     console.log("new")
-                    this.new1(event); break;
+                    this.new1(e); break;
                 case 'google':
-                    Authorization.oAuth(event, 'json'); break;
+                    Authorization.oAuth(e, 'json'); break;
                 //sheet
                 
                 //File System
                 case 'FSOpenDirectory':
-                    processFS.OpenDirectory(event); break;
+                    processFS.OpenDirectory(e); break;
                 case 'FSNew':
-                    processFS.NewFile(event); break;
+                    processFS.NewFile(e); break;
                 case 'FSOpen':
-                    processFS.readFile(event); break;
+                    processFS.readFile(e); break;
                 case 'FS_Save':
-                    processFS.saveFile(event); break;
+                    processFS.saveFile(e); break;
                 case 'FS_SaveAs':
-                    processFS.saveAsFile(event); break;
+                    processFS.saveAsFile(e); break;
                 // case 'file':
-                //     this.file(event);break;
+                //     this.file(e);break;
                 // case 'caret':
-                //     this.caret(event);break;
+                //     this.caret(e);break;
                 // local storage
              
                 case 'save':
-                    this.save(event); break;
+                    this.save(e); break;
                 case 'cloud':
-                    this.load(event); break;
+                    this.load(e); break;
                 case 'download':
-                    this.download(event); break;
+                    this.download(e); break;
                 case 'delete':
-                    this.delete(event); break;
+                    this.delete(e); break;
                 case 'logout':
-                    this.logout(event); break;
+                    this.logout(e); break;
                 case 'keyup':
-                    this.onKeyUp(event); break;
+                    this.onKeyUp(e); break;
                 case 'mouseover':
-                    this.onMouseOver(event); break;
+                    this.onMouseOver(e); break;
                 case 'storage':
-                    console.log("storage", event.type, event.target)
+                    console.log("storage", e.type, e.target)
                     console.log(Object.keys(actionStorageInstance.entity))
                     break;
                 default:
-                // console.log("I don't know such values",event.type);
+                // console.log("I don't know such values",e.type);
             }
         }
-        if (event.target.classList.contains('editable')) {
+        if (e.target.classList.contains('editable')) {
             // console.log("clickedOn", entity.target.id, entity.target.classList.contains('editable')) // TO check if it's content
-            event.target.setAttribute('contentEditable', 'true');
+            e.target.setAttribute('contentEditable', 'true');
             //entity.target.setAttribute('State', "contentEditable");
         }
-        if(event.target.classList.contains('parent')){
+        if(e.target.classList.contains('parent')){
             console.log("yo")
-            event.target.parentElement.querySelector(".nested").classList.toggle("active");
-            event.target.classList.toggle("parent-down");
+            e.target.parentElement.querySelector(".nested").classList.toggle("active");
+            e.target.classList.toggle("parent-down");
         }
-        if(event.target.id == 'MainHeaderHamburger1'){
+        if(e.target.id == 'MainHeaderHamburger1'){
             document.getElementById('navigationSection').classList.toggle('hide')
             document.getElementById('navigationSection').classList.toggle('active')  
         }
 
     }
-    onMouseEnter(event){
-       // console.log('onMouseEnter',event.target,event.type)
-        if (event.target.id) {
-            event.target.setAttribute('State', event.type);
-           // console.log('onMouseEnter',event.target,event.type)
+    onMouseEnter(e){
+       // console.log('onMouseEnter',e.target,e.type)
+        if (e.target.id) {
+            e.target.setAttribute('State', e.type);
+           // console.log('onMouseEnter',e.target,e.type)
 
         }
     }
-    onMouseLeave(event){
-      //  console.log('onMouseLeave',event.target,event.type)
-        if (event.target.id) {
-          //  console.log('onMouseLeave',event.target.id,event.type)
-            event.target.setAttribute('State', event.type);
-            //console.log('onMouseLeave',event.target.id,event.type)
+    onMouseLeave(e){
+      //  console.log('onMouseLeave',e.target,e.type)
+        if (e.target.id) {
+          //  console.log('onMouseLeave',e.target.id,e.type)
+            e.target.setAttribute('State', e.type);
+            //console.log('onMouseLeave',e.target.id,e.type)
 
         }
     }
-    onMouseOver(event) {
-        //console.log('onMouseOver',event.target.id,event.type)
-        if (event.target.id) {
-           // console.log('onMouseOver',event.target.classList,event.type)
-           // event.target.setAttribute('State', event.type);
-           // event.target.classList.add('event.type');
+    onMouseOver(e) {
+        //console.log('onMouseOver',e.target.id,e.type)
+        if (e.target.id) {
+           // console.log('onMouseOver',e.target.classList,e.type)
+           // e.target.setAttribute('State', e.type);
+           // e.target.classList.add('e.type');
         }
-        if (event.target.classList.contains('inlineContent')) {
-            //event.target.classList.add(event.type);
-            event.target.setAttribute('State', event.type);
-          //  console.log('onMouseOver',event.target.classList,event.type)
+        if (e.target.classList.contains('inlineContent')) {
+            //e.target.classList.add(e.type);
+            e.target.setAttribute('State', e.type);
+          //  console.log('onMouseOver',e.target.classList,e.type)
         }
-        if (event.target.classList.contains('editable')) {
+        if (e.target.classList.contains('editable')) {
 
-           // event.target.previousElementSibling.style = 'visibility:visible'
+           // e.target.previousElementSibling.style = 'visibility:visible'
 
-          //  console.log(event.target.previousElementSibling.innerHTML)
-            //event.target.previousElementSibling('visibility',true)
+          //  console.log(e.target.previousElementSibling.innerHTML)
+            //e.target.previousElementSibling('visibility',true)
 
             //console.log("yo")
         }
     }
-    async SignUp(event){
-        event.preventDefault();
+    async SignUp(e){
+        e.preDefault();
         var json = {
             'Username':document.getElementById('username').value,
             'Password':document.getElementById('password').value,
@@ -394,8 +373,8 @@ class ActionController extends ActionEvent {
             window.location.href = '#action';
         }
     }
-    async LogIn(event){
-        event.preventDefault();
+    async LogIn(e){
+        e.preDefault();
         var params = {
             'Username':document.getElementById('username').value,
             'Password':document.getElementById('password').value
@@ -407,31 +386,31 @@ class ActionController extends ActionEvent {
             window.location.href = '#action';
         }
     }
-    async importFromSheet(event){
+    async importFromSheet(e){
         try{
-            event.preventDefault();
+            e.preDefault();
             var params = {'SpreadsheetId':document.getElementById('spreadsheetID').value,'NamedRange':document.getElementById('NamedRange').value}
-            ActionView.closeModal(event);
+            ActionView.closeModal(e);
             var response = await HttpService.fetchRequest(HttpService.urlBuilder(scriptURL,params),HttpService.requestBuilder("GET"));
             //console.log(response.output);
         }catch(err){
             console.log(err);
         }
     }
-    async exportToSheet(event){
+    async exportToSheet(e){
         try{
-            event.preventDefault();
+            e.preDefault();
             var json = {'SpreadsheetId':document.getElementById('spreadsheetID').value,'SheetName':document.getElementById('sheetName').value,'array':[[1,2,3],[1,2,3]]};
-            ActionView.closeModal(event);
+            ActionView.closeModal(e);
             var response = await HttpService.fetchRequest(scriptURL,HttpService.requestBuilder("POST",undefined,JSON.stringify(json)));
             alert(response.output);
         }catch(err){
             console.log(err);
         }
     }
-    async SubmitInvoice(event){
+    async SubmitInvoice(e){
         try{
-            event.preventDefault();
+            e.preDefault();
             var children = document.getElementById('tbody').childNodes;
             var InvoiceItems = [];
             var DocNumber = document.getElementById('DocNumber').textContent;
@@ -442,7 +421,7 @@ class ActionController extends ActionEvent {
                 InvoiceItems.push(item);
             }
             var json = {'array':InvoiceItems};
-            ActionView.closeModal(event);
+            ActionView.closeModal(e);
             var response = await HttpService.fetchRequest(scriptURL,HttpService.requestBuilder("POST",undefined,JSON.stringify(json)));
             alert(response.output);
             
@@ -450,31 +429,31 @@ class ActionController extends ActionEvent {
             console.log(err);  
         }
     }
-    RemoveItem(event){
-            event.preventDefault();
-            var Id = 'tr' + event.target.getAttribute('id');console.log(Id);
+    RemoveItem(e){
+            e.preDefault();
+            var Id = 'tr' + e.target.getAttribute('id');console.log(Id);
             var element = document.getElementById(Id);
             if(element !== null)
                 element.parentNode.removeChild(element);
     }
-    NewItem(event){
-        event.preventDefault();
+    NewItem(e){
+        e.preDefault();
         var ItemId = uid();
         newItemJSON['td1']['a']['id'] = ItemId;newItemJSON['id'] = 'tr'+ ItemId;
         var json = {};json[ItemId] = newItemJSON;
         var newItem = new Entity(json,document.getElementById('tbody'));
     }
-    new1(event) {
+    new1(e) {
         console.log("New One");
        
     }
-    save(event) {
+    save(e) {
         var entityName = ActionView.getTitle();
         console.log(entityName);
         var entityValue = ActionView.getText();
         StorageHelper.saveToStorage(entityName, entityValue);
     }
-    load(event) {
+    load(e) {
         const entityName = window.prompt('Enter name of the Action Story you want to load', '');
         const entitytValue = StorageHelper.getFromStorage(entityName);
         console.log(entityName + ":::::" + entitytValue);
@@ -487,7 +466,7 @@ class ActionController extends ActionEvent {
             alert(entityName + " doesn't exist");
         }
     }
-    delete(event) {
+    delete(e) {
         const entityName = window.prompt('Enter name of the Action Story you want to delete', '');
         console.log("entityName:- " + entityName);
         const entitytValue = StorageHelper.getFromStorage(entityName);
@@ -499,7 +478,7 @@ class ActionController extends ActionEvent {
             alert(entityName + " doesn't exist");
         }
     }
-    download(event) {
+    download(e) {
         const entityName = window.prompt('Enter name of the Action Story you want to download', '');
         console.log("entityName:- " + entityName);
         const entitytValue = StorageHelper.getFromStorage(entityName);
@@ -511,15 +490,15 @@ class ActionController extends ActionEvent {
             alert(entityName + " doesn't exist");
         }
     }
-    async logout(event) {
+    async logout(e) {
         console.log("Logout");
-        event.preventDefault();
+        e.preDefault();
         if (localStorage.getItem('LoginEhh' + localStorage.getItem('emailID')) === 'true') {
             localStorage.removeItem('LoginEhh' + localStorage.getItem('emailID'));
             alert('Logged out through ehh');
         } else if (localStorage.getItem('LoginEhhGoogle' + localStorage.getItem('emailID')) === 'true') {
             localStorage.removeItem('LoginEhhGoogle' + localStorage.getItem('emailID'));
-            var response = await Credentials.actions(event, "LOGOUT");
+            var response = await Credentials.actions(e, "LOGOUT");
             if (!response.error) {
                 console.log("You have been logged out successfully");
             }
