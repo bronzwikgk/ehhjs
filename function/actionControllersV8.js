@@ -2,8 +2,11 @@
 const scriptURL = 'https://script.google.com/macros/s/AKfycbyksfkMoE9H3AKbDcSKeyHT3Pyc2HBmId3ftF0hoH4BY4-7Bs9HjsWNIwV523Oz32v-fA/exec';
 class ActionController extends ActionEvent {
     constructor(view,model) {
-        super()
-        
+        constructor(view, model, actionEvent) {
+            super()
+            this.model = model
+            this.view = view
+            this.actionEvent = actionEvent;
     //     this.model = model
     //     this.view = view
     //   //  this.actionEvent = actionEvent;

@@ -1,7 +1,8 @@
 
 //console.log("app", app)
 class ActionEvent {
-    constructor(entity,activeListerners) {
+    constructor(entity, activeListerners) {
+        
        this._activeEntity = [],
        this._activeListners = [];
        this._events = {};
