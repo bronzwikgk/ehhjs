@@ -62,5 +62,39 @@ const app = {
       //this line will call the service worker.
     },
   };
-  document.addEventListener('DOMContentLoaded', app.init);
+document.addEventListener('DOMContentLoaded', app.init);
+  
+
+app.connectSocket = function () {
+
+  window.ws = new WebSocket('ws://localhost:3030');
+
+  ws.onopen = () => {
+    console.log('Now connected');
+
+    ws.onclose = () => {
+      console.log('ws.onclose');
+      setTimeout(function () {
+        app.connectSocket();
+      }, 2000);
+
+    };
+
+    ws.onerror = () => {
+      console.log('could not connect to websocket');
+    }
+
+    ws.onmessage = (event) => {
+      console.log('got message!');
+      var msgObject = JSON.parse(event.data);
+      console.log(msgObject);
+      if (msgObject.type == 'reset') {
+        location.reload();
+      }
+
+    };
+  };
+
+}
+//
   

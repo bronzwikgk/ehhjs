@@ -6,7 +6,7 @@ class ActionController extends ActionEvent {
         
     //     this.model = model
     //     this.view = view
-    //   //  this.actionEvent = actionEvent;
+    //  this.actionEvent = actionEvent;
     //     this.bufferRange = '';
     //   //  this.createListeners(document);
         //this.activeListerners = this.createListeners(window);
@@ -30,90 +30,90 @@ class ActionController extends ActionEvent {
     //     window.addEventListener('keyup', e => this.emit('handleEvent', e));
 
     }
-    handleEvent(event) {
-      console.log("event Happened",e.type,e.target);
+    // handleEvent(event) {
+    //   console.log("event Happened",e.type,e.target);
         
-        switch (event.type) {
-            case 'load':
-                 // console.log(event.type)
+    //     switch (event.type) {
+    //         case 'load':
+    //              // console.log(event.type)
 
-                this.onRouteChange(event);
-                //  console.log("click", event.type, event.target)
-                break;
-            case 'beforeunload':
-               // console.log(event.type)
+    //             this.onRouteChange(event);
+    //             //  console.log("click", event.type, event.target)
+    //             break;
+    //         case 'beforeunload':
+    //            // console.log(event.type)
 
-                this.onRouteChange(event);
-                //  console.log("click", event.type, event.target)
-                break;
-            case 'readystatechange':
-             //   console.log(event.type)
-                this.onRouteChange(event);
-                //  console.log("click", event.type, event.target)
-                break;
-            case 'DOMContentLoaded':
-               // console.log(event.type)
-                this.onRouteChange(event);
-                //  console.log("click", event.type, event.target)
-                break;
-            case 'hashchange':
-                this.onRouteChange(event);
-                //  console.log("click", event.type, event.target)
-                break;
-            case 'click':
+    //             this.onRouteChange(event);
+    //             //  console.log("click", event.type, event.target)
+    //             break;
+    //         case 'readystatechange':
+    //          //   console.log(event.type)
+    //             this.onRouteChange(event);
+    //             //  console.log("click", event.type, event.target)
+    //             break;
+    //         case 'DOMContentLoaded':
+    //            // console.log(event.type)
+    //             this.onRouteChange(event);
+    //             //  console.log("click", event.type, event.target)
+    //             break;
+    //         case 'hashchange':
+    //             this.onRouteChange(event);
+    //             //  console.log("click", event.type, event.target)
+    //             break;
+    //         case 'click':
                
-                this.onClick(event);
-                //  console.log("click", event.type, event.target)
-                break;
-            case 'submit':
-                this.onSubmit(event);
-            case 'selectstart':
-                //console.log("selectstart", event.type, event.target)
-                break;
-            case 'keydown':
+    //             this.onClick(event);
+    //             //  console.log("click", event.type, event.target)
+    //             break;
+    //         case 'submit':
+    //             this.onSubmit(event);
+    //         case 'selectstart':
+    //             //console.log("selectstart", event.type, event.target)
+    //             break;
+    //         case 'keydown':
               
-                this.onKeyDown(event)
-              // console.log("keydown", event.type,event.key, event.target)
-                break;
-            case 'keypress':
-                // this.emit('keypress', event)
-                this.onKeyPress(event)
-               // console.log("keypress", event.type,event.key ,event.target)
-                break;
-            case 'keyup':
-                this.onKeyUp(event)
-                //  console.log("message", event.type, event.target)
-                break;
-            case 'mouseover':
-                this.onMouseOver(event);
-                //console.log("mouseover", event.type, event.target)
-                break;
-            case 'mouseenter':
-                this.onMouseEnter(event);
-                //console.log("mouseover", event.type, event.target)
-                break;
-            case 'mouseleave':
-                this.onMouseLeave(event);
-                //console.log("mouseover", event.type, event.target)
-                break;
-            case 'mouseout':
-                this.onMouseLeave(event);
-                //console.log("mouseover", event.type, event.target)
-                break;
-            case 'storage':
-                console.log("storage", event.type, event.target)
-                console.log(Object.keys(actionStorageInstance.entity))
+    //             this.onKeyDown(event)
+    //           // console.log("keydown", event.type,event.key, event.target)
+    //             break;
+    //         case 'keypress':
+    //             // this.emit('keypress', event)
+    //             this.onKeyPress(event)
+    //            // console.log("keypress", event.type,event.key ,event.target)
+    //             break;
+    //         case 'keyup':
+    //             this.onKeyUp(event)
+    //             //  console.log("message", event.type, event.target)
+    //             break;
+    //         case 'mouseover':
+    //             this.onMouseOver(event);
+    //             //console.log("mouseover", event.type, event.target)
+    //             break;
+    //         case 'mouseenter':
+    //             this.onMouseEnter(event);
+    //             //console.log("mouseover", event.type, event.target)
+    //             break;
+    //         case 'mouseleave':
+    //             this.onMouseLeave(event);
+    //             //console.log("mouseover", event.type, event.target)
+    //             break;
+    //         case 'mouseout':
+    //             this.onMouseLeave(event);
+    //             //console.log("mouseover", event.type, event.target)
+    //             break;
+    //         case 'storage':
+    //             console.log("storage", event.type, event.target)
+    //             console.log(Object.keys(actionStorageInstance.entity))
 
-                break;
-            default:
-            // console.log("I don't know such values",event.type);
-        }
-        // console.log("handler", event.type, event.target.getAttribute('name'))
-        //  window.postMessage()
+    //             break;
+    //         default:
+    //         // console.log("I don't know such values",event.type);
+    //     }
+    //     // console.log("handler", event.type, event.target.getAttribute('name'))
+    //     //  window.postMessage()
 
-        //filter the registerd events paired with Target
+    //     //filter the registerd events paired with Target
 
-    }
+    // }
     onRouteChange(e) {
       //  console.log("event occoured",e.type);
         var routeKeyword;
