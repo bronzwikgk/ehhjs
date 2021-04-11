@@ -97,13 +97,13 @@ class ActionEvent {
                   //   console.log("link found", href)
                 var href = e.target.getAttribute('href');
                 e.target.setAttribute('state', 'currentState = clicked');
-                this.conductRoute(href);
+                this.conductRoute(href,e.target);
 
             } else if (e.target.parentElement.hasAttribute('href')) {
                   //   console.log("link found", href)
                 var href = e.target.parentElement.getAttribute('href');
                 e.target.parentElement.setAttribute('state', 'currentState = clicked');
-                this.conductRoute(href);
+            this.conductRoute(href, e.target.parentElement);
             }
        
        
@@ -202,8 +202,9 @@ class ActionEvent {
         console.log("conducting route", hash)
         var reqModel = hash.split(":")[1].split("[")[0];
         var argumentsTemp = hash.split(":")[1].split("[")[0];
-        var currentRoute = window.location.href;
-        var url = currentRoute + HttpService.buildEncodedUri(window[reqModel]);
+     //   console.log("herer ",window.location);
+        var currentRoute = window.location.pathname;
+        var url = currentRoute + "#"+HttpService.buildEncodedUri(window[reqModel]);
        
         console.log(url);
       //  window.location.href = currentRoute + uri
