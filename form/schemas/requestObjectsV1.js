@@ -165,12 +165,17 @@ var getKey = {
     andThen: ['attributes','style'],
     response: {},
 }
-
+var getReqModel = {
+    objectModel: 'Entity',
+    method: 'get',
+    arguments:[key,parent],
+}
 var walkReqModel = {
     name: 'walk',
     objectModel: 'Entity',
     method: 'walk',
     argument: ['input'],
+    callBack: getReqModel,
     params: {
         response: {},// If present the response is stored here. If an object returned as an object, if an array return as an array.
         recurse:'true',
