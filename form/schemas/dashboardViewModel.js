@@ -8,7 +8,7 @@ var leftSideNavBar = {
             name: 'a',
             id:'recentFilesShortCut',
             class: 'item row align_center justify_SpaceBetween',
-            'data-command': `[{"command":"action ","req": "loadObject2Dom","arguments":["storage","recentStories","workspacebody"]}]`,
+            'data-command': `[{"command":"action ","req": "loadObject2Dom","arguments":["StorageHelper.get('recentStories')","document.getElementbyId('workSpaceBody')"]}]`,
             //'href': `#action:loadObject2Dom[storage,'recentStories','workspacebody']`,
             item1: {
                 name: 'i',
@@ -682,7 +682,7 @@ var userDashboard = {
         class: 'container full-width row full-height' ,
         id: 'userDashboard',
         topNav: { name: 'div', class: 'container row full-width ', id: 'topNav',userDashboardTopNav },
-        workSpaceBody: { name: 'div', class: 'container row full-width ', id: 'workSpaceBody',userDashboardWorkSpaceBody },
+        workSpaceBodyContainer: { name: 'div', class: 'container row full-width ', id: 'workSpaceBodyContainer',userDashboardWorkSpaceBody },
   
     }
     

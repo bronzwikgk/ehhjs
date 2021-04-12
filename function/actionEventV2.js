@@ -84,30 +84,40 @@ class ActionEvent {
        
    //e.preventDefault();
         if (e.target.hasAttribute('data-command')) {
-            response = JSON.parse(e.target.parentElement.getAttribute('data-command'));
-            console.log(response);
+            response = JSON.parse(e.target.getAttribute('data-command'));
+      //    console.log(response);
+            this.handleInput(e, response);
         }
         if (e.target.parentElement.hasAttribute('data-command')) {
-    
-            console.log("here", e.target.parentElement.hasAttribute('data-command'))
             
             response = JSON.parse(e.target.parentElement.getAttribute('data-command'));
             
-            console.log(response[0]);
+    //      console.log(response[0]);
+            this.handleInput(e, response);
             
         }
-        this.handleInput(e, response);
+      
 
  return;
     }
+
     handleInput(e, entity) {
-        console.log('response', e, entity);
+    //    console.log('response', e, entity);
+
         var req = {
             objectModel: 'engine',
             method: entity[0]['command'],
             arguments: window[entity[0]['req']]
         }
-        console.log(req)
+        var buffer = [];
+        for (var key in entity[0]['arguments']) {
+
+          //  console.log(entity[0]['arguments'][key], document.getElementById('workSpaceBody'),window['workSpaceBody']);
+
+            //buffer.push(window['workSpaceBody'])
+            
+}
+       // console.log(req['method'],req['arguments']['arguments'],entity[0]['arguments'], buffer)
 
     }
     conductRoute(hash) {

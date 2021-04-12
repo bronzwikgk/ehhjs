@@ -1,5 +1,5 @@
 var recentStories = {
-    'resourceLocation': 'indexDb',
+    'resourceLocation': 'StorageHelper',
     'name': 'recentStoriesDataModel',
     'maxAllowed': 40,
     name: 'div',
@@ -60,4 +60,4 @@ var recentStories = {
     },
 
 }
-console.log(recentStories);
+//console.log(recentStories);

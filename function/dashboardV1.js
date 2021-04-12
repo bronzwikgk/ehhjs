@@ -1,7 +1,7 @@
 var response2;
 //indexDB.set('recentStories', recentStories);
 //indexDB.set('userDashboard', userDashboard);
-console.log(userDashboard, recentStories)
+//console.log(userDashboard, recentStories)
 
 StorageHelper.set(['userDashboard', userDashboard]);
 StorageHelper.set(['recentStories', recentStories]);
@@ -17,10 +17,9 @@ var actionSpaceController = new ActionController(actionSpaceViewInstance, userDa
 
 
 
-
 window.onload = function () {
     var loadTime = window.performance.timing.domContentLoadedEventEnd - window.performance.timing.navigationStart;
-    console.log(document.title,'dashboard.js Page load time is ' + loadTime);
+    console.log(document.title,'dashboard.js Page load time is ' + loadTime/1000);
 }
 
 //this Request is to convert a
@@ -51,6 +50,8 @@ function buildJson() {
                   //  console.log(JSON.parse(JSON.stringify(source)));
                     responseOutput.push(JSON.parse(JSON.stringify(source)));
                   //  console.log(responseOutput)
+                }).then((source) => {
+           // console.log(responseOutput)
         })
             
 
@@ -85,15 +86,16 @@ function buildJson() {
             //     })
             //     .then(stream => {
             //         // Respond with our stream
-            //         return new Response(stream, { headers: { "Content-Type": "text/json" } }).text();
+            //         return new Response(stream, { headers: { "Content-Type": "text/javascript" } }).text();
             //     })
             //     .then(result => {
             //         // Do things with result
-            //        // console.log(result);
+            //         //console.log(typeof result);
+            //         responseOutput.push(result);
             //     });
         } 
     }
-
+    console.log(responseOutput);
 }
 
 buildJson();
