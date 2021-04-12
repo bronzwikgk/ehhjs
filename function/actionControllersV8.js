@@ -1,41 +1,37 @@
 //Clean up the eventListers. From a registerd Array. Store in LocalStorage.
 const scriptURL = 'https://script.google.com/macros/s/AKfycbyksfkMoE9H3AKbDcSKeyHT3Pyc2HBmId3ftF0hoH4BY4-7Bs9HjsWNIwV523Oz32v-fA/exec';
 class ActionController extends ActionEvent {
-    constructor(view,model) {
-   
-            super()
-            this.model = model
-            this.view = view
-         //   this.actionEvent = actionEvent;
-    //     this.model = model
-    //     this.view = view
-    //   //  this.actionEvent = actionEvent;
-    //     this.bufferRange = '';
-    //   //  this.createListeners(document);
+    constructor(view,model,actionEvent) {
+        super()
+        this.model = model
+        this.view = view
+        this.actionEvent = actionEvent;
+        this.bufferRange = '';
+      //  this.createListeners(document);
         //this.activeListerners = this.createListeners(window);
         //console.log("Listeners",this.activeListerners);
         //   window.addEventListener('change', e => this.emit('change', e));
         //window.addEventListener('event', e => this.emit('click', e))
-    //     document.addEventListener('mouseenter', e => this.emit('handleEvent', e));
-    //     document.addEventListener('readystatechange', e => this.emit('handleEvent', e));
-    //     document.addEventListener('DOMContentLoaded', e => this.emit('handleEvent', e));
-    //     document.addEventListener('mouseleave', e => this.emit('handleEvent', e));
-    //     document.addEventListener('mouseout', e => this.emit('handleEvent', e));
-    //     window.addEventListener('load', e => this.emit('handleEvent', e));
-    //     window.addEventListener('beforeunload', e => this.emit('handleEvent', e));
-    //  window.addEventListener('hashchange', e => this.emit('handleEvent', e));
-    //     window.addEventListener('popstate', e => this.emit('handleEvent', e));
-    //     window.addEventListener('mouseover', e => this.emit('handleEvent', e));
-    //     window.addEventListener('storage', e => this.emit('handleEvent', e));
-    //   //  window.addEventListener('click','handleEvent');
-    //     window.addEventListener('keydown', e => this.emit('handleEvent', e));
-    //     window.addEventListener('keypress', e => this.emit('handleEvent', e));
-    //     window.addEventListener('keyup', e => this.emit('handleEvent', e));
+        document.addEventListener('mouseenter', e => this.emit('handleEvent', e));
+        document.addEventListener('readystatechange', e => this.emit('handleEvent', e));
+        document.addEventListener('DOMContentLoaded', e => this.emit('handleEvent', e));
+        document.addEventListener('mouseleave', e => this.emit('handleEvent', e));
+        document.addEventListener('mouseout', e => this.emit('handleEvent', e));
+        window.addEventListener('load', e => this.emit('handleEvent', e));
+        window.addEventListener('beforeunload', e => this.emit('handleEvent', e));
+        window.addEventListener('hashchange', e => this.emit('handleEvent', e));
+        window.addEventListener('popstate', e => this.emit('handleEvent', e));
+        window.addEventListener('mouseover', e => this.emit('handleEvent', e));
+        window.addEventListener('storage', e => this.emit('handleEvent', e));
+        window.addEventListener('click', e => this.emit('handleEvent', e));
+        window.addEventListener('keydown', e => this.emit('handleEvent', e));
+        window.addEventListener('keypress', e => this.emit('handleEvent', e));
+        window.addEventListener('keyup', e => this.emit('handleEvent', e));
 
     }
     handleEvent(event) {
-      console.log("event Happened",e.type,e.target);
-        
+      
+      //  console.log(event.type)
         switch (event.type) {
             case 'load':
                  // console.log(event.type)
@@ -291,16 +287,20 @@ class ActionController extends ActionEvent {
                 //sheet
                 
                 //File System
-                case 'FSOpenDirectory':
-                    processFS.OpenDirectory(event); break;
-                case 'FSNew':
-                    processFS.NewFile(event); break;
-                case 'FSOpen':
-                    processFS.readFile(event); break;
-                case 'FS_Save':
-                    processFS.saveFile(event); break;
-                case 'FS_SaveAs':
-                    processFS.saveAsFile(event); break;
+                case 'OpenFile':
+                    processFS.OpenAFile(event);break;
+                case 'OpenDirectory':
+                    processFS.OpenDirectory(event);break;
+                case 'file':
+                    processFS.OpenFileInEditor(event,event.target.id);break;
+                // case 'FSNew':
+                //     processFS.NewFile(event); break;
+                // case 'FSOpen':
+                //     processFS.readFile(event); break;
+                // case 'FS_Save':
+                //     processFS.saveFile(event); break;
+                // case 'FS_SaveAs':
+                //     processFS.saveAsFile(event); break;
                 // case 'file':
                 //     this.file(event);break;
                 // case 'caret':
