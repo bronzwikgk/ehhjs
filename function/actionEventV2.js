@@ -112,7 +112,7 @@ console.log("I have a parent")
 if (e.target.hasAttribute('data-command') || e.target.parentElement.hasAttribute('data-command')) {
     console.log("here")
     var dataCommand = e.target.getAttribute('data-command');
-    //          console.log(dataCommandT);
+    console.log(dataCommand, [{ "command": "action ", "req": "loadObject2Dom", "arguments": ['storage', 'recentStories', 'workspacebody'] }]);
     var commandJson = JSON.parse(dataCommand);
     console.log("Command " + commandJson[0].command);
     switch (commandJson[0].command) {
