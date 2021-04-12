@@ -3,7 +3,7 @@ var response2;
 //indexDB.set('userDashboard', userDashboard);
 //console.log(userDashboard, recentStories)
 
-//StorageHelper.set(['userDashboard', userDashboard]);
+StorageHelper.set(['userDashboard', userDashboard]);
 StorageHelper.set(['recentStories', recentStories]);
 //var newStorageInstance = new StorageHelper('userDashboard', userDashboard);
 var actionSpaceElementInstanceIndom = document.getElementById('actionSpaceContainer');
