@@ -99,7 +99,7 @@ class ActionEvent {
     }
 
     handleInput(e, entity) {
-        console.log('response', e, entity, eachKeyReqModel);
+        console.log('response', e, entity, walkReqModel);
         
         var req = {
             objectModel: 'window',
@@ -108,6 +108,7 @@ class ActionEvent {
             callback:'Entity.get[value]'
             
         }
+        walkReqModel
         Entity.walk(entity);
         
         // for (var key in entity[0]) {

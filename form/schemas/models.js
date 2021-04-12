@@ -83,7 +83,7 @@ const pickerOpts = {
     multiple: false
 };
 
-const recentFiles = [
+const recentFiles1 = [
     {
         name: '',
         title:'',

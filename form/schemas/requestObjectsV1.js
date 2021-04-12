@@ -165,6 +165,7 @@ var getKey = {
     andThen: ['attributes','style'],
     response: {},
 }
+
 var walkReqModel = {
     name: 'walk',
     objectModel: 'Entity',
