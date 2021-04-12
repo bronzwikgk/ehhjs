@@ -105,7 +105,17 @@ class Entity {
         var response = str.substr(0, index) + value + str.substr(index);
         //  console.log("inserted",response)
         return response;
-    } 
+    }
+    static get(key, parent) {
+        // console.log("for Initaition", key, objectModel, objectModel[key])
+        if (parent[key]) {
+            // console.log("for Initaition", key, objectModel, objectModel[key])
+            var response = parent[key];
+            // console.log("Initaites found",response)
+            return response;
+        }
+
+    }
 }
 class EntityModel {
 

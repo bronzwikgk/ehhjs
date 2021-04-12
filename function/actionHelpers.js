@@ -111,7 +111,7 @@ function obj_to_array(arg) {
             //  req['currentDepth'] = req['currentDepth'] + 1; // add a break || continue condition to exit if more than max Depth
             if(req.hasOwnProperty(key)) {
 
-                var buffer=this.get(req[key],window);
+                var buffer=Entity.get(req[key],window);
                 if(operate.isUseless(buffer)===false) {
                     // console.log("iam Here raw", key, req[key]);
                     req[key]=buffer;

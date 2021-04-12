@@ -102,18 +102,27 @@ class ActionEvent {
     }
 
     handleInput(e, entity) {
-        console.log('response', e, entity);
-        for (var key in entity[0]) {
-            if (typeof entity[0][key] )
-            console.log("before",entity[0][key]);
-            entity[0][key] = window[entity[0][key]];
-            console.log("after",entity[0][key]);
+        console.log('response', e, entity, eachKeyReqModel);
+        
+        var req = {
+            objectModel: 'window',
+            method: 'eachKey',
+            arguments: [entity[0]],
+            callback:'Entity.get[value]'
+            
+        }
+        
+        // for (var key in entity[0]) {
+        //     if (typeof entity[0][key] )
+        //     console.log("before",entity[0][key]);
+        //     entity[0][key] = window[entity[0][key]];
+        //     console.log("after",entity[0][key]);
 
-            //buffer.push(window['workSpaceBody'])
+        //     //buffer.push(window['workSpaceBody'])
 
 
        
-        }
+        // }
 
         var req = {
             objectModel: 'engine',
