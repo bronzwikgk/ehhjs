@@ -98,4 +98,4 @@ function buildJson() {
     console.log(responseOutput);
 }
 
-buildJson();
+//buildJson();

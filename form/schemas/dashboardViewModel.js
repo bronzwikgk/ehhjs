@@ -8,7 +8,7 @@ var leftSideNavBar = {
             name: 'a',
             id:'recentFilesShortCut',
             class: 'item row align_center justify_SpaceBetween',
-            'data-command': `[{"command":"action ","req": "loadObject2Dom","arguments":["{StorageHelper.get('recentStories')}","document.getElementbyId('workSpaceBody')"]}]`,
+            'data-command': `[{"objModel":"engine","method":"engine.action","req": "loadObject2Dom","arguments":["{StorageHelper.get('recentStories')}","document.getElementbyId('workSpaceBody')"]}]`,
             //'href': `#action:loadObject2Dom[storage,'recentStories','workspacebody']`,
             item1: {
                 name: 'i',
