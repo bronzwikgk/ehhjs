@@ -20,3 +20,19 @@ window.onload = function () {
     var loadTime = window.performance.timing.domContentLoadedEventEnd - window.performance.timing.navigationStart;
     console.log(document.title,'dashboard.js Page load time is ' + loadTime);
 }
+
+
+function buildJson() {
+    var element2Convert = document.querySelectorAll('script')
+    console.log("converting", element2Convert);
+
+    for (var key in element2Convert) {
+        //console.log(element2Convert, element2Convert[key].src, element2Convert[key])
+        if (element2Convert[key].src) {
+            fetch(element2Convert[key].src)
+                .then((response) => response.text())
+           .then((source) => console.log(source))
+        } 
+    }
+}
+buildJson();
