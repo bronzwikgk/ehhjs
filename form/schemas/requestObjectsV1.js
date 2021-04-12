@@ -165,13 +165,14 @@ var getKey = {
     andThen: ['attributes','style'],
     response: {},
 }
-var eachKeyReqModel = {
-    name: 'eachKey',
-    objectModel: 'ActionEngine',
-    method: 'eachKey',
+var walkReqModel = {
+    name: 'walk',
+    objectModel: 'Entity',
+    method: 'walk',
     argument: ['input'],
     params: {
         response: {},// If present the response is stored here. If an object returned as an object, if an array return as an array.
+        recurse:'true',
         maxDepth: 5,
         maxItem: 10,
     }
