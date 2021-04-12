@@ -18,7 +18,7 @@ class StorageHelper {
     //Save2Storage takes 2 arguments
     //1 key: key Name
     //2. Value: any value
-     set() {
+    static set() {
     //  console.log("I was called",arguments[0][0])
         // data=JSON.stringify(data)
         //  console.log(actionStorageInstance);
@@ -45,5 +45,6 @@ class StorageHelper {
         a.click();
     }
 }
+//var storageHelperInstance = new StorageHelper();
 //console.log("Iam loaded, and my name is storage helper")
 

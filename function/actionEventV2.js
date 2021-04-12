@@ -42,7 +42,7 @@ class ActionEvent {
     }
    
     handleEvent(e) {
-        console.log("event",e.type,e.target)
+       // console.log("event",e.type,e.target)
         var commandList ={
             keyword:'data-command',
             keyword:'href',
@@ -56,24 +56,17 @@ class ActionEvent {
     }
     onPopState(e) {
         console.log(e.type)
-    }
-    
-   
+    }  
     onHashChange(e) {
-
-
         // e.preventDefault();
       // console.log("event occoured", e.type);
         var actionEngineMethods = Object.getOwnPropertyNames(engine.__proto__);
        //console.log(actionEngineMethods);
-
         if (window.location.hash) {
           console.log()
         }
         var hashCommand = window.location.hash.split(":")[0];
-
-        var matchedMethod = operate.find(actionEngineMethods, hashCommand.substring(1), 'values', partial);
-  
+        var matchedMethod = operate.find(actionEngineMethods, hashCommand.substring(1), 'values', partial); 
         if (matchedMethod.length > 0) {
             console.log(hashCommand, "matchedMethod", matchedMethod);
             engine[matchedMethod[0]](document.location.hash); //make the call to the respective function
@@ -83,27 +76,39 @@ class ActionEvent {
     }
 
     onClick(e) {
-       
+        var response;
         /**
          * check if the target entity has any click or data - command set, if yes, then process it.
          */
-     console.log("Clicked >>   " + e);
+     console.log("Clicked >>   " + e.type, e.target);
        
    //e.preventDefault();
         if (e.target.hasAttribute('data-command')) {
-            var commandJson = JSON.parse(JSON.stringify(dataCommand));
-            console.log("Command " + commandJson);
+            response = JSON.parse(e.target.parentElement.getAttribute('data-command'));
+            console.log(response);
         }
         if (e.target.parentElement.hasAttribute('data-command')) {
     
             console.log("here", e.target.parentElement.hasAttribute('data-command'))
             
-            var dataCommand = e.target.parentElement.getAttribute('data-command');
+            response = JSON.parse(e.target.parentElement.getAttribute('data-command'));
             
-            console.log(dataCommand);
+            console.log(response[0]);
+            
         }
-     
+        this.handleInput(e, response);
+
  return;
+    }
+    handleInput(e, entity) {
+        console.log('response', e, entity);
+        var req = {
+            objectModel: 'engine',
+            method: entity[0]['command'],
+            arguments: window[entity[0]['req']]
+        }
+        console.log(req)
+
     }
     conductRoute(hash) {
         //console.log("conducting route", hash)

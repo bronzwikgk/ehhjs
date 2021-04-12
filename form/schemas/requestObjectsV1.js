@@ -5,12 +5,14 @@ var newActionStoryReq = {
     objectModel: 'actionSpaceViewInstance',
     method: 'load',
     argument: ['sampleActionStory', 'activeActionStory'],
- }
+}
+
+
 var loadObject2Dom = {
     name: 'loadObject2Dom',
     objectModel: 'actionSpaceViewInstance',
     method: 'load',
-    argument: ['input', 'target'],
+    arguments: [`StorageHelper[get]('e.target.id')`, `document.getElementbyId('')`],
     callBack: {
         objectModel: 'StorageHelper',
         method: 'set',
@@ -82,13 +84,7 @@ var entityModel4Html = {
 }
 
 
-var loadReqModel = {
-    objectModel: 'this.view',
-    method: 'load',
-    arguments: [`StorageHelper[get]('recentFiles')`, `document.getElementbyId('')`],
-    response:{}
-    ,
-}
+
 var copy2 = {
     reqName: 'copy2',
     objectModel: 'processV6',

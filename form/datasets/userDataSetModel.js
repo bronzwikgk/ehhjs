@@ -60,3 +60,4 @@ var recentStories = {
     },
 
 }
+console.log(recentStories);

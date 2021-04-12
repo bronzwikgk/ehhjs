@@ -1,9 +1,11 @@
 var response2;
 //indexDB.set('recentStories', recentStories);
 //indexDB.set('userDashboard', userDashboard);
-//console.log(userDashboard)
+console.log(userDashboard, recentStories)
 
-var newStorageInstance = new StorageHelper('userDashboard', userDashboard);
+StorageHelper.set(['userDashboard', userDashboard]);
+StorageHelper.set(['recentStories', recentStories]);
+//var newStorageInstance = new StorageHelper('userDashboard', userDashboard);
 var actionSpaceElementInstanceIndom = document.getElementById('actionSpaceContainer');
 var actionSpaceViewInstance = new ActionView(userDashboard, actionSpaceElementInstanceIndom);
 
@@ -14,12 +16,13 @@ var actionSpaceController = new ActionController(actionSpaceViewInstance, userDa
 
 
 
-var req = HttpService.buildEncodedUri(loadObject2Dom);
-//console.log(req);
+
+
 window.onload = function () {
     var loadTime = window.performance.timing.domContentLoadedEventEnd - window.performance.timing.navigationStart;
     console.log(document.title,'dashboard.js Page load time is ' + loadTime);
 }
+
 //this Request is to convert a
 var buildJsonReq = {
     objectModel: 'document',
@@ -35,20 +38,62 @@ var eachKeyReq = {
 function buildJson() {
     var responseOutput=[];
     var element2Convert = document.querySelectorAll('script')
-    console.log("converting", element2Convert);
+  //  console.log("converting", element2Convert);
 
     for (var key in element2Convert) {
         //console.log(element2Convert, element2Convert[key].src, element2Convert[key])
         if (element2Convert[key].src) {
+
+
             fetch(element2Convert[key].src)
-                .then((response) => response.json())
+                .then((response) => response.text())
                 .then((source) => {
-                    console.log(source);
-                    responseOutput.push(source);
-                    console.log(responseOutput)
+                  //  console.log(JSON.parse(JSON.stringify(source)));
+                    responseOutput.push(JSON.parse(JSON.stringify(source)));
+                  //  console.log(responseOutput)
         })
+            
+
+            // fetch(element2Convert[key].src)
+            //     .then(response => response.body)
+            //     .then(rb => {
+            //         const reader = rb.getReader();
+
+            //         return new ReadableStream({
+            //             start(controller) {
+            //                 // The following function handles each data chunk
+            //                 function push() {
+            //                     // "done" is a Boolean and value a "Uint8Array"
+            //                     reader.read().then(({ done, value }) => {
+            //                         // If there is no more data to read
+            //                         if (done) {
+            //                             console.log('done', done);
+            //                             controller.close();
+            //                             return;
+            //                         }
+            //                         // Get the data and send it to the browser via the controller
+            //                         controller.enqueue(value);
+            //                         // Check chunks by logging to the console
+            //                        // console.log(done, value);
+            //                         push();
+            //                     })
+            //                 }
+
+            //                 push();
+            //             }
+            //         });
+            //     })
+            //     .then(stream => {
+            //         // Respond with our stream
+            //         return new Response(stream, { headers: { "Content-Type": "text/json" } }).text();
+            //     })
+            //     .then(result => {
+            //         // Do things with result
+            //        // console.log(result);
+            //     });
         } 
     }
 
 }
+
 buildJson();
