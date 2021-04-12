@@ -112,7 +112,7 @@ class ActionEvent {
         var buffer = [];
         for (var key in entity[0]['arguments']) {
 
-          //  console.log(entity[0]['arguments'][key], document.getElementById('workSpaceBody'),window['workSpaceBody']);
+          console.log(entity[0]['arguments'][key],);
 
             //buffer.push(window['workSpaceBody'])
             
