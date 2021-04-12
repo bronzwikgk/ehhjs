@@ -168,7 +168,7 @@ var getKey = {
 var getReqModel = {
     objectModel: 'Entity',
     method: 'get',
-    arguments:[key,parent],
+    arguments:['key','parent'],
 }
 var walkReqModel = {
     name: 'walk',
