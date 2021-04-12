@@ -20,9 +20,20 @@ window.onload = function () {
     var loadTime = window.performance.timing.domContentLoadedEventEnd - window.performance.timing.navigationStart;
     console.log(document.title,'dashboard.js Page load time is ' + loadTime);
 }
-
+//this Request is to convert a
+var buildJsonReq = {
+    objectModel: 'document',
+    method: 'querySelectorAll',
+    arguments: ['script'],
+    response:[],
+    callback:'eachKeyReq',
+}
+var eachKeyReq = {
+    
+}
 
 function buildJson() {
+    var responseOutput=[];
     var element2Convert = document.querySelectorAll('script')
     console.log("converting", element2Convert);
 
@@ -30,9 +41,14 @@ function buildJson() {
         //console.log(element2Convert, element2Convert[key].src, element2Convert[key])
         if (element2Convert[key].src) {
             fetch(element2Convert[key].src)
-                .then((response) => response.text())
-           .then((source) => console.log(source))
+                .then((response) => response.json())
+                .then((source) => {
+                    console.log(source);
+                    responseOutput.push(source);
+                    console.log(responseOutput)
+        })
         } 
     }
+
 }
 buildJson();
