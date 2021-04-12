@@ -116,6 +116,40 @@ class Entity {
         }
 
     }
+    //This method walks through all the keys of an obect. By default it retunrs all the keys wile getting them from Window scope.
+    // It has optional patameter of Max Item, Max Depth and Recurse.
+
+    static walk(req) {
+        //  if (!req['currentDepth']) { req['currentDepth'] = 0;console.log("it's a fresh start")}     
+        if (typeof req === 'object') {
+            for (var key in req) {
+                //  req['currentDepth'] = req['currentDepth'] + 1; // add a break || continue condition to exit if more than max Depth
+                if (req.hasOwnProperty(key)) {
+
+                    var buffer = this.get(req[key], window);
+                    if (operate.isUseless(buffer) === false) {
+                        // console.log("iam Here raw", key, req[key]);
+                        req[key] = buffer;
+                        console.log("iam Here Intiated", key, req[key]);
+                    }
+                    if (operate.isString(req[key])) {
+                        //  console.log("found string",key,req[key]) 
+                    }
+                    else if (operate.isObject(req[key])) {
+                        //  console.log("found Object", key, req[key])
+                    }
+                    else if (operate.isArray(req[key])) {
+                        //  console.log("found Array", key, req[key])
+                    }
+                }
+                //f(m,loc,expr,val,path);
+            }
+        }
+        // console.log(req);
+        return req;
+
+
+    }
 }
 class EntityModel {
 

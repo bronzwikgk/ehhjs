@@ -68,13 +68,10 @@ class ActionEvent {
         var hashCommand = window.location.hash.split(":")[0];
         var matchedMethod = operate.find(actionEngineMethods, hashCommand.substring(1), 'values', partial); 
         if (matchedMethod.length > 0) {
-            console.log(hashCommand, "matchedMethod", matchedMethod);
+         //   console.log(hashCommand, "matchedMethod", matchedMethod);
             engine[matchedMethod[0]](document.location.hash); //make the call to the respective function
         }
-
-
     }
-
     onClick(e) {
         var response;
         /**
@@ -111,6 +108,7 @@ class ActionEvent {
             callback:'Entity.get[value]'
             
         }
+        Entity.walk(entity);
         
         // for (var key in entity[0]) {
         //     if (typeof entity[0][key] )
