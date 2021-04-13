@@ -143,10 +143,13 @@ class Entity {
                 if (req['argument'][0].hasOwnProperty(key)) {
 
                     var buffer = this.get(req['argument'][0][key], window);
+                    
                     if (operate.isUseless(buffer) === false) {
-                        // console.log("iam Here raw", key, req[key]);
+                         console.log("iam Here raw", key, req[key]);
                         req['argument'][0][key] = buffer;
+
                         console.log("iam Here Intiated", key, req['argument'][0][key]);
+
                     }
                     if (operate.isString(req['argument'][0][key])) {
                         //  console.log("found string",key,req[key]) 
