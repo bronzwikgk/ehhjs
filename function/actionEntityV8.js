@@ -141,15 +141,18 @@ class Entity {
             for (var key in req['argument'][0]) {
                 //  req['currentDepth'] = req['currentDepth'] + 1; // add a break || continue condition to exit if more than max Depth
                 if (req['argument'][0].hasOwnProperty(key)) {
+                    console.log("iam Here raw", key, req['argument'][0][key]);
 
-                    var buffer = this.get(req['argument'][0][key], window);
-                    
+                    if (req['argument'][0][key].indexOf(".")>0) {
+                        console.log("found DOT", req['argument'][0][key]);
+                        var split = req['argument'][0][key].split('.');
+                        console.log(split)
+                        var buffer = this.get(split[1], window[split[0]]);
+                    } else {
+                        var buffer = this.get(req['argument'][0][key], window);
+                    }
                     if (operate.isUseless(buffer) === false) {
-                         console.log("iam Here raw", key, req[key]);
                         req['argument'][0][key] = buffer;
-
-                        console.log("iam Here Intiated", key, req['argument'][0][key]);
-
                     }
                     if (operate.isString(req['argument'][0][key])) {
                         //  console.log("found string",key,req[key]) 
@@ -164,6 +167,7 @@ class Entity {
                     else if (operate.isArray(req['argument'][0][key])) {
                         //  console.log("found Array", key, req[key])
                     }
+                    console.log("iam Here Intiated", key, req['argument'][0][key]);
                 }
                 //f(m,loc,expr,val,path);
             }

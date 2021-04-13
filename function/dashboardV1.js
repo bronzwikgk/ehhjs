@@ -98,4 +98,9 @@ function buildJson() {
     console.log(responseOutput);
 }
 
+var data = {
+  'key1': document.getElementById('actionSpaceContainer').innerText,
+  'key2': document.getElementById('workSpaceBody').innerHTML,
+}
+console.log(data);
 //buildJson();
