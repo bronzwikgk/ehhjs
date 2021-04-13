@@ -153,7 +153,7 @@ class Entity {
                             console.log("found DOT", req['argument'][0][key]);
 
                             var split = req['argument'][0][key].split('.');
-                       console.log("split",split)
+                     //  console.log("split",split)
                             var buffer = this.get(split[1], window[split[0]]);
                         } else {
                             //get the string Object from the window.
@@ -162,13 +162,13 @@ class Entity {
                         if (operate.isUseless(buffer) === false) {
                           
                             req['argument'][0][key] = buffer;
-                            console.log("this updated", key,buffer)
+                          //  console.log("this updated", key,buffer)
                         }
 
 
 
                         if (req['callBack']) {
-                            console.log("callback found", req['callBack'])
+                         //   console.log("callback found", req['callBack'])
                           //  var callBack = window[req['callBack']];
                             //var response = this.reqProcessor(callBack, req[response]);
                         }

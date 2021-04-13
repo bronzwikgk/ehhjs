@@ -105,7 +105,7 @@ class ActionEvent {
     handleInput(e, entity) {
       
         var newWalkModelReq = walkReqModel;
-       // console.log("before Walk", newWalkModelReq,entity[0])
+        console.log("before Walk", JSON.parse(JSON.stringify(newWalkModelReq)), JSON.parse(JSON.stringify(entity[0])))
 
         newWalkModelReq['argument'] = [entity[0]];
         Entity.walk(newWalkModelReq);
