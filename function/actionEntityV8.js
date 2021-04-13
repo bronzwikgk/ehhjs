@@ -134,29 +134,31 @@ class Entity {
 // }
 
     static walk(req) {
+
+        console.log("walk request",req['argument'][0])
         //  if (!req['currentDepth']) { req['currentDepth'] = 0;console.log("it's a fresh start")}     
         if (typeof req === 'object') {
-            for (var key in req) {
+            for (var key in req['argument'][0]) {
                 //  req['currentDepth'] = req['currentDepth'] + 1; // add a break || continue condition to exit if more than max Depth
-                if (req.hasOwnProperty(key)) {
+                if (req['argument'][0].hasOwnProperty(key)) {
 
-                    var buffer = this.get(req[key], window);
+                    var buffer = this.get(req['argument'][0][key], window);
                     if (operate.isUseless(buffer) === false) {
                         // console.log("iam Here raw", key, req[key]);
-                        req[key] = buffer;
-                        console.log("iam Here Intiated", key, req[key]);
+                        req['argument'][0][key] = buffer;
+                        console.log("iam Here Intiated", key, req['argument'][0][key]);
                     }
-                    if (operate.isString(req[key])) {
+                    if (operate.isString(req['argument'][0][key])) {
                         //  console.log("found string",key,req[key]) 
                     }
-                    else if (operate.isObject(req[key])) {
+                    else if (operate.isObject(req['argument'][0][key])) {
                         //console.log("found Object", key, req[key],)
                         if (req.params['recurse'] == 'true') {
-                          console.log("recurse", ) 
+                            console.log("recurse", req['argument'][0][key])
                         }
                           
                     }
-                    else if (operate.isArray(req[key])) {
+                    else if (operate.isArray(req['argument'][0][key])) {
                         //  console.log("found Array", key, req[key])
                     }
                 }

@@ -92,17 +92,15 @@ class ActionEvent {
     //      console.log(response[0]);
             this.handleInput(e, response);
             
-        }
-      
-
+        }    
  return;
-    }
+}
 
     handleInput(e, entity) {
-        console.log('response', e, entity[0], walkReqModel);
+        console.log('handling Input', walkReqModel);
 
-        walkReqModel['argument'] = [entity[0]]
-        console.log('response',  walkReqModel);
+      walkReqModel['argument'] = [entity[0]];
+       console.log('response',  walkReqModel);
     
         
         Entity.walk(walkReqModel);
