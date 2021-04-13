@@ -41,7 +41,7 @@ class ActionEvent {
         });
         return true;
     }
-   
+   // This method calls the respective Enevetn methods by looking them inside the actionEventInstance
     handleEvent(e) {
        // console.log("event",e.type,e.target)
         var commandList ={
@@ -105,7 +105,7 @@ class ActionEvent {
     handleInput(e, entity) {
       
         var newWalkModelReq = walkReqModel;
-        console.log("before Walk", newWalkModelReq,entity[0])
+       // console.log("before Walk", newWalkModelReq,entity[0])
 
         newWalkModelReq['argument'] = [entity[0]];
         Entity.walk(newWalkModelReq);

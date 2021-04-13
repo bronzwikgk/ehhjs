@@ -151,22 +151,27 @@ class Entity {
                         if (req['argument'][0][key].indexOf(".") > 0) {
 
                             console.log("found DOT", req['argument'][0][key]);
-                            
+
                             var split = req['argument'][0][key].split('.');
-                         //   console.log(split)
+                       console.log("split",split)
                             var buffer = this.get(split[1], window[split[0]]);
                         } else {
                             //get the string Object from the window.
                             var buffer = this.get(req['argument'][0][key], window);
                         }
                         if (operate.isUseless(buffer) === false) {
-
+                          
                             req['argument'][0][key] = buffer;
+                            console.log("this updated", key,buffer)
                         }
 
 
 
-
+                        if (req['callBack']) {
+                            console.log("callback found", req['callBack'])
+                          //  var callBack = window[req['callBack']];
+                            //var response = this.reqProcessor(callBack, req[response]);
+                        }
 
 
                         //  console.log("found string",key,req[key]) 
@@ -181,9 +186,7 @@ class Entity {
                         }
                           
                     }
-                    else if (operate.isArray(req['argument'][0][key])) {
-                        //  console.log("found Array", key, req[key])
-                    }
+                  
                   //  console.log("iam Here Intiated", key, req['argument'][0][key]);
                 }
                 //f(m,loc,expr,val,path);
