@@ -57,6 +57,11 @@ static closeModal(event){
    document.getElementById('data').innerHTML = '';
 }
 }
+<<<<<<< Updated upstream
+=======
+//https://instructobit.com/tutorial/98/Finding-the-containing-element-of-a-selection-or-caret-position-within-a-content-editable-container-in-Javascript
+
+>>>>>>> Stashed changes
 /**
  * @file get/set caret position and insert text
  * @author islishude
