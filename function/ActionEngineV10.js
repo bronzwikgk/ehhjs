@@ -4,17 +4,18 @@ class ActionEngine {
     this._currentReq=[]; // need to be set in database A quick generator Pattenr .
     this._response ;
   }
-  
-   // this method taken in a Hash path. With a syntax of Command [ arguments ]
-   
-  hashAction(req, result) {
+  get(key,parent) {
+    // console.log("for Initaition", key, objectModel, objectModel[key])
+     if (parent[key]) {
+        // console.log("for Initaition", key, objectModel, objectModel[key])
+         var response = parent[key];
+        // console.log("Initaites found",response)
+         return response;
+     }
 
 
-    
-    
-    var reqModel = req.slice(":");
-    console.log(reqModel,req, typeof req)
-  }
+ }
+
   action(req, result) {
     //  console.log("execute req", req)
     //testing if the req is an object
@@ -36,7 +37,6 @@ class ActionEngine {
       //  console.log(argument[i]);
 
     }
-
 
     if (req['andThen']) {
       var andThenLength = req['andThen'].length;

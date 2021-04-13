@@ -1,0 +1,8 @@
+* {
+    outline: none;
+    box-sizing: border-box;
+     border:none;
+     user-select: none;
+     -webkit-user-select: none;
+     -webkit-box-sizing: border-box;
+   }
