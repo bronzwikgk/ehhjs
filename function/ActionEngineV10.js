@@ -81,40 +81,7 @@ class ActionEngine {
     //  console.log(response)
     return response;
   }
-  /**
-   * processes single request
-   * @param {RequestObj} reqObj - request object
-   * @param {unknown} [resultObj=null] - Optional parameter for passing result of previous requests
-   * @returns {Promise}
-   */
-  processSingleReq(reqObj, resultObj = null) {
-    var method = reqObj.objectModel[reqObj.method];
-    if (reqObj.arguments) {
-      for (var i = 0; i < reqObj.arguments.length; i++) {
-        if (reqObj.arguments[i] === "fromPrevious") {
-          reqObj.arguments[i] = resultObj;
-        }
-      }
-    }
-
-    var processResult;
-
-    if (method && Operate.isFunction(method)) {
-      processResult = method.apply(reqObj.objectModel, reqObj.arguments);
-    }
-    if (Operate.isObject(method)) {
-      processResult = method[reqObj.arguments]
-    }
-    if (reqObj.callBack) {
-      var callBack = window[reqObj.callBack];
-      if (callBack) {
-        processResult = this.processReq(callBack, processResult);
-      }
-    }
-    console.log(processResult)
-    return processResult;
-  }
-
+  
   /**
    * This method is used for parallel requests
    * @param {FlowRequest} reqObj - request object containing array of objects

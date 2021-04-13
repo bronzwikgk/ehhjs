@@ -20,6 +20,7 @@ class ActionEvent {
             objectModel[key] = this.handleEvent // Need to use Emit instead of a direct call //Also Binding
         })
     }
+    
     addListener(eventName, fn) {
     console.log("add listner",eventName, fn);
         this._events[eventName] = this._events[eventName] || [];
@@ -40,179 +41,97 @@ class ActionEvent {
         });
         return true;
     }
-   
+   // This method calls the respective Enevetn methods by looking them inside the actionEventInstance
     handleEvent(e) {
-        console.log("event",e.type,e.target)
-        var typeOfCommand ={
+       // console.log("event",e.type,e.target)
+        var commandList ={
             keyword:'data-command',
             keyword:'href',
-
         };
-        if(e.target.parentElement){
-console.log("I have a parent")
-        if(e.target.parentElement.hasOwnProperty('data-command')){
-    console.log("am herer",e.target.parentElement['data-command']);
-
-}
-        }
-        if(e.target.hasOwnProperty('data-command')){
-            console.log("data-command",e.target['data-command']);
-
-        }
-       // e.preventDefault();
-    //    console.log("this._activeEntity", Object.getOwnPropertyNames(actionEventInstance.__proto__));
         var methodsInstance = Object.getOwnPropertyNames(actionEventInstance.__proto__);
-       
-      //  var registerdEvents = operate.findMatchingInArrayOfObject(EventCommandMapReq, 'keyword', e.type, 'values',);
-       // console.log(methodsInstance)
-     
-       // console.log(methodsInstance.includes('onClick'), e.type );
         var matchedMethod = operate.find(methodsInstance, e.type, 'values', partial);
-       console.log("matchedMethod",matchedMethod);
+     //  console.log("matchedMethod",matchedMethod);
         if (matchedMethod.length > 0) {
             actionEventInstance.__proto__[matchedMethod[0]](e); //make the call to the respective function
         }
     }
     onPopState(e) {
         console.log(e.type)
-    }
-    
-   
+    }  
     onHashChange(e) {
-
-
         // e.preventDefault();
       // console.log("event occoured", e.type);
         var actionEngineMethods = Object.getOwnPropertyNames(engine.__proto__);
        //console.log(actionEngineMethods);
-
         if (window.location.hash) {
           console.log()
         }
         var hashCommand = window.location.hash.split(":")[0];
-
-        var matchedMethod = operate.find(actionEngineMethods, hashCommand.substring(1), 'values', partial);
-  
+        var matchedMethod = operate.find(actionEngineMethods, hashCommand.substring(1), 'values', partial); 
         if (matchedMethod.length > 0) {
-            console.log(hashCommand, "matchedMethod", matchedMethod);
+         //   console.log(hashCommand, "matchedMethod", matchedMethod);
             engine[matchedMethod[0]](document.location.hash); //make the call to the respective function
         }
-
-
     }
-
     onClick(e) {
-       
+        var response;
         /**
          * check if the target entity has any click or data - command set, if yes, then process it.
          */
-     console.log("Clicked    " + e.target);
+     console.log("Clicked >>   " + e.type, e.target);
        
    //e.preventDefault();
-if (e.target.hasAttribute('data-command') || e.target.parentElement.hasAttribute('data-command')) {
-    console.log("here")
-    var dataCommand = e.target.getAttribute('data-command');
-    //          console.log(dataCommandT);
-    var commandJson = JSON.parse(dataCommand);
-    console.log("Command " + commandJson[0].command);
-    switch (commandJson[0].command) {
-
-        case 'modal':
-            ActionView.modalForm(e, commandJson[0].entity); break;
-        case 'closeModal':
-            ActionView.closeModal(e); break;
-        case 'NewItem':
-            this.NewItem(e); break;
-        case 'RemoveItem':
-            this.RemoveItem(e); break;
-        case 'SubmitInvoice':
-            this.SubmitInvoice(e); break;
-        case 'importFromSheet':
-            this.importFromSheet(e); break;
-        case 'exportToSheet':
-            this.exportToSheet(e); break;
-        //signup,login
-        case 'Signup':
-            this.SignUp(e); break;
-        case 'Login':
-            this.LogIn(e); break;
-        case "new":
-            console.log("new")
-            this.new1(e); break;
-        case 'google':
-            Authorization.oAuth(e, 'json'); break;
-        //sheet
-
-        //File System
-        case 'FSOpenDirectory':
-            processFS.OpenDirectory(e); break;
-        case 'FSNew':
-            processFS.NewFile(e); break;
-        case 'FSOpen':
-            processFS.readFile(e); break;
-        case 'FS_Save':
-            processFS.saveFile(e); break;
-        case 'FS_SaveAs':
-            processFS.saveAsFile(e); break;
-        // case 'file':
-        //     this.file(e);break;
-        // case 'caret':
-        //     this.caret(e);break;
-        // local storage
-
-        case 'save':
-            this.save(e); break;
-        case 'cloud':
-            this.load(e); break;
-        case 'download':
-            this.download(e); break;
-        case 'delete':
-            this.delete(e); break;
-        case 'logout':
-            this.logout(e); break;
-        case 'keyup':
-            this.onKeyUp(e); break;
-        case 'mouseover':
-            this.onMouseOver(e); break;
-        case 'storage':
-            console.log("storage", e.type, e.target)
-            console.log(Object.keys(actionStorageInstance.entity))
-            break;
-        default:
-        // console.log("I don't know such values",e.type);
-    }
-}
-        if (e.target.hasAttribute('href')) {
-                  //   console.log("link found", href)
-                var href = e.target.getAttribute('href');
-                e.target.setAttribute('state', 'currentState = clicked');
-               // this.conductRoute(href,e.target);
-
-            } else if (e.target.parentElement.hasAttribute('href')) {
-                  //   console.log("link found", href)
-                var href = e.target.parentElement.getAttribute('href');
-                e.target.parentElement.setAttribute('state', 'currentState = clicked');
-           // this.conductRoute(href, e.target.parentElement);
-            }
-       
-       
-       
-        
-        if (e.target.classList.contains('editable')) {
-            // console.log("clickedOn", entity.target.id, entity.target.classList.contains('editable')) // TO check if it's content
-            e.target.setAttribute('contentEditable', 'true');
-            //entity.target.setAttribute('State', "contentEditable");
+        if (e.target.hasAttribute('data-command')) {
+            response = JSON.parse(e.target.getAttribute('data-command'));
+      //    console.log(response);
+            this.handleInput(e, response);
+        }
+        if (e.target.parentElement.hasAttribute('data-command')) {
+            
+            response = JSON.parse(e.target.parentElement.getAttribute('data-command'));
+            
+    //      console.log(response[0]);
+            this.handleInput(e, response);
+            
         }
         if (e.target.classList.contains('parent')) {
             console.log("yo")
             e.target.parentElement.querySelector(".nested").classList.toggle("active");
             e.target.classList.toggle("parent-down");
         }
-        if (e.target.id == 'MainHeaderHamburger1') {
-            document.getElementById('navigationSection').classList.toggle('hide')
-            document.getElementById('navigationSection').classList.toggle('active')
-        }
  return;
+}
+
+    handleInput(e, entity) {
+      
+        var newWalkModelReq = walkReqModel;
+        console.log("before Walk", JSON.parse(JSON.stringify(newWalkModelReq)), JSON.parse(JSON.stringify(entity[0])))
+
+        newWalkModelReq['argument'] = [entity[0]];
+        Entity.walk(newWalkModelReq);
+        console.log("after Walk",newWalkModelReq, entity[0])
+       
+        // for (var key in entity[0]) {
+        //     if (typeof entity[0][key] )
+        //     console.log("before",entity[0][key]);
+        //     entity[0][key] = window[entity[0][key]];
+        //     console.log("after",entity[0][key]);
+
+        //     //buffer.push(window['workSpaceBody'])
+
+
+       
+        // }
+        
+        
+        var req = {
+            objectModel: 'engine',
+            method: entity[0]['command'],
+            arguments: window[entity[0]['req']]
+        }
+        var buffer = [];
+       // console.log(req['method'],req['arguments']['arguments'],entity[0]['arguments'], buffer)
+
     }
     conductRoute(hash) {
         //console.log("conducting route", hash)
@@ -231,8 +150,6 @@ if (e.target.hasAttribute('data-command') || e.target.parentElement.hasAttribute
        // e.preventDefault()
     }
     
-    
-
 }
 
 //https://dev.to/pixari/build-a-very-basic-spa-javascript-router-2k4p

@@ -18,8 +18,8 @@ class StorageHelper {
     //Save2Storage takes 2 arguments
     //1 key: key Name
     //2. Value: any value
-     set() {
-    //  console.log("I was called",arguments[0][0])
+    static set() {
+      //  console.log("I was called", arguments[0][0], arguments[0][1][arguments[0][0]])
         // data=JSON.stringify(data)
         //  console.log(actionStorageInstance);
          localStorage.setItem(arguments[0][0], JSON.stringify(arguments[0][1][arguments[0][0]]));
@@ -45,5 +45,6 @@ class StorageHelper {
         a.click();
     }
 }
+//var storageHelperInstance = new StorageHelper();
 //console.log("Iam loaded, and my name is storage helper")
 

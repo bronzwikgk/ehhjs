@@ -103,6 +103,7 @@ function obj_to_array(arg) {
   * @param {*} req.params
   * 
   */
+ 
    function eachKey(req) {
     //  if (!req['currentDepth']) { req['currentDepth'] = 0;console.log("it's a fresh start")}     
     if(typeof req==='object') {
@@ -110,13 +111,12 @@ function obj_to_array(arg) {
             //  req['currentDepth'] = req['currentDepth'] + 1; // add a break || continue condition to exit if more than max Depth
             if(req.hasOwnProperty(key)) {
 
-                var buffer=this.get(req[key],window);
+                var buffer=Entity.get(req[key],window);
                 if(operate.isUseless(buffer)===false) {
                     // console.log("iam Here raw", key, req[key]);
                     req[key]=buffer;
                     console.log("iam Here Intiated",key,req[key]);
                 }
-
                 if(operate.isString(req[key])) {
                     //  console.log("found string",key,req[key]) 
                 }

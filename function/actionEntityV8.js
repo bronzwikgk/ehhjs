@@ -105,7 +105,153 @@ class Entity {
         var response = str.substr(0, index) + value + str.substr(index);
         //  console.log("inserted",response)
         return response;
-    } 
+    }
+    static get(key, parent) {
+        // console.log("for Initaition", key, objectModel, objectModel[key])
+        if (parent[key]) {
+            // console.log("for Initaition", key, objectModel, objectModel[key])
+            var response = parent[key];
+            // console.log("Initaites found",response)
+            return response;
+        }
+
+    }
+
+    //This method walks through all the keys of an obect. By default it retunrs all the keys wile getting them from Window scope.
+    // It has optional patameter of Max Item, Max Depth and Recurse.
+
+    // walkReqModel = {
+//     name: 'eachKey',
+//     objectModel: 'ActionEngine',
+//     method: 'eachKey',
+//     argument: ['input'],
+//     params: {
+//         response: {},// If present the response is stored here. If an object returned as an object, if an array return as an array.
+//         recurse: 'true',
+//         maxDepth: 5,
+//         maxItem: 10,
+//     }
+// }
+
+    static walk(req) {
+
+        console.log("walk request",req['argument'][0])
+        //  if (!req['currentDepth']) { req['currentDepth'] = 0;console.log("it's a fresh start")}     
+        if (typeof req === 'object') {
+
+            for (var key in req['argument'][0]) {
+                //  req['currentDepth'] = req['currentDepth'] + 1; // add a break || continue condition to exit if more than max Depth
+                if (req['argument'][0].hasOwnProperty(key)) {
+                  
+                    //  console.log("iam Here raw", key, req['argument'][0][key]);
+                    
+                    if (operate.isString(req['argument'][0][key])) {
+                       // console.log(req['argument'][0][key]);
+                        //checking if the value has a dot in it. Normally used to add Scope before a method
+                        if (req['argument'][0][key].indexOf(".") > 0) {
+
+                            console.log("found DOT", req['argument'][0][key]);
+
+                            var split = req['argument'][0][key].split('.');
+                     //  console.log("split",split)
+                            var buffer = this.get(split[1], window[split[0]]);
+                        } else {
+                            //get the string Object from the window.
+                            var buffer = this.get(req['argument'][0][key], window);
+                        }
+                        if (operate.isUseless(buffer) === false) {
+                          
+                            req['argument'][0][key] = buffer;
+                          //  console.log("this updated", key,buffer)
+                        }
+
+
+
+                        if (req['callBack']) {
+                         //   console.log("callback found", req['callBack'])
+                          //  var callBack = window[req['callBack']];
+                            //var response = this.reqProcessor(callBack, req[response]);
+                        }
+
+
+                        //  console.log("found string",key,req[key]) 
+                    }
+                    else if (operate.isObject(req['argument'][0][key])) {
+                        //console.log("found Object", key, req[key],)
+                        if (req.params['recurse'] == 'true') {
+                          //  console.log("recurse", req['argument'][0][key])
+                            var newWalkModelReq = walkReqModel;
+                            newWalkModelReq['argument'] = [req['argument'][0][key]];
+                            Entity.walk(newWalkModelReq);
+                        }
+                          
+                    }
+                  
+                  //  console.log("iam Here Intiated", key, req['argument'][0][key]);
+                }
+                //f(m,loc,expr,val,path);
+            }
+        }
+      // console.log(req);
+        return req;
+    }
+    static walkv1(req) {
+
+        console.log("walk request", req['argument'][0])
+        //  if (!req['currentDepth']) { req['currentDepth'] = 0;console.log("it's a fresh start")}     
+        if (typeof req === 'object') {
+
+            for (var key in req['argument'][0]) {
+                //  req['currentDepth'] = req['currentDepth'] + 1; // add a break || continue condition to exit if more than max Depth
+                if (req['argument'][0].hasOwnProperty(key)) {
+
+                    //  console.log("iam Here raw", key, req['argument'][0][key]);
+
+                    if (operate.isString(req['argument'][0][key])) {
+                        // console.log(req['argument'][0][key]);
+                        //checking if the value has a dot in it. Normally used to add Scope before a method
+                        if (req['argument'][0][key].indexOf(".") > 0) {
+                            console.log("found DOT", req['argument'][0][key]);
+                            var split = req['argument'][0][key].split('.');
+                            //   console.log(split)
+                            var buffer = this.get(split[1], window[split[0]]);
+                        } else {
+                            //get the string Object from the window.
+                            var buffer = this.get(req['argument'][0][key], window);
+                        }
+                        if (operate.isUseless(buffer) === false) {
+
+                            req['argument'][0][key] = buffer;
+                        }
+
+
+
+
+
+
+                        //  console.log("found string",key,req[key]) 
+                    }
+                    else if (operate.isObject(req['argument'][0][key])) {
+                        //console.log("found Object", key, req[key],)
+                        if (req.params['recurse'] == 'true') {
+                            //  console.log("recurse", req['argument'][0][key])
+                            var newWalkModelReq = walkReqModel;
+                            newWalkModelReq['argument'] = [req['argument'][0][key]];
+                            Entity.walk(newWalkModelReq);
+                        }
+
+                    }
+                    else if (operate.isArray(req['argument'][0][key])) {
+                        //  console.log("found Array", key, req[key])
+                    }
+                    //  console.log("iam Here Intiated", key, req['argument'][0][key]);
+                }
+                //f(m,loc,expr,val,path);
+            }
+        }
+        // console.log(req);
+        return req;
+    }
 }
 class EntityModel {
 

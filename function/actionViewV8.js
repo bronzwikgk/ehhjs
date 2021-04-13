@@ -13,6 +13,7 @@ class ActionView {
         target.appendChild('input');
         return input;
     }
+    //input is a json, target is element
     load([input, target]) {
      console.log("load view",input,target)
         var newChild = new Entity(input, document.createElement('div'));
@@ -56,6 +57,7 @@ static closeModal(event){
    document.getElementById('data').innerHTML = '';
 }
 }
+
 /**
  * @file get/set caret position and insert text
  * @author islishude

@@ -5,12 +5,14 @@ var newActionStoryReq = {
     objectModel: 'actionSpaceViewInstance',
     method: 'load',
     argument: ['sampleActionStory', 'activeActionStory'],
- }
+}
+
+
 var loadObject2Dom = {
     name: 'loadObject2Dom',
     objectModel: 'actionSpaceViewInstance',
     method: 'load',
-    argument: ['input', 'target'],
+    arguments: [`StorageHelper[get]('e.target.id')`, `document.getElementbyId('')`],
     callBack: {
         objectModel: 'StorageHelper',
         method: 'set',
@@ -82,13 +84,7 @@ var entityModel4Html = {
 }
 
 
-var loadReqModel = {
-    objectModel: 'this.view',
-    method: 'load',
-    arguments: [`StorageHelper[get]('recentFiles')`, `document.getElementbyId('')`],
-    response:{}
-    ,
-}
+
 var copy2 = {
     reqName: 'copy2',
     objectModel: 'processV6',
@@ -169,13 +165,21 @@ var getKey = {
     andThen: ['attributes','style'],
     response: {},
 }
-var eachKeyReqModel = {
-    name: 'eachKey',
-    objectModel: 'ActionEngine',
-    method: 'eachKey',
+var getReqModel = {
+    objectModel: 'Entity',
+    method: 'get',
+    arguments:['key','parent'],
+}
+
+var walkReqModel = {
+    name: 'walk',
+    objectModel: 'Entity',
+    method: 'walk',
     argument: ['input'],
+    callBack: getReqModel,
     params: {
         response: {},// If present the response is stored here. If an object returned as an object, if an array return as an array.
+        recurse:'true',
         maxDepth: 5,
         maxItem: 10,
     }
