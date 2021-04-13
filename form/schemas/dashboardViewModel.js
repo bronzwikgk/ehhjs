@@ -8,7 +8,7 @@ var leftSideNavBar = {
             name: 'a',
             id:'recentFilesShortCut',
             class: 'item row align_center justify_SpaceBetween',
-            'data-command': `[{"objModel":"engine","method":"engine.action","req": "loadObject2Dom","arguments":["{StorageHelper.get('recentStories')}","document.getElementbyId('workSpaceBody')"]}]`,
+            'data-command': `[{"objModel":"engine","method":"engine.action","req": "loadObject2Dom","arguments":["{StorageHelper.get('recentStoriesCollection')}","document.getElementbyId('workSpaceBody')"]}]`,
             //'href': `#action:loadObject2Dom[storage,'recentStories','workspacebody']`,
             item1: {
                 name: 'i',
@@ -23,7 +23,7 @@ var leftSideNavBar = {
         },
         itemCollection2: {
             name: 'a',
-            'data-command': `[{"command":"action ","req": "loadObject2Dom","arguments":[storage,draft,workspacebody]}]`,
+            'data-command': `[{"objModel":"engine","method":"engine.action","req": "loadObject2Dom","arguments":["{StorageHelper.get('draftsCollection')}","document.getElementbyId('workSpaceBody')"]}]`,
           //  'href': `#action:loadObject2Dom[storage,draft,workspacebody]`,
             class: 'item row justify_SpaceBetween',
             item1: {
@@ -394,7 +394,7 @@ var workSpaceBody = {
         name: 'div',
         class: 'container row full-width',
         id: 'collectionThumnail',
-        recentStories,
+        recentStoriesCollectionDataSet,
     },
     contextMenu: {
         name: 'span',

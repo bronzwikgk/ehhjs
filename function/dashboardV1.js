@@ -4,7 +4,7 @@ var response2;
 //console.log(userDashboard, recentStories)
 
 StorageHelper.set(['userDashboard', userDashboard]);
-StorageHelper.set(['recentStories', recentStories]);
+StorageHelper.set(['recentStoriesCollection', recentStoriesCollectionDataSet]);
 //var newStorageInstance = new StorageHelper('userDashboard', userDashboard);
 var actionSpaceElementInstanceIndom = document.getElementById('actionSpaceContainer');
 var actionSpaceViewInstance = new ActionView(userDashboard, actionSpaceElementInstanceIndom);

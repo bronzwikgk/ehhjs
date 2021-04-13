@@ -1,5 +1,5 @@
-var recentStories = {
-    recentStories : {
+var recentStoriesCollectionDataSet = {
+    recentStoriesCollection : {
         'resourceLocation': 'StorageHelper',
         'name': 'recentStoriesDataModel',
         'maxAllowed': 40,
