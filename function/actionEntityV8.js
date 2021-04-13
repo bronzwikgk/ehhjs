@@ -116,6 +116,93 @@ class Entity {
         }
 
     }
+    //https://gomakethings.com/how-to-get-the-value-of-an-object-from-a-specific-path-with-vanilla-js/#:~:text=return%20our%20match.-,var%20get%20%3D%20function%20(obj%2C%20path%2C%20def)%20%7B,(or%20null)%20if%20(!
+    static get4rmPath(key,path){
+        var get = function (obj, path, def) {
+
+            /**
+             * If the path is a string, convert it to an array
+             * @param  {String|Array} path The path
+             * @return {Array}             The path array
+             */
+            var stringToPath = function (path) {
+        
+                // If the path isn't a string, return it
+                if (typeof path !== 'string') return path;
+        
+                // Create new array
+                var output = [];
+        
+                // Split to an array with dot notation
+                path.split('.').forEach(function (item, index) {
+        
+                    // Split to an array with bracket notation
+                    item.split(/\[([^}]+)\]/g).forEach(function (key) {
+        
+                        // Push to the new array
+                        if (key.length > 0) {
+                            output.push(key);
+                        }
+        
+                    });
+        
+                });
+        
+                return output;
+        
+            };
+        
+            // Get the path as an array
+            path = stringToPath(path);
+        
+            // Cache the current object
+            var current = obj;
+        
+            // For each item in the path, dig into the object
+            for (var i = 0; i < path.length; i++) {
+        
+                // If the item isn't found, return the default (or null)
+                if (!current[path[i]]) return def;
+        
+                // Otherwise, update the current  value
+                current = current[path[i]];
+        
+            }
+        
+            return current;
+        
+        };
+    }
+    /*!
+ * Create a new object composed of properties that meet specific criteria
+ * (c) 2021 Chris Ferdinandi, MIT License, https://gomakethings.com
+ * @param  {Object}   obj      The original object
+ * @param  {Function} callback The callback test to run
+ * @return {Object}            The new, filtered object
+ * https://vanillajstoolkit.com/helpers/objectfilter/
+ */
+
+static objectFilter (obj, callback) {
+
+	// Setup a new object
+	let filtered = {};
+
+	// Loop through each item in the object and test it
+	for (let key in obj) {
+		if (Object.prototype.hasOwnProperty.call(obj, key)) {
+
+			// If the callback validates true, push item to the new object
+			if (callback(obj[key], key, obj)) {
+				filtered[key] = obj[key];
+			}
+
+		}
+	}
+
+	// Return the new object
+	return filtered;
+
+}
 
     //This method walks through all the keys of an obect. By default it retunrs all the keys wile getting them from Window scope.
     // It has optional patameter of Max Item, Max Depth and Recurse.
