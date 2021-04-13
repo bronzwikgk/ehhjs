@@ -105,17 +105,12 @@ class ActionEvent {
     handleInput(e, entity) {
       
         var newWalkModelReq = walkReqModel;
-        console.log("before Walk", newWalkModelReq)
+        console.log("before Walk", newWalkModelReq,entity[0])
 
         newWalkModelReq['argument'] = [entity[0]];
         Entity.walk(newWalkModelReq);
-        console.log("after Walk",newWalkModelReq)
-        var req = {
-            objectModel: 'window',
-            method: 'eachKey',
-            arguments: [entity[0]],
-            callback: 'Entity.get[value]'
-        }
+        console.log("after Walk",newWalkModelReq, entity[0])
+       
         // for (var key in entity[0]) {
         //     if (typeof entity[0][key] )
         //     console.log("before",entity[0][key]);
@@ -127,7 +122,8 @@ class ActionEvent {
 
        
         // }
-
+        
+        
         var req = {
             objectModel: 'engine',
             method: entity[0]['command'],
