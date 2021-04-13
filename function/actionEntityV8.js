@@ -116,6 +116,7 @@ class Entity {
         }
 
     }
+
     //This method walks through all the keys of an obect. By default it retunrs all the keys wile getting them from Window scope.
     // It has optional patameter of Max Item, Max Depth and Recurse.
 
@@ -149,7 +150,11 @@ class Entity {
                         //  console.log("found string",key,req[key]) 
                     }
                     else if (operate.isObject(req[key])) {
-                        //  console.log("found Object", key, req[key])
+                        //console.log("found Object", key, req[key],)
+                        if (req.params['recurse'] == 'true') {
+                          console.log("recurse", ) 
+                        }
+                          
                     }
                     else if (operate.isArray(req[key])) {
                         //  console.log("found Array", key, req[key])

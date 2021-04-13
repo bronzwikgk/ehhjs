@@ -99,18 +99,21 @@ class ActionEvent {
     }
 
     handleInput(e, entity) {
-        console.log('response', e, entity, walkReqModel);
+        console.log('response', e, entity[0], walkReqModel);
+
+        walkReqModel['argument'] = [entity[0]]
+        console.log('response',  walkReqModel);
+    
         
+        Entity.walk(walkReqModel);
+      
         var req = {
             objectModel: 'window',
             method: 'eachKey',
             arguments: [entity[0]],
-            callback:'Entity.get[value]'
-            
+            callback: 'Entity.get[value]'
+
         }
-        walkReqModel
-        Entity.walk(entity);
-        
         // for (var key in entity[0]) {
         //     if (typeof entity[0][key] )
         //     console.log("before",entity[0][key]);
