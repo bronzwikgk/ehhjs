@@ -20,6 +20,7 @@ class ActionEvent {
             objectModel[key] = this.handleEvent // Need to use Emit instead of a direct call //Also Binding
         })
     }
+    
     addListener(eventName, fn) {
     console.log("add listner",eventName, fn);
         this._events[eventName] = this._events[eventName] || [];
@@ -92,25 +93,28 @@ class ActionEvent {
     //      console.log(response[0]);
             this.handleInput(e, response);
             
-        }    
+        }
+        if (e.target.classList.contains('parent')) {
+            console.log("yo")
+            e.target.parentElement.querySelector(".nested").classList.toggle("active");
+            e.target.classList.toggle("parent-down");
+        }
  return;
 }
 
     handleInput(e, entity) {
-        console.log('handling Input', walkReqModel);
-
-      walkReqModel['argument'] = [entity[0]];
-       console.log('response',  walkReqModel);
-    
-        
-        Entity.walk(walkReqModel);
       
+        var newWalkModelReq = walkReqModel;
+        console.log("before Walk", newWalkModelReq)
+
+        newWalkModelReq['argument'] = [entity[0]];
+        Entity.walk(newWalkModelReq);
+        console.log("after Walk",newWalkModelReq)
         var req = {
             objectModel: 'window',
             method: 'eachKey',
             arguments: [entity[0]],
             callback: 'Entity.get[value]'
-
         }
         // for (var key in entity[0]) {
         //     if (typeof entity[0][key] )
@@ -150,8 +154,6 @@ class ActionEvent {
        // e.preventDefault()
     }
     
-    
-
 }
 
 //https://dev.to/pixari/build-a-very-basic-spa-javascript-router-2k4p
