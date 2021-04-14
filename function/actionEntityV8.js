@@ -110,6 +110,9 @@ class Entity {
     static get(key, parent) {
         // console.log("for Initaition", key, objectModel, objectModel[key])
 
+        if (key.indexOf(".") > 0) {
+            return this.get4rmPath(key,parent)
+        }
         if (parent[key]) {
             // console.log("for Initaition", key, objectModel, objectModel[key])
             var response = parent[key];
@@ -123,7 +126,7 @@ class Entity {
     }
 
     //https://gomakethings.com/how-to-get-the-value-of-an-object-from-a-specific-path-with-vanilla-js/#:~:text=return%20our%20match.-,var%20get%20%3D%20function%20(obj%2C%20path%2C%20def)%20%7B,(or%20null)%20if%20(!
-    static get4rmPath(obj, path, def){
+    static get4rmPath(path,obj,def){
         
 
             /**
