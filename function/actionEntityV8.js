@@ -1,4 +1,34 @@
+class entityCollection {
 
+    constructor() {
+        this.entityCollection = JSON.parse(localStorage.getItem('entityCollection')) || new WeakSet();
+    }
+
+    addItem(entity, value) {
+        if (this.hasItem(entity)) {
+            throw new Error(
+                `The entity can only contain one instance of item ${entity}`
+            );
+        }
+        // console.log(JSON.stringify(this));
+        this.entityCollection.add(entity);
+        //  console.log()
+        window.localStorage.setItem(entity, value);
+    }
+
+    removeItem(entity) {
+        return this.entityCollection.delete(entity);
+    }
+    hasItem(entity) {
+        return this.entityCollection.has(entity);
+    }
+    getItem(entity) {
+        return this.entityCollection.get(entity);
+    }
+    clearItem(entity) {
+        return
+    }
+}
 class Entity {
     constructor(input, output) {
     //    console.log("entity", input, output)
@@ -108,20 +138,21 @@ class Entity {
     }
 
     static get(key, parent) {
-        // console.log("for Initaition", key, objectModel, objectModel[key])
+     console.log("for Initaition", key, parent)
 
-        if (key.indexOf(".") > 0) {
+        if (typeof key == 'object' || key.indexOf(".") > 0) {
+           // console.log(key)
             return this.get4rmPath(key,parent)
-        }
-        if (parent[key]) {
+        } else if (parent[key]) {
             // console.log("for Initaition", key, objectModel, objectModel[key])
             var response = parent[key];
-            
+
             // console.log("Initaites found",response)
             return response;
         } else {
             return console.log("objectNotfound");
         }
+        
 
     }
 
@@ -188,7 +219,7 @@ class Entity {
  * https://vanillajstoolkit.com/helpers/objectfilter/
  */
 
-static objectFilter (obj, callback) {
+    static objectFilter (obj, callback) {
 
 	// Setup a new object
 	let filtered = {};
@@ -346,37 +377,19 @@ static objectFilter (obj, callback) {
         return req;
     }
 }
-class entityCollection {
-
-    constructor() {
-        this.entityCollection = JSON.parse(localStorage.getItem('entityCollection')) || new WeakSet();
-    }
-
-    addItem(entity, value) {
-        if (this.hasItem(entity)) {
-            throw new Error(
-                `The entity can only contain one instance of item ${entity}`
-            );
+var obj = {
+    'a': [
+        {
+            'b': {
+                'c': 3
+            }
         }
-        // console.log(JSON.stringify(this));
-        this.entityCollection.add(entity);
-        //  console.log()
-        window.localStorage.setItem(entity, value);
-    }
+    ]
+};
 
-    removeItem(entity) {
-        return this.entityCollection.delete(entity);
-    }
-    hasItem(entity) {
-        return this.entityCollection.has(entity);
-    }
-    getItem(entity) {
-        return this.entityCollection.get(entity);
-    }
-    clearItem(entity) {
-        return
-    }
-}
+var req1 = ['a', '0', 'b', 'c'];
+var req2 = 'a[0].b.c';
+var getPath =Entity.get(req1,obj);
 
-
-//console.log("I am loaded > entity",)
+// Logs 3
+console.log("get Path",getPath);
