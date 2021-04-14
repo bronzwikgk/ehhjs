@@ -258,6 +258,60 @@ class Entity {
 // }
 
     static walk(req) {
+        console.log("walk request", req['argument'][0])
+        //  if (!req['currentDepth']) { req['currentDepth'] = 0;console.log("it's a fresh start")}     
+        if (typeof req === 'object') {
+
+            for (var key in req['argument'][0]) {
+                //  req['currentDepth'] = req['currentDepth'] + 1; // add a break || continue condition to exit if more than max Depth
+                if (req['argument'][0].hasOwnProperty(key)) {
+
+                    //  console.log("iam Here raw", key, req['argument'][0][key]);
+
+                    if (operate.isString(req['argument'][0][key])) {
+                         console.log("before",req['argument'][0][key]);
+                        //checking if the value has a dot in it. Normally used to add Scope before a method
+                        //get the string Object from the window.
+                        
+                        var buffer = Entity.get(req['argument'][0][key], window);
+                        //console.log("found Object", key, req[key],)
+                      
+                        if (operate.isUseless(buffer) === false) {
+
+                        req['argument'][0][key] = buffer;
+                        //  console.log("this updated", key,buffer)
+                    }
+                    } else if (typeof req['argument'][0][key] == 'object') {
+                        if (req.params['recurse'] == 'true') {
+                            //  console.log("recurse", req['argument'][0][key])
+                            var newWalkModelReq = walkReqModel;
+                            newWalkModelReq['argument'] = [req['argument'][0][key]];
+                            Entity.walk(newWalkModelReq);
+                        }
+
+
+                    }
+
+
+                 
+                    if (req['callBack']) {
+                        //   console.log("callback found", req['callBack'])
+                        //  var callBack = window[req['callBack']];
+                        //var response = this.reqProcessor(callBack, req[response]);
+                    }
+
+
+                    //  console.log("found string",key,req[key]) 
+                }
+
+
+                //  console.log("iam Here Intiated", key, req['argument'][0][key]);
+            }
+            //f(m,loc,expr,val,path);
+        }
+        return req;
+    }
+    static walk2(req) {
 
         console.log("walk request",req['argument'][0])
         //  if (!req['currentDepth']) { req['currentDepth'] = 0;console.log("it's a fresh start")}     
@@ -272,25 +326,24 @@ class Entity {
                     if (operate.isString(req['argument'][0][key])) {
                        // console.log(req['argument'][0][key]);
                         //checking if the value has a dot in it. Normally used to add Scope before a method
-                        if (req['argument'][0][key].indexOf(".") > 0) {
+                           //get the string Object from the window.
+                            var buffer = Entity.get(req['argument'][0][key], window);
+                                                //console.log("found Object", key, req[key],)
+                                                if (req.params['recurse'] == 'true') {
+                                                //  console.log("recurse", req['argument'][0][key])
+                                                    var newWalkModelReq = walkReqModel;
+                                                    newWalkModelReq['argument'] = [req['argument'][0][key]];
+                                                    Entity.walk(newWalkModelReq);
+                                                }
+                                                
+                                            }
+                      
 
-                            console.log("found DOT", req['argument'][0][key]);
-
-                            var split = req['argument'][0][key].split('.');
-                     //  console.log("split",split)
-                            var buffer = this.get(split[1], window[split[0]]);
-                        } else {
-                            //get the string Object from the window.
-                            var buffer = this.get(req['argument'][0][key], window);
-                        }
-                        if (operate.isUseless(buffer) === false) {
+                            if (operate.isUseless(buffer) === false) {
                           
                             req['argument'][0][key] = buffer;
                           //  console.log("this updated", key,buffer)
                         }
-
-
-
                         if (req['callBack']) {
                          //   console.log("callback found", req['callBack'])
                           //  var callBack = window[req['callBack']];
@@ -300,25 +353,16 @@ class Entity {
 
                         //  console.log("found string",key,req[key]) 
                     }
-                    else if (operate.isObject(req['argument'][0][key])) {
-                        //console.log("found Object", key, req[key],)
-                        if (req.params['recurse'] == 'true') {
-                          //  console.log("recurse", req['argument'][0][key])
-                            var newWalkModelReq = walkReqModel;
-                            newWalkModelReq['argument'] = [req['argument'][0][key]];
-                            Entity.walk(newWalkModelReq);
-                        }
-                          
-                    }
+             
                   
                   //  console.log("iam Here Intiated", key, req['argument'][0][key]);
                 }
                 //f(m,loc,expr,val,path);
-            }
+            }    return req;
         }
       // console.log(req);
-        return req;
-    }
+    
+    
     static walkv1(req) {
 
         console.log("walk request", req['argument'][0])
