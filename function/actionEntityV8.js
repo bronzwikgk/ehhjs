@@ -138,22 +138,21 @@ class Entity {
     }
 
     static get(key, parent) {
-     console.log("for Initaition", key, parent)
+        console.log("for Initaition", key, parent)
+        if (operate.isString(key)) {
+            if (parent[key]) {
+              console.log("for Initaition", key, objectModel, objectModel[key])
+                var response = parent[key];
 
-        if (typeof key == 'object' || key.indexOf(".") > 0) {
+                console.log("Initaites found", response)
+                return response;
+            }
+        } else if (typeof key == 'object' || key.indexOf(".") > 0) {
            // console.log(key)
             return this.get4rmPath(key,parent)
-        } else if (parent[key]) {
-            // console.log("for Initaition", key, objectModel, objectModel[key])
-            var response = parent[key];
-
-          console.log("Initaites found",response)
-            return response;
-        } else {
+        } else{
             return console.log("objectNotfound");
         }
-        
-
     }
 
     //https://gomakethings.com/how-to-get-the-value-of-an-object-from-a-specific-path-with-vanilla-js/#:~:text=return%20our%20match.-,var%20get%20%3D%20function%20(obj%2C%20path%2C%20def)%20%7B,(or%20null)%20if%20(!
@@ -258,7 +257,7 @@ class Entity {
 // }
 
     static walk(req) {
-        console.log("walk request", req['argument'][0])
+        console.log("walk request", req['argument'])
         //  if (!req['currentDepth']) { req['currentDepth'] = 0;console.log("it's a fresh start")}     
         if (typeof req === 'object') {
 
@@ -324,11 +323,15 @@ var obj = {
     ]
 };
 
-var req = `[recentStoriesCollectionView,workSpaceBody]`
+var req = ['recentStoriesCollectionView','workSpaceBody']
 console.log('testing req', req, typeof req)
 var req1 = ['a', '0', 'b', 'c'];
 var req2 = 'a[0].b.c';
-var getPath = Entity.get(req,window);
+
+var newWalkModelReq = walkReqModel;
+newWalkModelReq['argument'] = req;
+var getPath = Entity.walk(newWalkModelReq);
+
 
 // Logs 3
 console.log("get Path",getPath);
