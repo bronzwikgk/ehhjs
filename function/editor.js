@@ -6,4 +6,4 @@ class Editor{
 
 }
 
-var editor = new editor('#actionEditor', { theme: 'snow' });
+var editor = new Editor('#actionEditor', { theme: 'snow' });
