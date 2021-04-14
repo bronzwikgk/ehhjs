@@ -106,6 +106,7 @@ class Entity {
         //  console.log("inserted",response)
         return response;
     }
+
     static get(key, parent) {
         // console.log("for Initaition", key, objectModel, objectModel[key])
 
@@ -120,6 +121,7 @@ class Entity {
         }
 
     }
+
     //https://gomakethings.com/how-to-get-the-value-of-an-object-from-a-specific-path-with-vanilla-js/#:~:text=return%20our%20match.-,var%20get%20%3D%20function%20(obj%2C%20path%2C%20def)%20%7B,(or%20null)%20if%20(!
     static get4rmPath(obj, path, def){
         
@@ -341,9 +343,11 @@ static objectFilter (obj, callback) {
         return req;
     }
 }
-class EntityModel {
+class entityCollection {
 
-    constructor() { this.entityCollection = JSON.parse(localStorage.getItem('entityCollection')) || new WeakSet(); }
+    constructor() {
+        this.entityCollection = JSON.parse(localStorage.getItem('entityCollection')) || new WeakSet();
+    }
 
     addItem(entity, value) {
         if (this.hasItem(entity)) {
