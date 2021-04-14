@@ -324,9 +324,11 @@ var obj = {
     ]
 };
 
+var req = `[recentStoriesCollectionView,workSpaceBody]`
+console.log('testing req', req, typeof req)
 var req1 = ['a', '0', 'b', 'c'];
 var req2 = 'a[0].b.c';
-var getPath =Entity.get(req1,obj);
+var getPath = Entity.get(req,window);
 
 // Logs 3
 console.log("get Path",getPath);
