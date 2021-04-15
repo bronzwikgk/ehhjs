@@ -6,3 +6,8 @@
      -webkit-user-select: none;
      -webkit-box-sizing: border-box;
    }
+
+   .center-xy {
+  display: grid;
+  place-items: center;
+}

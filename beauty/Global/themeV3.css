@@ -1,4 +1,6 @@
 :root{
+  --lightblue: #b3d4fc;
+  --lighterblue:#d4ecff;
     --blue: #3f80ea;
     --indigo: #6610f2;
     --darkblue:#000031;
@@ -19,12 +21,13 @@
     --info: #1f9bcf;
     --warning: #e5a54b;
     --danger: #d9534f;
-    --light: #f1f5f9;
+    --light: #f4f5f5;
     --dark: #293042;
     font-family: 'poppins';
       font-size: 1.8vh;
 
 }
+
 body{
    display: flex;
     background-color: var(--light);

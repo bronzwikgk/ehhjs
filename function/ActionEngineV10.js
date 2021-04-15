@@ -23,7 +23,7 @@ class ActionEngine {
       return console.error("Need a JSON, Please refer to the documentation", "Does this >", req, "look like JSON to you. It's damn", operate.is(req));
     }
     //  console.log("objectModel", req.objectModel, window['ActionView']);
-    var objectModel = this.get(req.objectModel, window);//Getting the object Model from window Object
+    var objectModel = Entity.get(req.objectModel, window);//Getting the object Model from window Object
     // console.log("objectModel", objectModel);
     if (result) {//Used for either callback cases, where 
       var argument = result;
@@ -33,7 +33,7 @@ class ActionEngine {
     //Build Arguments
     for (var i = 0; i < argument.length; i++) {
       //  console.log(argument[i]);
-      argument[i] = this.get(argument[i], window);
+      argument[i] = Entity.get(argument[i], window);
       //  console.log(argument[i]);
 
     }
@@ -76,7 +76,7 @@ class ActionEngine {
     if (req['callBack']) {
       //     console.log("callback found")
       var callBack = window[req['callBack']];
-      var response = this.reqProcessor(callBack, req[response]);
+      var response = this.action(callBack, req[response]);
     }
     //  console.log(response)
     return response;

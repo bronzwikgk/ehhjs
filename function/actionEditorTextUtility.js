@@ -5,12 +5,7 @@ const isLowSurrogate = charCode => charCode >= 0xdc00 && charCode <= 0xdfff;
 const isVariationSelector = charCode =>
   charCode >= 0xfe00 && charCode <= 0xfe0f;
 
-const isCombiningCharacter = charCode =>
-  (charCode >= 0x0300 && charCode <= 0x036f) ||
-  (charCode >= 0x1ab0 && charCode <= 0x1aff) ||
-  (charCode >= 0x1dc0 && charCode <= 0x1dff) ||
-  (charCode >= 0x20d0 && charCode <= 0x20ff) ||
-  (charCode >= 0xfe20 && charCode <= 0xfe2f);
+const isCombiningCharacter = charCode =>  (charCode >= 0x0300 && charCode <= 0x036f) || (charCode >= 0x1ab0 && charCode <= 0x1aff) || (charCode >= 0x1dc0 && charCode <= 0x1dff) ||  (charCode >= 0x20d0 && charCode <= 0x20ff) ||  (charCode >= 0xfe20 && charCode <= 0xfe2f);
 
 // Are the given character codes a high/low surrogate pair?
 //
@@ -18,8 +13,7 @@ const isCombiningCharacter = charCode =>
 // * `charCode2` The second character code {Number}.
 //
 // Return a {Boolean}.
-const isSurrogatePair = (charCodeA, charCodeB) =>
-  isHighSurrogate(charCodeA) && isLowSurrogate(charCodeB);
+const isSurrogatePair = (charCodeA, charCodeB) =>  isHighSurrogate(charCodeA) && isLowSurrogate(charCodeB);
 
 // Are the given character codes a variation sequence?
 //
@@ -27,8 +21,7 @@ const isSurrogatePair = (charCodeA, charCodeB) =>
 // * `charCode2` The second character code {Number}.
 //
 // Return a {Boolean}.
-const isVariationSequence = (charCodeA, charCodeB) =>
-  !isVariationSelector(charCodeA) && isVariationSelector(charCodeB);
+const isVariationSequence = (charCodeA, charCodeB) => !isVariationSelector(charCodeA) && isVariationSelector(charCodeB);
 
 // Are the given character codes a combined character pair?
 //
@@ -36,8 +29,7 @@ const isVariationSequence = (charCodeA, charCodeB) =>
 // * `charCode2` The second character code {Number}.
 //
 // Return a {Boolean}.
-const isCombinedCharacter = (charCodeA, charCodeB) =>
-  !isCombiningCharacter(charCodeA) && isCombiningCharacter(charCodeB);
+const isCombinedCharacter = (charCodeA, charCodeB) => !isCombiningCharacter(charCodeA) && isCombiningCharacter(charCodeB);
 
 // Is the character at the given index the start of high/low surrogate pair
 // a variation sequence, or a combined character?
@@ -58,15 +50,11 @@ const isPairedCharacter = (string, index = 0) => {
   );
 };
 
-const IsJapaneseKanaCharacter = charCode =>
-  charCode >= 0x3000 && charCode <= 0x30ff;
+const IsJapaneseKanaCharacter = charCode =>  charCode >= 0x3000 && charCode <= 0x30ff;
 
-const isCJKUnifiedIdeograph = charCode =>
-  charCode >= 0x4e00 && charCode <= 0x9fff;
+const isCJKUnifiedIdeograph = charCode =>  charCode >= 0x4e00 && charCode <= 0x9fff;
 
-const isFullWidthForm = charCode =>
-  (charCode >= 0xff01 && charCode <= 0xff5e) ||
-  (charCode >= 0xffe0 && charCode <= 0xffe6);
+const isFullWidthForm = charCode =>  (charCode >= 0xff01 && charCode <= 0xff5e) ||  (charCode >= 0xffe0 && charCode <= 0xffe6);
 
 const isDoubleWidthCharacter = character => {
   const charCode = character.charCodeAt(0);
@@ -79,6 +67,7 @@ const isDoubleWidthCharacter = character => {
 };
 
 const isHalfWidthCharacter = character => {
+
   const charCode = character.charCodeAt(0);
 
   return (
@@ -104,15 +93,9 @@ const isCJKCharacter = character =>
   isHalfWidthCharacter(character) ||
   isKoreanCharacter(character);
 
-const isWordStart = (previousCharacter, character) =>
-  (previousCharacter === ' ' ||
-    previousCharacter === '\t' ||
-    previousCharacter === '-' ||
-    previousCharacter === '/') &&
-  (character !== ' ' && character !== '\t');
+const isWordStart = (previousCharacter, character) =>  (previousCharacter === ' ' ||    previousCharacter === '\t' ||    previousCharacter === '-' ||    previousCharacter === '/') &&  (character !== ' ' && character !== '\t');
 
-const isWrapBoundary = (previousCharacter, character) =>
-  isWordStart(previousCharacter, character) || isCJKCharacter(character);
+const isWrapBoundary = (previousCharacter, character) =>  isWordStart(previousCharacter, character) || isCJKCharacter(character);
 
 // Does the given string contain at least surrogate pair, variation sequence,
 // or combined character?
