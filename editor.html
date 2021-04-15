@@ -33,7 +33,7 @@
     --warning: #e5a54b;
     --danger: #d9534f;
     --light: #f4f5f5;
-    --lighter:#dfe3eb;
+    --lighter:#F7F7FA;
     --dark: #293042;
     font-family: 'poppins';
       font-size: 1.8vh;
@@ -72,12 +72,23 @@ html,body{
     
 }
 #actionEditor{
+
     flex-direction: column;
     padding:1em;
     width: 54%;
     height: inherit;
     margin: auto;
-    background-color: var(--light)
+    background-color: var(--light);
+    /*
+    https://shadows.brumm.af/
+    */
+
+ box-shadow:
+  0 6.7px 5px rgba(0, 0, 0, 0.048),
+  0 14px 40px rgba(0, 0, 0, 0.07)
+;
+
+
 
 }
 
