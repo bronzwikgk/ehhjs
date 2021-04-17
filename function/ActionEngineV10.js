@@ -4,17 +4,18 @@ class ActionEngine {
     this._currentReq=[]; // need to be set in database A quick generator Pattenr .
     this._response ;
   }
-  
-   // this method taken in a Hash path. With a syntax of Command [ arguments ]
-   
-  hashAction(req, result) {
+  get(key,parent) {
+    // console.log("for Initaition", key, objectModel, objectModel[key])
+     if (parent[key]) {
+        // console.log("for Initaition", key, objectModel, objectModel[key])
+         var response = parent[key];
+        // console.log("Initaites found",response)
+         return response;
+     }
 
 
-    
-    
-    var reqModel = req.slice(":");
-    console.log(reqModel,req, typeof req)
-  }
+ }
+
   action(req, result) {
     //  console.log("execute req", req)
     //testing if the req is an object
@@ -22,7 +23,7 @@ class ActionEngine {
       return console.error("Need a JSON, Please refer to the documentation", "Does this >", req, "look like JSON to you. It's damn", operate.is(req));
     }
     //  console.log("objectModel", req.objectModel, window['ActionView']);
-    var objectModel = this.get(req.objectModel, window);//Getting the object Model from window Object
+    var objectModel = Entity.get(req.objectModel, window);//Getting the object Model from window Object
     // console.log("objectModel", objectModel);
     if (result) {//Used for either callback cases, where 
       var argument = result;
@@ -32,11 +33,10 @@ class ActionEngine {
     //Build Arguments
     for (var i = 0; i < argument.length; i++) {
       //  console.log(argument[i]);
-      argument[i] = this.get(argument[i], window);
+      argument[i] = Entity.get(argument[i], window);
       //  console.log(argument[i]);
 
     }
-
 
     if (req['andThen']) {
       var andThenLength = req['andThen'].length;
@@ -76,7 +76,7 @@ class ActionEngine {
     if (req['callBack']) {
       //     console.log("callback found")
       var callBack = window[req['callBack']];
-      var response = this.reqProcessor(callBack, req[response]);
+      var response = this.action(callBack, req[response]);
     }
     //  console.log(response)
     return response;

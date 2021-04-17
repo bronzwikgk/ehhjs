@@ -8,7 +8,6 @@ StorageHelper.set(['recentStoriesCollection', recentStoriesCollectionDataSet]);
 //var newStorageInstance = new StorageHelper('userDashboard', userDashboard);
 var actionSpaceElementInstanceIndom = document.getElementById('actionSpaceContainer');
 var actionSpaceViewInstance = new ActionView(userDashboard, actionSpaceElementInstanceIndom);
-
 //console.log(actionSpaceInstace._actionView.entity)
 var actionEventInstance = new ActionEvent('window', activeListerners['window']);
 var actionSpaceController = new ActionController(actionSpaceViewInstance, userDashboard, actionEventInstance);
@@ -29,9 +28,6 @@ var buildJsonReq = {
     arguments: ['script'],
     response:[],
     callback:'eachKeyReq',
-}
-var eachKeyReq = {
-    
 }
 
 function buildJson() {
@@ -98,10 +94,6 @@ function buildJson() {
     console.log(responseOutput);
 }
 
-var data = {
-  'key1': document.getElementById('actionSpaceContainer').innerText,
-  'key2': document.getElementById('workSpaceBody').innerHTML,
-}
 
 //console.log(data);
 //buildJson();

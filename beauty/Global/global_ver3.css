@@ -105,11 +105,7 @@ align-self: flex-start;
   background-color: #00000048;
   height: 1px;
 }
-.verticleBar{
-  margin-left: 21px;
-  margin-right: 21px;
-   border-left: 2px solid #495057;
-}
+
 .small{
   font-size: 12px;
 }

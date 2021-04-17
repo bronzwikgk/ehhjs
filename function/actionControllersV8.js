@@ -464,7 +464,8 @@ class ActionController extends ActionEvent {
         event.preventDefault();
         var ItemId = uid();
         newItemJSON['td1']['a']['id'] = ItemId;newItemJSON['id'] = 'tr'+ ItemId;
-        var json = {};json[ItemId] = newItemJSON;
+        var json = {};
+        json[ItemId] = newItemJSON;
         var newItem = new Entity(json,document.getElementById('tbody'));
     }
     new1(event) {
