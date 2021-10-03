@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+    <title>Router Working</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #root {
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script src = "/function/helpers/operate.js"></script>
+    <script src = "/function/actionEntity.js"></script>
+    <script src = "/function/helpers/copyAs.js"></script>
+    <script src = "/function/helpers/json2html.js"></script>
+    <script src = "/function/helpers/json2css.js"></script>
+    <script>
+        window.onload = function() {
+            console.log("I am here", window.location.pathname);
+            if(window.location.pathname === "/" || window.location.pathname === "/index.html"){
+                if ('serviceWorker' in navigator) {
+                    navigator.serviceWorker.getRegistrations().then(registrations => {
+                        if(registrations.length > 0 ) return;
+                        navigator.serviceWorker
+                        .register('/sw.js')
+                        .then(function (registration) { registration.update(); });
+                        navigator.serviceWorker.ready.then( registration => {
+                            fetch("index.html");  // just cache this file
+                            
+                        });
+                    })
+                }
+            
+            }
+            if('serviceWorker' in navigator) { 
+                navigator.serviceWorker.ready.then( registration => {
+                    registration.active.postMessage({command:"route", path:window.location.pathname})
+                });
+                
+                navigator.serviceWorker.addEventListener("message", async function(event) {
+                    console.log(event);
+                    if(event.data.command == "updatePage"){
+                        console.log('here');
+                        window.history.pushState(event.data, event.data.name || "Default String");
+                        if(event.data.module.view) {
+                            event.data.view.update(event.data.module.model, document.getElementById("root"));
+                        } else {
+                            console.log(event.data.module)
+                            await json2html(event.data.module.model, document.getElementById("root"));
+                        }
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>

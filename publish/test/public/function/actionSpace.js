@@ -1,0 +1,3 @@
+class ActionSpace extends ActionController{
+
+}

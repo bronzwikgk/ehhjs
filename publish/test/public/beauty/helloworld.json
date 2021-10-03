@@ -1,0 +1,30 @@
+{
+  "rules": [
+    {
+      "body":{
+        "margin":0,
+        "padding":0
+      }
+    },
+    {
+      ".fc": {
+        "background": "#fff",
+        "width": "100vw",
+        "height": "100vh",
+        "position": "relative"
+      }
+    },
+    {
+      ".welcome-container": {
+        "position": "absolute",
+        "margin-left": "50vw",
+        "margin-top": "50vh",
+        "font-size": "5vh",
+        "box-sizing":"border-box",
+        "border": "5px dashed black",
+        "padding":"20px",
+        "transform": "translateX(-50%) translateY(-50%)"
+      }
+    }
+  ]
+}

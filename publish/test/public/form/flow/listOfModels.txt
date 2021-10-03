@@ -1,0 +1,37 @@
+Action Space - 
+SignUpRequest
+loginRequest
+exportToSheetRequest
+importFromSheetRequest
+getActionStoriesRequest
+getGoogleDriveFolderRequest
+recentFilesRequest
+saveFileRequest{saveLocalStorageFileRequest,saveFSFileRequest,saveGDriveFileRequest}
+newFileRequest{ saveFileRequest,recentFilesRequest}
+OpenAFileRequest { saveFileRequest,recentFilesRequest}
+AddACollectionRequest
+EachFileRequest { saveFileRequest,recentFilesRequest,getGoogleDriveFileRequest}
+viewFormRequest
+publishAppsScriptProject
+
+
+
+
+SERVER (Apps Script)	REQUEST MODELS
+Action Space Server	
+	SignUp server Request
+	SignIn server Request
+	
+Each  User's Apps Script Server	
+	getDataFromSheetRequest Server
+	sendDataToSheetRequest Server
+	updateDataInSheetRequest Server
+	searchFolderRequest Server
+	getFileContentRequest Server
+	updateFileContentRequest Server
+	
+	
+	
+	
+	
+	

@@ -1,0 +1,3 @@
+/**
+ * Stores the app UI.
+ */
