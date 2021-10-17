@@ -7,7 +7,6 @@ class ActionController {
         this.actionEvents = actionEvents;
         this.bufferRange = '';
     }
-  
     // handleEvent(e) {
     //   console.log("event Caught",e.type,e.target);
         
