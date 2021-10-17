@@ -1,6 +1,6 @@
 
 /**
- * @type {HTMLJSONEntityModel4Html}
+ * @type {iHTMLJSONEntityModel4Html}
  */
  var entityModel4Html = {
     tagName: "tagName",
