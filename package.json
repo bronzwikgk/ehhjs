@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+ssh://git@gitlab.com/bronzwik/dot.git"
   },
-  "author": "Brajesh825",
+  "author": "Bronzwik",
   "license": "ISC",
   "bugs": {
     "url": "https://gitlab.com/bronzwik/dot/issues"
