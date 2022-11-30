@@ -1,19 +1,23 @@
 {
-  "name": "everything.happens.here",
-  "version": "0.0.1",
-  "description": "",
+  "name": "ehhjs",
+  "version": "0.0.0",
+  "description": "One Package for any kind of web application.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com/bronzwik/dot.git"
+    "url": "git+https://github.com/bronzwikgk/everything-Happens-Here-Ver-O.1-live.git"
   },
-  "author": "Bronzwik",
+  "keywords": [
+    "web",
+    "framework"
+  ],
+  "author": "team@shunya",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/bronzwik/dot/issues"
+    "url": "https://github.com/bronzwikgk/everything-Happens-Here-Ver-O.1-live/issues"
   },
-  "homepage": "https://gitlab.com/bronzwik/dot#readme"
+  "homepage": "https://github.com/bronzwikgk/everything-Happens-Here-Ver-O.1-live#readme"
 }
