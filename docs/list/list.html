@@ -47,14 +47,34 @@
     th{
         padding-left: 20px;
     }
+    .heading {
+            position: sticky;
+            top: 40px;
+            background: white;
+        }
+    nav {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            font-size: 18px;
+            position: sticky;
+            background: white;
+            top: 0;
+            padding: 10px;
+        }
 
     </style>
 </head>
 <body>
     <div class="container">
 
+        <nav>
+            <a href="../compare/compare.html">Comparison</a>
+            <a href="./list.html">Glossary list</a>
+        </nav>
+
         <table>
-            <tr>
+            <tr class="heading">
                 <th>features</th>
                 <th>explaination</th>
             </tr>

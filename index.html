@@ -12,11 +12,12 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         .container {
-    /* padding: 30px; */
-    width: 98vw;
-    display: block;
-    margin: auto;
+            /* padding: 30px; */
+            width: 98vw;
+            display: block;
+            margin: auto;
         }
 
         table {
@@ -36,17 +37,34 @@
         tr:nth-child(even) {
             background-color: #dddddd;
         }
-        .heading{
-    position: sticky;
-    top: 0;
-    background: white;
-}
+
+        .heading {
+            position: sticky;
+            top: 40px;
+            background: white;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            font-size: 18px;
+            position: sticky;
+            background: white;
+            top: 0;
+            padding: 10px;
+        }
     </style>
 </head>
 
 <body>
 
     <div class="container">
+        <nav>
+            <a href="./docs/compare/compare.html">Comparison</a>
+            <a href="./docs/list/list.html">Glossary list</a>
+        </nav>
+
         <table>
             <tr class="heading">
                 <th>Features</th>
@@ -106,40 +124,40 @@
 
             <tr>
                 <th>Building blocks</th>
-                <td>includes models, views, controllers, 
+                <td>includes models, views, controllers,
                     configuration files, and adapters (e.g., database).
-                    
+
                 </td>
                 <td>
-                    BackboneJS provides various building 
-blocks such as models, views, events, routers 
-and collections for assembling the client side
- web applications.
+                    BackboneJS provides various building
+                    blocks such as models, views, events, routers
+                    and collections for assembling the client side
+                    web applications.
                 </td>
                 <td>
-                    Components are the building blocks of Svelte 
-applications. They are written into . svelte files 
-using a superset of HTML.
+                    Components are the building blocks of Svelte
+                    applications. They are written into . svelte files
+                    using a superset of HTML.
                 </td>
                 <td>
                     Models, templates, components, routes,
                 </td>
                 <td>
-                    Jsx, components, states, props, 
-conditional rendering
+                    Jsx, components, states, props,
+                    conditional rendering
                 </td>
                 <td>
                     Modules, components, Templates, metadata,
- directives, dependency injection
+                    directives, dependency injection
                 </td>
                 <td>
                     Module, controllers, directives,
-data binding
+                    data binding
                 </td>
                 <td>
-                    data banding, event handling, 
-computed properties, templates,
- directives.
+                    data banding, event handling,
+                    computed properties, templates,
+                    directives.
                 </td>
 
             </tr>
@@ -152,17 +170,17 @@ computed properties, templates,
 
                 </td>
                 <td>
-                    two way data binding Backbone does not 
-provide a mechanism to achieve this easily; 
-however, we can do it using the event system 
-that Backbone models provide.
+                    two way data binding Backbone does not
+                    provide a mechanism to achieve this easily;
+                    however, we can do it using the event system
+                    that Backbone models provide.
                 </td>
                 <td>
-                    two way data binding 
+                    two way data binding
                 </td>
                 <td>
                     Two-way data binding is what
- originally attracted many to Ember. js.
+                    originally attracted many to Ember. js.
                 </td>
                 <td>
                     One way (unidirectional)
@@ -181,23 +199,23 @@ that Backbone models provide.
             <tr>
                 <th>Extensions</th>
                 <td>
-                    There are currently three types of 
-extensions that you can add to Sails - 
-generators, adaptors, Hooks
+                    There are currently three types of
+                    extensions that you can add to Sails -
+                    generators, adaptors, Hooks
                 </td>
                 <td>
-                    It is free and open source library and 
-contains over 100 available extensions.
-(backbone debugger)
+                    It is free and open source library and
+                    contains over 100 available extensions.
+                    (backbone debugger)
                 </td>
                 <td>
                     svelte dev tools
                 </td>
                 <td>
                     The Ember Inspector is a plug-in for the
- Chrome developer tools that makes
- understanding and debugging your 
-Ember. js application
+                    Chrome developer tools that makes
+                    understanding and debugging your
+                    Ember. js application
                 </td>
                 <td>
                     React Dev tools
@@ -206,8 +224,8 @@ Ember. js application
                     Angular Dev tools
                 </td>
                 <td>
-                    ui-router, template, templateUrl, 
-templateProvider
+                    ui-router, template, templateUrl,
+                    templateProvider
                 </td>
                 <td>
                     vue dev tools
@@ -222,130 +240,131 @@ templateProvider
 
                 </td>
                 <td>
-                    When it comes down to it, Backbone does 
-not explicitly handle cleaning up objects for 
-you. That responsibility falls 50/50 between
- you and the JavaScript runtime.
+                    When it comes down to it, Backbone does
+                    not explicitly handle cleaning up objects for
+                    you. That responsibility falls 50/50 between
+                    you and the JavaScript runtime.
                 </td>
                 <td>
-                    Memory usage is high especially for large 
-apps, which also leads to memroy leaks and 
-high power consumptions, might also crash 
-apps sometimes
+                    Memory usage is high especially for large
+                    apps, which also leads to memroy leaks and
+                    high power consumptions, might also crash
+                    apps sometimes
                 </td>
                 <td>
                     When you compare memory consumption
- of the various TodoMVC implementations
- using Chrome Dev Tools snapshots,
- you can see that Ember's one is the 
-worst (memory leaks issues)
+                    of the various TodoMVC implementations
+                    using Chrome Dev Tools snapshots,
+                    you can see that Ember's one is the
+                    worst (memory leaks issues)
                 </td>
                 <td>
                     React now cleans up more internal fields on
- unmount, making the impact from unfixed
- memory leaks that may exist in your application
- code less server
+                    unmount, making the impact from unfixed
+                    memory leaks that may exist in your application
+                    code less server
                 </td>
                 <td>
                     In the context of Angular, most
- often memoryleaks are caused
- due to bad management
- of Observables.
+                    often memoryleaks are caused
+                    due to bad management
+                    of Observables.
                 </td>
                 <td>
 
                 </td>
                 <td>
                     you need to watch out for memory leaks.
-Users should not have to refresh their 
-browser when using an SPA,
- so it is up to the JavaScript application
- to clean up components and make
- sure that garbage collection takes
- place as expected.
+                    Users should not have to refresh their
+                    browser when using an SPA,
+                    so it is up to the JavaScript application
+                    to clean up components and make
+                    sure that garbage collection takes
+                    place as expected.
                 </td>
             </tr>
 
             <tr>
                 <th>
-                    Routing 
+                    Routing
                 </th>
                 <td>
-                    Like most web frameworks, Sails provides 
-a router: a mechanism for mapping URLs to 
-actions and views. Routes are rules that tell 
-Sails what to do when faced with an incoming 
-request. There are two main types of routes in 
-Sails: custom (or "explicit") and automatic 
-(or "implicit").
+                    Like most web frameworks, Sails provides
+                    a router: a mechanism for mapping URLs to
+                    actions and views. Routes are rules that tell
+                    Sails what to do when faced with an incoming
+                    request. There are two main types of routes in
+                    Sails: custom (or "explicit") and automatic
+                    (or "implicit").
                 </td>
                 <td>
-                    Backbone.js Router is used for routing client 
-side applications and connecting them to 
-actions and events. It also defines the URL 
-representation of application?s object when 
-web applications provide linkable, 
-bookmarkable, and sharable URL.
+                    Backbone.js Router is used for routing client
+                    side applications and connecting them to
+                    actions and events. It also defines the URL
+                    representation of application?s object when
+                    web applications provide linkable,
+                    bookmarkable, and sharable URL.
                 </td>
                 <td>
                     At the heart of SvelteKit is a filesystem-based
- router. The routes of your app — i.e. the URL
- paths that users can access — are defined 
-by the directories in your codebase.src/routes 
-is the root route
+                    router. The routes of your app — i.e. the URL
+                    paths that users can access — are defined
+                    by the directories in your codebase.src/routes
+                    is the root route
                 </td>
                 <td>
-                    The Ember router seamlessly supports 
-nested urls with incremental data fetching,
- nested loading, and error substates.
+                    The Ember router seamlessly supports
+                    nested urls with incremental data fetching,
+                    nested loading, and error substates.
                 </td>
                 <td>
-                    React router is used to define multiple routes in the application. To display multiple views in a single page application.
+                    React router is used to define multiple routes in the application. To display multiple views in a
+                    single page application.
                 </td>
                 <td>
-                    Routing in Angular allows the users to 
-create a single-page application with multiple
- views and allows navigation between them.
+                    Routing in Angular allows the users to
+                    create a single-page application with multiple
+                    views and allows navigation between them.
                 </td>
                 <td>
                     Being a single page application ngRoute
- directive provided by angular, helps a
-user to navigate from one view to another,
- but the application will remain single page.
+                    directive provided by angular, helps a
+                    user to navigate from one view to another,
+                    but the application will remain single page.
                 </td>
                 <td>
-                    Navigation between pages is 
-performed with the help of
- vue-router.
+                    Navigation between pages is
+                    performed with the help of
+                    vue-router.
                 </td>
             </tr>
 
             <tr>
                 <th>Hooks</th>
                 <td>
-                    A hook is a Node module that adds 
-functionality to the Sails core. The hook 
-specification defines the requirements a 
-module must meet for Sails to be able to 
-import its code and make the new 
-functionality available.(3 types - core, 
-app-level, installable)
+                    A hook is a Node module that adds
+                    functionality to the Sails core. The hook
+                    specification defines the requirements a
+                    module must meet for Sails to be able to
+                    import its code and make the new
+                    functionality available.(3 types - core,
+                    app-level, installable)
                 </td>
                 <td>
 
                 </td>
                 <td>
                     'Hooks' are app-wide functions you declare
- that SvelteKit will call in response to specific
- events, giving you fine-grained control over
- the framework's behaviour.There are two
- hooks files, both optional
+                    that SvelteKit will call in response to specific
+                    events, giving you fine-grained control over
+                    the framework's behaviour.There are two
+                    hooks files, both optional
                 </td>
                 <td>
 
                 </td>
                 <td>
-                    Usestate, useeffect, context hooks 
+                    Usestate, useeffect, context hooks
                 </td>
                 <td>
 
@@ -363,50 +382,50 @@ app-level, installable)
                     Applications
                 </th>
                 <td>
-                    Sails is the most popular MVC framework for 
-Node. js, designed to emulate the familiar 
-MVC pattern of frameworks like Ruby on Rails, 
-but with support for the requirements of modern 
-apps: data-driven APIs with a scalable, 
-service-oriented architecture.
+                    Sails is the most popular MVC framework for
+                    Node. js, designed to emulate the familiar
+                    MVC pattern of frameworks like Ruby on Rails,
+                    but with support for the requirements of modern
+                    apps: data-driven APIs with a scalable,
+                    service-oriented architecture.
                 </td>
                 <td>
-                    The BackboneJS gives a structure to the 
-web applications that allows to separate 
-business logic and user interface logic. 
+                    The BackboneJS gives a structure to the
+                    web applications that allows to separate
+                    business logic and user interface logic.
                 </td>
                 <td>
 
                 </td>
                 <td>
-                    Ember.js is an open-source JavaScript web 
-framework that utilizes a component-service
- pattern. It allows developers to create scalable
- single-page web applications by incorporating
- common idioms, best practices, and patterns
- from other single-page-app ecosystem 
-patterns into the framework.
+                    Ember.js is an open-source JavaScript web
+                    framework that utilizes a component-service
+                    pattern. It allows developers to create scalable
+                    single-page web applications by incorporating
+                    common idioms, best practices, and patterns
+                    from other single-page-app ecosystem
+                    patterns into the framework.
                 </td>
                 <td>
 
                 </td>
                 <td>
                     Angular is a magical front end platform
- that not only allows developing mind-blowing
- applications, but also enables to create
- high-end animations to enhance the
- user experience.
+                    that not only allows developing mind-blowing
+                    applications, but also enables to create
+                    high-end animations to enhance the
+                    user experience.
                 </td>
                 <td>
 
                 </td>
                 <td>
                     Besides web interfaces, Vue. js
-is also used for desktop development 
-with Electron framework and for 
-building apps for Android and iOS
- with NativeScript, Ionic, Framework7, 
-Vuetify, and other mobile UI frameworks.
+                    is also used for desktop development
+                    with Electron framework and for
+                    building apps for Android and iOS
+                    with NativeScript, Ionic, Framework7,
+                    Vuetify, and other mobile UI frameworks.
                 </td>
             </tr>
 
@@ -415,149 +434,150 @@ Vuetify, and other mobile UI frameworks.
                     Cross platform
                 </th>
                 <td>
-                    Sails is compatible with any front-end: 
-Angular, React, iOS, Android, Windows 
-Phone, custom hardware, or something 
-else entirely.
+                    Sails is compatible with any front-end:
+                    Angular, React, iOS, Android, Windows
+                    Phone, custom hardware, or something
+                    else entirely.
                 </td>
                 <td>
-                    Backbone. js is an open-source component 
-of DocumentCloud. It is a JavaScript 
-framework that is really cross-platform 
-and is used for other platforms as well not 
-only for mobile devices.
+                    Backbone. js is an open-source component
+                    of DocumentCloud. It is a JavaScript
+                    framework that is really cross-platform
+                    and is used for other platforms as well not
+                    only for mobile devices.
                 </td>
                 <td>
-                    If you need a cross-platform application 
-then Svelte is not the best choice. You will 
-need to write everything again from scratch 
-using other frameworks.
+                    If you need a cross-platform application
+                    then Svelte is not the best choice. You will
+                    need to write everything again from scratch
+                    using other frameworks.
                 </td>
                 <td>
 
                 </td>
                 <td>
-                    Create platform-specific versions of 
-                    components so a single codebase can share 
+                    Create platform-specific versions of
+                    components so a single codebase can share
                     code across platforms. With React Native,
-                     one team can maintain multiple platforms
-                     and share a common technology—React. 
+                    one team can maintain multiple platforms
+                    and share a common technology—React.
                     into your app.
                 </td>
                 <td>
                     With Angular, you can develop progressive
- web applications (PWA). PWA offers an
- app-like experience to the audience using
- modern web capabilities. 
+                    web applications (PWA). PWA offers an
+                    app-like experience to the audience using
+                    modern web capabilities.
                 </td>
                 <td>
-                    the AngularJS framework is used in 
-making strong client-side cross-platform 
-web apps.
+                    the AngularJS framework is used in
+                    making strong client-side cross-platform
+                    web apps.
                 </td>
                 <td>
-                    Vue. js is another tool which is gaining 
-a lot of popularity among the developers
-for development of both Cross-platform
-and Native applications.
+                    Vue. js is another tool which is gaining
+                    a lot of popularity among the developers
+                    for development of both Cross-platform
+                    and Native applications.
                 </td>
             </tr>
-            
+
             <tr>
                 <th>
                     Dependency injection
                 </th>
                 <td>
-                    As a rule of thumb, if it's code written by you 
-or someone on your team, it does not belong 
-in this folder. Instead, assets/dependencies/ is 
-for your client-side dependencies such as Vue.js, 
-Bootstrap, or jQuery. This folder can include 
-client-side JavaScript files, stylesheets, and 
-even images. 
+                    As a rule of thumb, if it's code written by you
+                    or someone on your team, it does not belong
+                    in this folder. Instead, assets/dependencies/ is
+                    for your client-side dependencies such as Vue.js,
+                    Bootstrap, or jQuery. This folder can include
+                    client-side JavaScript files, stylesheets, and
+                    even images.
                 </td>
                 <td>
-                    backbone.dependencyinjection plugin adds 
-Dependency Injection to the Backbone. 
-Backbone.Model, Backbone.Collection, 
-Backbone.View and Backbone.Router are 
-extended 
+                    backbone.dependencyinjection plugin adds
+                    Dependency Injection to the Backbone.
+                    Backbone.Model, Backbone.Collection,
+                    Backbone.View and Backbone.Router are
+                    extended
                 </td>
                 <td>
 
                 </td>
                 <td>
                     Ember applications utilize the dependency
- injection ("DI") design pattern to declare 
-and instantiate classes of objects and
- dependencies between them.
+                    injection ("DI") design pattern to declare
+                    and instantiate classes of objects and
+                    dependencies between them.
                 </td>
                 <td>
                     Using context a container for a single dependency.
- And when you wrap your components with 
-decorators such as @withRouter, 
-@withCookie, etc you will actually create 
-a HOC component that wraps your target 
-component. It will read a required property 
-from context and inject it into your component.
+                    And when you wrap your components with
+                    decorators such as @withRouter,
+                    @withCookie, etc you will actually create
+                    a HOC component that wraps your target
+                    component. It will read a required property
+                    from context and inject it into your component.
                 </td>
                 <td>
-                    The build in dependence injection makes 
-development easier
+                    The build in dependence injection makes
+                    development easier
                 </td>
                 <td>
-                    This built-in injection helps in developing 
-the application easily as well as it is easy
- to understand.
+                    This built-in injection helps in developing
+                    the application easily as well as it is easy
+                    to understand.
                 </td>
                 <td>
-                    Vue Injector is an open-source 
-dependency injection library for 
-Vue.js that was developed by SCAND team. 
-The library includes a number of instances
-that can be used for the implementation of
-the dependency injection pattern.
+                    Vue Injector is an open-source
+                    dependency injection library for
+                    Vue.js that was developed by SCAND team.
+                    The library includes a number of instances
+                    that can be used for the implementation of
+                    the dependency injection pattern.
                 </td>
             </tr>
 
             <tr>
                 <th>Directives</th>
                 <td>
-                    Content Security Policy (CSP) is a W3C 
-specification for instructing the client browser 
-as to which location and/or which type of 
-resources are allowed to be loaded. This spec 
-uses "directives" to define loading behaviors for 
-target resource types. Directives can be 
-specified using HTTP response headers or 
-HTML <meta> tags.
+                    Content Security Policy (CSP) is a W3C
+                    specification for instructing the client browser
+                    as to which location and/or which type of
+                    resources are allowed to be loaded. This spec
+                    uses "directives" to define loading behaviors for
+                    target resource types. Directives can be
+                    specified using HTTP response headers or
+                    HTML
+                    <meta> tags.
                 </td>
                 <td>
-                    
+
                 </td>
                 <td>
-                    Directives are element or component-level 
-instructions to Svelte. They look like attributes, 
-except with a : character.elements can have 
-directives, which control the element's behavior 
-in some way.
+                    Directives are element or component-level
+                    instructions to Svelte. They look like attributes,
+                    except with a : character.elements can have
+                    directives, which control the element's behavior
+                    in some way.
                 </td>
                 <td></td>
                 <td></td>
                 <td>
                     You can create custom HTML tags serving
- as custom widgets with the help of directives
+                    as custom widgets with the help of directives
                 </td>
                 <td>
                     It allows you to ask for your dependencies
- rather than having to go look for them or
- making it by yourself.
+                    rather than having to go look for them or
+                    making it by yourself.
                 </td>
                 <td>
                     VueJS has built-in directives such
- as v-if, v-else, v-show, v-on, v-bind, 
-and v-model, which are used to 
-perform various actions on the frontend.
+                    as v-if, v-else, v-show, v-on, v-bind,
+                    and v-model, which are used to
+                    perform various actions on the frontend.
                 </td>
             </tr>
 
@@ -566,58 +586,58 @@ perform various actions on the frontend.
                     CLI / Cmd tools
                 </th>
                 <td>
-                    Sails comes with a convenient command-line 
-tool to quickly get your app scaffolded and 
-running. The CLI has commands for creating, 
-starting, and debugging your Sails applications, 
-as well as for getting your version info. For 
-information about each command's usage, 
-see the reference pages in this section.
+                    Sails comes with a convenient command-line
+                    tool to quickly get your app scaffolded and
+                    running. The CLI has commands for creating,
+                    starting, and debugging your Sails applications,
+                    as well as for getting your version info. For
+                    information about each command's usage,
+                    see the reference pages in this section.
                 </td>
                 <td>
-                    If you set out to use Backbone.js for a 
-client-centric application, one thing you 
-might miss coming from a server-side MVC 
-framework is some basic file structure, 
-dependency managment, and generator 
-support.
+                    If you set out to use Backbone.js for a
+                    client-centric application, one thing you
+                    might miss coming from a server-side MVC
+                    framework is some basic file structure,
+                    dependency managment, and generator
+                    support.
                 </td>
                 <td>
-                    SvelteKit projects use Vite, meaning you'll 
-mostly use its CLI (albeit via npm run 
-dev/build/preview scripts)
+                    SvelteKit projects use Vite, meaning you'll
+                    mostly use its CLI (albeit via npm run
+                    dev/build/preview scripts)
                 </td>
                 <td>
                     The Ember CLI (command line interface) is
- the official way to create, build, test, and
- serve the files that make up an Ember app 
-or addon. Many things have to happen before
- a web app is ready for the browser. Ember 
-CLI helps you get there with zero configuration.
+                    the official way to create, build, test, and
+                    serve the files that make up an Ember app
+                    or addon. Many things have to happen before
+                    a web app is ready for the browser. Ember
+                    CLI helps you get there with zero configuration.
                 </td>
                 <td>
-                    React have its own CLI but currently they 
-are only supporting creating an app 
-(create-react-app). create-react-app used to 
-generate the boilerplate version of a React 
-application thru command line
+                    React have its own CLI but currently they
+                    are only supporting creating an app
+                    (create-react-app). create-react-app used to
+                    generate the boilerplate version of a React
+                    application thru command line
                 </td>
                 <td>
-                    The common Angular CLI like ng-new or 
-ng-add supports the developers to discover
- ready-made features with ease.
+                    The common Angular CLI like ng-new or
+                    ng-add supports the developers to discover
+                    ready-made features with ease.
                 </td>
                 <td>
-                    It has a command line tool. It starts 
-building an application very fast.
- It adds components, tests it and then
- deploys it instantly.
+                    It has a command line tool. It starts
+                    building an application very fast.
+                    It adds components, tests it and then
+                    deploys it instantly.
                 </td>
                 <td>
-                    VueJS can be installed at the command 
-line using the vue-cli command line 
-interface. It helps to build and compile the 
-project easily using vue-cli.
+                    VueJS can be installed at the command
+                    line using the vue-cli command line
+                    interface. It helps to build and compile the
+                    project easily using vue-cli.
                 </td>
             </tr>
 
@@ -631,19 +651,19 @@ project easily using vue-cli.
                 <td></td>
                 <td></td>
                 <td>
-                    Angular can be used as a front-end 
-web development tool for the programming
- languages like Node.js, .Net, PHP, Java 
-Struts and Spring and other servers for 
-near-instant rendering in just HTML and CSS. 
-It also optimizes the website for better SEO.
+                    Angular can be used as a front-end
+                    web development tool for the programming
+                    languages like Node.js, .Net, PHP, Java
+                    Struts and Spring and other servers for
+                    near-instant rendering in just HTML and CSS.
+                    It also optimizes the website for better SEO.
                 </td>
                 <td>
-                    The first view of your application on 
-.net, PHP, node.js and other servers
- that is till now dependent on HTML
- CSS for their front end serve using
- angular.
+                    The first view of your application on
+                    .net, PHP, node.js and other servers
+                    that is till now dependent on HTML
+                    CSS for their front end serve using
+                    angular.
                 </td>
                 <td>
 
@@ -659,47 +679,47 @@ It also optimizes the website for better SEO.
                 </td>
                 <td></td>
                 <td>
-                    Split our code into smaller chunks, and 
-improve page loading time in larger client-side 
-applications. Code splitting is a fancy name of 
-dynamic imports in ECMAScript (ES). It is a 
-recommended option when making larger 
-client-side apps that required to perform faster 
-on different devices.
+                    Split our code into smaller chunks, and
+                    improve page loading time in larger client-side
+                    applications. Code splitting is a fancy name of
+                    dynamic imports in ECMAScript (ES). It is a
+                    recommended option when making larger
+                    client-side apps that required to perform faster
+                    on different devices.
                 </td>
                 <td>
-                    Ember apps tend to get larger and larger 
-with time (that is, into 'monoliths') and there
- is no way to split code or lazy-load code 
-for your applications other than using an
- experimental build tool like Embroider or
- moving away from Ember conventions.
+                    Ember apps tend to get larger and larger
+                    with time (that is, into 'monoliths') and there
+                    is no way to split code or lazy-load code
+                    for your applications other than using an
+                    experimental build tool like Embroider or
+                    moving away from Ember conventions.
                 </td>
                 <td>
                     Code Splitting is a method that helps
-to generate bundles that are able to run 
-dynamically. It also helps to make the 
-code efficient because the bundle contains 
-all required imports and files.
+                    to generate bundles that are able to run
+                    dynamically. It also helps to make the
+                    code efficient because the bundle contains
+                    all required imports and files.
                 </td>
                 <td>
                     Angular apps are fast and loads quickly
- with the new Component Router, 
-which delivers automatic code-splitting 
-so users only load code required to render 
-the view they request.
+                    with the new Component Router,
+                    which delivers automatic code-splitting
+                    so users only load code required to render
+                    the view they request.
                 </td>
                 <td>
                     Its new component router loads angular
- app quickly. It provides the ability of 
-automatic code splitting too. Therefore 
-only that code is loaded which is 
-requested to render the view.
+                    app quickly. It provides the ability of
+                    automatic code splitting too. Therefore
+                    only that code is loaded which is
+                    requested to render the view.
                 </td>
                 <td>
-                    If there is a single entry point in your Vue 
-app, webpack will create a single bundle 
-comprised of the entire application code. 
+                    If there is a single entry point in your Vue
+                    app, webpack will create a single bundle
+                    comprised of the entire application code.
                 </td>
             </tr>
 
@@ -712,36 +732,36 @@ comprised of the entire application code.
                 </td>
                 <td></td>
                 <td>
-                    SvelteKit strives to provide an accessible 
-platform for your app by default. Svelte's 
-compile-time accessibility checks will also 
-apply to any SvelteKit application you build.
+                    SvelteKit strives to provide an accessible
+                    platform for your app by default. Svelte's
+                    compile-time accessibility checks will also
+                    apply to any SvelteKit application you build.
                 </td>
                 <td>
 
                 </td>
                 <td>
                     React fully supports building accessible
- websites, often by using standard HTML 
-techniques. (a11y infrastructure)
+                    websites, often by using standard HTML
+                    techniques. (a11y infrastructure)
                 </td>
                 <td>
-                    In Angular, you can create accessible applications with 
-ARIA-enabled components, developer guides,
- and built-in a11y test infrastructure.
+                    In Angular, you can create accessible applications with
+                    ARIA-enabled components, developer guides,
+                    and built-in a11y test infrastructure.
                 </td>
                 <td>
-                    The goal of ngAria is to improve 
-AngularJS's default accessibility by
- enabling common ARIA attributes
+                    The goal of ngAria is to improve
+                    AngularJS's default accessibility by
+                    enabling common ARIA attributes
                 </td>
                 <td>
                     Vue A11y appeared in 2018 with an initial
- idea of helping Vue.js developers to create
- apps accessible to everyone by creating 
-packages that help correct some 
-accessibility problems that have arisen
- with modern applications.
+                    idea of helping Vue.js developers to create
+                    apps accessible to everyone by creating
+                    packages that help correct some
+                    accessibility problems that have arisen
+                    with modern applications.
                 </td>
             </tr>
 
@@ -754,18 +774,18 @@ accessibility problems that have arisen
                 <td></td>
                 <td>
                     useState is a Hook that allows you to have
- state variables in functional components.
- You pass the initial state to this function and
- it returns a variable with the current state
- value (not necessarily the initial state) and 
-another function to update this value
+                    state variables in functional components.
+                    You pass the initial state to this function and
+                    it returns a variable with the current state
+                    value (not necessarily the initial state) and
+                    another function to update this value
                 </td>
                 <td></td>
                 <td></td>
                 <td></td>
             </tr>
 
-            
+
             <tr>
                 <th>Use effect</th>
                 <td></td>
@@ -774,10 +794,10 @@ another function to update this value
                 <td></td>
                 <td>
                     By using this Hook, you tell React that your
- component needs to do something after 
-render. React will remember the function you
- passed (we'll refer to it as our “effect”), and
- call it later after performing the DOM updates.
+                    component needs to do something after
+                    render. React will remember the function you
+                    passed (we'll refer to it as our “effect”), and
+                    call it later after performing the DOM updates.
                 </td>
                 <td></td>
                 <td></td>
@@ -789,42 +809,42 @@ render. React will remember the function you
                 <th>State</th>
                 <td></td>
                 <td>
-                    Whenever a UI action causes an attribute of 
-a model to change, the model triggers a 
-"change" event; all the Views that display 
-the model's state can be notified of the 
-change, so that they are able to respond 
-accordingly, re-rendering themselves with 
-the new information
+                    Whenever a UI action causes an attribute of
+                    a model to change, the model triggers a
+                    "change" event; all the Views that display
+                    the model's state can be notified of the
+                    change, so that they are able to respond
+                    accordingly, re-rendering themselves with
+                    the new information
                 </td>
                 <td>
-                    Any component in Svelte can have its state. 
+                    Any component in Svelte can have its state.
                     The state is a special variable or a group of
-                    special variables which can be used inside 
-                    the template. 
+                    special variables which can be used inside
+                    the template.
                 </td>
                 <td>
                     ember-states is Ember's implementation of
- a finite state machine. A StateManager 
-instance manages a number of properties 
-that are instances of State, tracks the 
-current active state, and triggers callbacks 
-when states have changed.
+                    a finite state machine. A StateManager
+                    instance manages a number of properties
+                    that are instances of State, tracks the
+                    current active state, and triggers callbacks
+                    when states have changed.
                 </td>
                 <td>
                 </td>
                 <td>
                     Declares an animation state within
- a trigger attached to an element.
+                    a trigger attached to an element.
                 </td>
                 <td></td>
                 <td>
-                    Vuex uses a single state tree - that is, 
-this single object contains all your 
-application level state and serves as the 
-"single source of truth." This also means 
-usually you will have only one store for 
-each application.
+                    Vuex uses a single state tree - that is,
+                    this single object contains all your
+                    application level state and serves as the
+                    "single source of truth." This also means
+                    usually you will have only one store for
+                    each application.
                 </td>
             </tr>
 
@@ -832,48 +852,48 @@ each application.
                 <th>Templates</th>
                 <td></td>
                 <td>
-                    The Backbone.js template method is used to 
-create reusable copies of markup and 
-provides access to instance data. It is a 
-nice convention to define a template function 
-on your views.( view.template() )
+                    The Backbone.js template method is used to
+                    create reusable copies of markup and
+                    provides access to instance data. It is a
+                    nice convention to define a template function
+                    on your views.( view.template() )
                 </td>
                 <td>
-                    Firebase is a free template that will help you 
-start developing new applications with Svelte 
-and Firebase. It features a powerful routing 
-system with nested layouts, public & private 
-sections, form validation, preconfigured pages 
-for Home, Login, Signup, and many more.
+                    Firebase is a free template that will help you
+                    start developing new applications with Svelte
+                    and Firebase. It features a powerful routing
+                    system with nested layouts, public & private
+                    sections, form validation, preconfigured pages
+                    for Home, Login, Signup, and many more.
                 </td>
                 <td>
                     There are two main types of templates:
- Route templates and Component templates.
-A Route template determines what is shown
- when someone visits a particular URL, 
-like https://guides.emberjs.com/some-route.
- A Component template has bits of content
- that can be reused in multiple places 
-throughout the app, like buttons or forms.
+                    Route templates and Component templates.
+                    A Route template determines what is shown
+                    when someone visits a particular URL,
+                    like https://guides.emberjs.com/some-route.
+                    A Component template has bits of content
+                    that can be reused in multiple places
+                    throughout the app, like buttons or forms.
                 </td>
                 <td>
                     React doesn't use templates
                 </td>
                 <td>
                     Angular provides simple and powerful
- template syntax to create UI view quickly.
+                    template syntax to create UI view quickly.
                 </td>
                 <td>
-                    Template in the angular application 
-allows a developer to create user 
-interface quickly as it provides simple 
-and powerful template syntax.
+                    Template in the angular application
+                    allows a developer to create user
+                    interface quickly as it provides simple
+                    and powerful template syntax.
                 </td>
                 <td>
-                    VueJS provides HTML-based templates 
-that bind the DOM with the Vue instance 
-data. Vue compiles the templates into 
-virtual DOM Render functions.
+                    VueJS provides HTML-based templates
+                    that bind the DOM with the Vue instance
+                    data. Vue compiles the templates into
+                    virtual DOM Render functions.
 
                 </td>
             </tr>
@@ -884,17 +904,17 @@ virtual DOM Render functions.
                 <td></td>
                 <td></td>
                 <td>
-                    Props are inputs or arguments passed into 
-the component to describe to the component 
-what should appear or how the component 
-should behave.
+                    Props are inputs or arguments passed into
+                    the component to describe to the component
+                    what should appear or how the component
+                    should behave.
                 </td>
                 <td></td>
                 <td>
                     React Props are like function arguments
- in JavaScript and attributes in HTML.A type
- of object where the value of attributes
- of a tag is stored.
+                    in JavaScript and attributes in HTML.A type
+                    of object where the value of attributes
+                    of a tag is stored.
                 </td>
                 <td></td>
                 <td></td>
@@ -904,45 +924,45 @@ should behave.
             <tr>
                 <th>Rendering</th>
                 <td>
-                    By default, Sails is configured to use 
-EJS (Embedded Javascript) as its
-view engine. so the rendering is server side
+                    By default, Sails is configured to use
+                    EJS (Embedded Javascript) as its
+                    view engine. so the rendering is server side
                 </td>
                 <td>
-                    Backbone.js gives structure to client side 
-web applications
+                    Backbone.js gives structure to client side
+                    web applications
                 </td>
                 <td>
-                    Svelte is designed to work even if the client 
-does not support Javascript. In that case, it 
-is easy to understand the need for Server 
-Side Rendering.
+                    Svelte is designed to work even if the client
+                    does not support Javascript. In that case, it
+                    is easy to understand the need for Server
+                    Side Rendering.
                 </td>
                 <td>
-                    Ember. js is an open source, free 
-JavaScript client-side framework
- used for developing web applications
+                    Ember. js is an open source, free
+                    JavaScript client-side framework
+                    used for developing web applications
                 </td>
                 <td>
                     Server side Rendering (SSR) is a
- modern technique to convert a Single
- Page Application (SPA) running in
- the browser into a server based application.
+                    modern technique to convert a Single
+                    Page Application (SPA) running in
+                    the browser into a server based application.
                 </td>
                 <td>
                     A server-rendered React app uses a
- Node. js server to prerender React 
-components before they are loaded by 
-the browser.
+                    Node. js server to prerender React
+                    components before they are loaded by
+                    the browser.
                 </td>
                 <td>
                     Angular Js is a client side framework
- which is used to develop a stuff at client
- side and not at server side. 
+                    which is used to develop a stuff at client
+                    side and not at server side.
                 </td>
                 <td>
                     Vue.js is a framework for building
- client-side applications.
+                    client-side applications.
                 </td>
             </tr>
 
@@ -965,45 +985,45 @@ the browser.
                 <td></td>
                 <td></td>
                 <td>
-                    In SvelteKit,pre &lt;a&gt; elements are used to 
-                        navigate between the routes of your app.
-                        You can customize the behavior of links with 
-                        data-svelte kit-* attributes. These can be 
-                        applied to the &lt;a&gt; itself, or to a parent 
-                        element.
+                    In SvelteKit,pre &lt;a&gt; elements are used to
+                    navigate between the routes of your app.
+                    You can customize the behavior of links with
+                    data-svelte kit-* attributes. These can be
+                    applied to the &lt;a&gt; itself, or to a parent
+                    element.
                 </td>
                 <td>
-                    ember-cli-deeplink-component provides a 
-{{deep-link}} component in both inline and
- block form. The component allows for 
-linking to in-page content in much the 
-same way you could on a non single page 
-application site using a plain anchor tag.
+                    ember-cli-deeplink-component provides a
+                    {{deep-link}} component in both inline and
+                    block form. The component allows for
+                    linking to in-page content in much the
+                    same way you could on a non single page
+                    application site using a plain anchor tag.
                 </td>
                 <td>
-                    React Native provides a Linking to get 
-notified of incoming links. React Navigation 
-can integrate with the Linking module to 
-automatically handle deep links
+                    React Native provides a Linking to get
+                    notified of incoming links. React Navigation
+                    can integrate with the Linking module to
+                    automatically handle deep links
                 </td>
                 <td>
-                    Deep linking is handled through 
-something called ngRoute. 
-This is a different module that we'll 
-have to load into our application 
-using a different JavaScript file.
+                    Deep linking is handled through
+                    something called ngRoute.
+                    This is a different module that we'll
+                    have to load into our application
+                    using a different JavaScript file.
                 </td>
                 <td>
                     Whenever the request is made by a
- user for that page it will get displayed 
-in the same state as before.
+                    user for that page it will get displayed
+                    in the same state as before.
                 </td>
                 <td>
-                    You can store (a bit of) state in the URL, 
-allowing you to jump right into a specific 
-state on the page.You can store filters, 
-search values, whether a modal is open or
- closed, or where in a list we've scrolled to .
+                    You can store (a bit of) state in the URL,
+                    allowing you to jump right into a specific
+                    state on the page.You can store filters,
+                    search values, whether a modal is open or
+                    closed, or where in a list we've scrolled to .
                 </td>
             </tr>
 
@@ -1011,55 +1031,55 @@ search values, whether a modal is open or
             <tr>
                 <th>Browser compatibility</th>
                 <td>
-                    Different CSP response headers are 
-supported by different browsers. For example, 
-Content-Security-Policy is the W3C standard, 
-but various versions of Chrome, Firefox, and 
-IE use X-Content-Security-Policy or 
-X-WebKit-CSP. 
+                    Different CSP response headers are
+                    supported by different browsers. For example,
+                    Content-Security-Policy is the W3C standard,
+                    but various versions of Chrome, Firefox, and
+                    IE use X-Content-Security-Policy or
+                    X-WebKit-CSP.
                 </td>
                 <td>
-                    For browsers which don't yet support the 
-History API, the Router handles graceful 
-fallback and transparent translation to the
- fragment version of the URL.
+                    For browsers which don't yet support the
+                    History API, the Router handles graceful
+                    fallback and transparent translation to the
+                    fragment version of the URL.
                 </td>
                 <td>
-                    It uses modern JavaScript (querySelectorAll, 
-classList, matchesSelector) to help make it as 
-lightweight as possible and therefore only works 
-on the latest version of modern browsers E.g. 
-Chrome, Firefox, Opera, IE10+
+                    It uses modern JavaScript (querySelectorAll,
+                    classList, matchesSelector) to help make it as
+                    lightweight as possible and therefore only works
+                    on the latest version of modern browsers E.g.
+                    Chrome, Firefox, Opera, IE10+
                 </td>
                 <td>
-                    Ember runs tests against the latest 
-desktop versions of the following
- browsers: Google Chrome. Mozilla Firefox. 
-Microsoft Edge.
+                    Ember runs tests against the latest
+                    desktop versions of the following
+                    browsers: Google Chrome. Mozilla Firefox.
+                    Microsoft Edge.
                 </td>
                 <td>
-                    React implements a totally different 
-DOM system which is independent of
- the browser. The implementation is done 
-in order make the application cross 
-browser compatible
+                    React implements a totally different
+                    DOM system which is independent of
+                    the browser. The implementation is done
+                    in order make the application cross
+                    browser compatible
                 </td>
                 <td>
-                    Angular offers a cross browser 
-compatibility for web apps, with the 
-recent versions of Angular supporting 
-all the latest versions of browsers like 
-Firefox, Chrome, Safari, and many more
+                    Angular offers a cross browser
+                    compatibility for web apps, with the
+                    recent versions of Angular supporting
+                    all the latest versions of browsers like
+                    Firefox, Chrome, Safari, and many more
                 </td>
                 <td>
                     Angular applications are not browser
- specific means there is no browser 
-constraint on an angular application.
+                    specific means there is no browser
+                    constraint on an angular application.
                 </td>
                 <td>
                     VueJS offers cross-browser compatibility
- for websites and supports mostly all 
-versions of Firefox, Chrome, Safari, etc
+                    for websites and supports mostly all
+                    versions of Firefox, Chrome, Safari, etc
                 </td>
             </tr>
 
@@ -1067,56 +1087,56 @@ versions of Firefox, Chrome, Safari, etc
             <tr>
                 <th>Model</th>
                 <td>
-                    A model represents a set of structured data, 
-called records. Models usually correspond to 
-a table/collection in a database, attributes 
-correspond to columns/fields, and records 
-correspond to rows/documents.
+                    A model represents a set of structured data,
+                    called records. Models usually correspond to
+                    a table/collection in a database, attributes
+                    correspond to columns/fields, and records
+                    correspond to rows/documents.
                 </td>
                 <td>
-                    Models represents business entities with 
-some business logic and business validations. 
-They are mainly used for data storage and 
-business logic. Models can be retrieved from 
-and saved to data storage.
+                    Models represents business entities with
+                    some business logic and business validations.
+                    They are mainly used for data storage and
+                    business logic. Models can be retrieved from
+                    and saved to data storage.
                 </td>
                 <td>
-                    Svelte sticks closely to the classic web 
-development model of HTML, CSS, and JS, 
-just adding a few extensions to HTML and 
-JavaScript.
+                    Svelte sticks closely to the classic web
+                    development model of HTML, CSS, and JS,
+                    just adding a few extensions to HTML and
+                    JavaScript.
                 </td>
                 <td>
-                    Models are objects that represent the 
-underlying data that your application 
-presents to the user. Different apps will 
-have very different models, depending 
-on what problems they're trying to solve.
+                    Models are objects that represent the
+                    underlying data that your application
+                    presents to the user. Different apps will
+                    have very different models, depending
+                    on what problems they're trying to solve.
                 </td>
                 <td>
                     There are two types of “model” data in
- React: props and state.
+                    React: props and state.
                 </td>
                 <td>
-                    A model, and namely a class, 
+                    A model, and namely a class,
                     is an actual JS function which
-                     is being used to generate new objects.
+                    is being used to generate new objects.
                 </td>
                 <td>
-                    The ngModel directive binds an 
-input,select, textarea
- (or custom form control) to a property
- on the scope using NgModelController,
- which is created and exposed
- by this directive.
+                    The ngModel directive binds an
+                    input,select, textarea
+                    (or custom form control) to a property
+                    on the scope using NgModelController,
+                    which is created and exposed
+                    by this directive.
                 </td>
                 <td>
                     v-model is a directive that creates a two-
-way data binding between a value in our 
-template and a value in our data 
-properties. A common use case for using 
-v-model is when designing forms and 
-inputs.
+                    way data binding between a value in our
+                    template and a value in our data
+                    properties. A common use case for using
+                    v-model is when designing forms and
+                    inputs.
                 </td>
             </tr>
 
@@ -1125,53 +1145,53 @@ inputs.
                 <th>Modules</th>
                 <td></td>
                 <td>
-                    A module is an encapsulated group of 
-structures (for the purposes of our post, 
-Backbone structures) that work cohesively 
-to provide a subset of functionality in your 
-application.
+                    A module is an encapsulated group of
+                    structures (for the purposes of our post,
+                    Backbone structures) that work cohesively
+                    to provide a subset of functionality in your
+                    application.
                 </td>
                 <td>
-                    SvelteKit makes a number of modules 
-available to your application.You can make 
-your own modules server-only in two ways
+                    SvelteKit makes a number of modules
+                    available to your application.You can make
+                    your own modules server-only in two ways
                 </td>
                 <td>
-                    ember-cli-cjs-transform allows us to 
-import CommonJS modules into our 
-Ember app. It also does auto-rollup and 
-some nice caching, so it should pull in all 
-the deps that are pulled in with require for 
-you automatically.
+                    ember-cli-cjs-transform allows us to
+                    import CommonJS modules into our
+                    Ember app. It also does auto-rollup and
+                    some nice caching, so it should pull in all
+                    the deps that are pulled in with require for
+                    you automatically.
                 </td>
                 <td>
-                    JavaScript modules allow you to break 
-up your code into separate files. 
-This makes it easier to maintain
- the code-base. ES Modules rely on 
-the import and export statements.
+                    JavaScript modules allow you to break
+                    up your code into separate files.
+                    This makes it easier to maintain
+                    the code-base. ES Modules rely on
+                    the import and export statements.
                 </td>
                 <td>
                     NgModules are containers for a cohesive
- block of code dedicated to an application
- domain, a workflow, or a closely related 
-set of capabilities. They can contain
- components, service providers, and other
- code files whose scope is defined by the
- containing NgModule.
+                    block of code dedicated to an application
+                    domain, a workflow, or a closely related
+                    set of capabilities. They can contain
+                    components, service providers, and other
+                    code files whose scope is defined by the
+                    containing NgModule.
                 </td>
                 <td>
-                    An AngularJS module defines an 
-application. In AngularJS 
-applications, you can put the 
-module and the controllers 
-in JavaScript files.
+                    An AngularJS module defines an
+                    application. In AngularJS
+                    applications, you can put the
+                    module and the controllers
+                    in JavaScript files.
                 </td>
                 <td>
-                    Vuex allows us to divide our store into 
-modules. Each module can contain its own
- state, mutations, actions, getters, and 
-even nested modules
+                    Vuex allows us to divide our store into
+                    modules. Each module can contain its own
+                    state, mutations, actions, getters, and
+                    even nested modules
                 </td>
             </tr>
 
@@ -1180,57 +1200,57 @@ even nested modules
                 <th>Components</th>
                 <td></td>
                 <td>
-                    Unlike most of the MVC frameworks, 
-Backbone. js consists of six main 
-components: Models, Views, Collections, 
-Events, Routers and Sync.
+                    Unlike most of the MVC frameworks,
+                    Backbone. js consists of six main
+                    components: Models, Views, Collections,
+                    Events, Routers and Sync.
                 </td>
                 <td>
-                    In Svelte, an application is composed from 
-one or more components. A component is a 
-reusable self-contained block of code that 
-encapsulates HTML, CSS and JavaScript that 
-belong together, written into a .svelte file
+                    In Svelte, an application is composed from
+                    one or more components. A component is a
+                    reusable self-contained block of code that
+                    encapsulates HTML, CSS and JavaScript that
+                    belong together, written into a .svelte file
                 </td>
                 <td>
                     Ember components are used to turn markup
- text and styles into reusable content. 
-Components consist of two parts: a 
-JavaScript component file that defines behavior,
- and its accompanying Handlebars template
- that defines the markup for the component's UI.
+                    text and styles into reusable content.
+                    Components consist of two parts: a
+                    JavaScript component file that defines behavior,
+                    and its accompanying Handlebars template
+                    that defines the markup for the component's UI.
                 </td>
                 <td>
-                    Components make the task of building 
-UIs much easier. You can see a UI 
-broken down into multiple individual pieces 
-called components and work on them 
-independently and merge them all in a
- parent component which will be your final UI. 
+                    Components make the task of building
+                    UIs much easier. You can see a UI
+                    broken down into multiple individual pieces
+                    called components and work on them
+                    independently and merge them all in a
+                    parent component which will be your final UI.
                 </td>
                 <td>
                     Components are the most basic UI
- building block of an Angular app.
- An Angular app contains a tree of 
-Angular components. Angular 
-componentsare a subset of directives,
-always associated with a template.
+                    building block of an Angular app.
+                    An Angular app contains a tree of
+                    Angular components. Angular
+                    componentsare a subset of directives,
+                    always associated with a template.
                 </td>
                 <td>
                     In AngularJS, a Component is a special
- kind of directive that uses a simpler 
-configuration which is suitable for a 
-component-based application structure.
-This makes it easier to write an app in
- a way that's similar to using Web 
-Components or using the new 
-Angular's style of application architecture.
+                    kind of directive that uses a simpler
+                    configuration which is suitable for a
+                    component-based application structure.
+                    This makes it easier to write an app in
+                    a way that's similar to using Web
+                    Components or using the new
+                    Angular's style of application architecture.
                 </td>
                 <td>
-                    Components are one of the important 
-features of VueJS that helps create
- custom elements, which can be reused 
-in HTML.
+                    Components are one of the important
+                    features of VueJS that helps create
+                    custom elements, which can be reused
+                    in HTML.
                 </td>
             </tr>
 
@@ -1240,48 +1260,48 @@ in HTML.
                 <td></td>
                 <td></td>
                 <td>
-                    There are two different usecases for Babel 
-with Svelte - with accordingly two separate 
-ways to implement it: Transpiling ES6 to ES5: 
-use Babel with bundler plugin. Using future 
-JS syntax: use Babel with Svelte preprocessor.
+                    There are two different usecases for Babel
+                    with Svelte - with accordingly two separate
+                    ways to implement it: Transpiling ES6 to ES5:
+                    use Babel with bundler plugin. Using future
+                    JS syntax: use Babel with Svelte preprocessor.
                 </td>
                 <td>
                     Ember CLI by default uses Babel. js to allow
- you to use tomorrow's JavaScript, today.
-It will ensure that you can use the newest 
-features in the language and know that they 
-will be transformed to JavaScript that can 
-run in every browser you support.
+                    you to use tomorrow's JavaScript, today.
+                    It will ensure that you can use the newest
+                    features in the language and know that they
+                    will be transformed to JavaScript that can
+                    run in every browser you support.
                 </td>
                 <td>
                     If you work on a React project, chances
- are you have to deal with Babel.
- It is needed for 2 main tasks:
- To compile JSX into React.
- createElement API calls.
+                    are you have to deal with Babel.
+                    It is needed for 2 main tasks:
+                    To compile JSX into React.
+                    createElement API calls.
                 </td>
                 <td>
                     Since Angular utilizes decorators and
- class properties heavily and Babel doesn't
- support them in those presets, 
-we need to add them manually.
+                    class properties heavily and Babel doesn't
+                    support them in those presets,
+                    we need to add them manually.
                 </td>
                 <td>
-                    A babel plugin which enables 
-hot module replacement in 
-AngularJS applications.Basically its 
-just a way to build scripts that you
- can then run whenever you want.
+                    A babel plugin which enables
+                    hot module replacement in
+                    AngularJS applications.Basically its
+                    just a way to build scripts that you
+                    can then run whenever you want.
                 </td>
                 <td>
-                    one can create your Vue 
-applications utilizing features from 
-the most recent JavaScript standard
- ES2015, and proposed feature from 
-ES2016 and beyond.It incorporates 
-modern features into standard features 
-before the application is transported.
+                    one can create your Vue
+                    applications utilizing features from
+                    the most recent JavaScript standard
+                    ES2015, and proposed feature from
+                    ES2016 and beyond.It incorporates
+                    modern features into standard features
+                    before the application is transported.
                 </td>
             </tr>
 
@@ -1289,53 +1309,53 @@ before the application is transported.
             <tr>
                 <th>Computed properties</th>
                 <td></td>
-                <td>Models are the heart of any JavaScript 
-                    application, containing the interactive data 
-                    as well as a large part of the logic 
-                    surrounding it: conversions, validations, 
+                <td>Models are the heart of any JavaScript
+                    application, containing the interactive data
+                    as well as a large part of the logic
+                    surrounding it: conversions, validations,
                     computed properties, and access control.
                 </td>
                 <td>
-                    the computed object, the dependencies for 
-each computed property are identified by 
-the names of the parameters passed into 
-the respective functions.
+                    the computed object, the dependencies for
+                    each computed property are identified by
+                    the names of the parameters passed into
+                    the respective functions.
                 </td>
                 <td>
                     computed properties let you declare functions
- as properties. You create one by defining a 
-computed property as a function, which 
-Ember will automatically call when you ask 
-for the property. You can then use it the same 
-way you would any normal, static property.
+                    as properties. You create one by defining a
+                    computed property as a function, which
+                    Ember will automatically call when you ask
+                    for the property. You can then use it the same
+                    way you would any normal, static property.
                 </td>
                 <td>
-                    React does not have computed 
-properties out of the box like others 
-frameworks do (Ember, Vue, etc.) 
+                    React does not have computed
+                    properties out of the box like others
+                    frameworks do (Ember, Vue, etc.)
                 </td>
                 <td>
-                    There is no computed keyword or 
-decorator in Angular. But that doesn‘t 
-mean it is not possible to define 
-computed properties. In fact, there 
-are multiple ways to define them.
-(ngOnchanges, getters, pipes,RxJs,ngrx)
+                    There is no computed keyword or
+                    decorator in Angular. But that doesn‘t
+                    mean it is not possible to define
+                    computed properties. In fact, there
+                    are multiple ways to define them.
+                    (ngOnchanges, getters, pipes,RxJs,ngrx)
                 </td>
                 <td>
                     In AngularJS, there is no direct concept
- of a Computed Property, instead, 
-AngularJS watches various binding 
-expressions and automatically 
-re-evaluate expressions. 
+                    of a Computed Property, instead,
+                    AngularJS watches various binding
+                    expressions and automatically
+                    re-evaluate expressions.
                 </td>
                 <td>
-                    Use a computed property when you 
-need to deal with mutating a property 
-that depends upon other data properties.
- Any modifications to the dependent 
-properties will trigger the logic or 
-the computed property.
+                    Use a computed property when you
+                    need to deal with mutating a property
+                    that depends upon other data properties.
+                    Any modifications to the dependent
+                    properties will trigger the logic or
+                    the computed property.
                 </td>
             </tr>
 
@@ -1344,21 +1364,21 @@ the computed property.
                 <th>Dom</th>
                 <td></td>
                 <td>
-                    Backbone views provide a render method, 
-which is supposed to insert HTML 
-into the DOM. (HTML DOM)
+                    Backbone views provide a render method,
+                    which is supposed to insert HTML
+                    into the DOM. (HTML DOM)
                 </td>
                 <td>
-                    Svelte compiles HTML templates to create 
-unique code that manipulates the Document 
-Object Model directly.
+                    Svelte compiles HTML templates to create
+                    unique code that manipulates the Document
+                    Object Model directly.
                 </td>
                 <td>
-                    Glimmer is the name for Ember.js' latest 
-rendering engine. Glimmer is the result 
-of Ember's developers trying to integrate the
- benefits of React's Virtual DOM engine into
- Ember while maintaining API compatibility. 
+                    Glimmer is the name for Ember.js' latest
+                    rendering engine. Glimmer is the result
+                    of Ember's developers trying to integrate the
+                    benefits of React's Virtual DOM engine into
+                    Ember while maintaining API compatibility.
                 </td>
                 <td>
                     uses virtual dom
@@ -1374,51 +1394,51 @@ of Ember's developers trying to integrate the
             <tr>
                 <th>Views</th>
                 <td>sails.config.views
-                    Configuration for your app's server-side views. 
-                    The options are conventionally specified in the 
+                    Configuration for your app's server-side views.
+                    The options are conventionally specified in the
                     config/views.js configuration file.
                 </td>
                 <td>
-                    BackboneJS views are responsible for how 
-and what to display from our application and 
-they don't contain HTML markup for the 
-application. It specifies an idea behind 
-the presentation of the model's data to 
-the user. Views are used to reflect "what 
-your data model looks like".
+                    BackboneJS views are responsible for how
+                    and what to display from our application and
+                    they don't contain HTML markup for the
+                    application. It specifies an idea behind
+                    the presentation of the model's data to
+                    the user. Views are used to reflect "what
+                    your data model looks like".
                 </td>
                 <td></td>
                 <td>
-                    Views represent particular parts of your 
-application (the visual parts that the user
- can see in the browser). A View is 
-associated with a Controller, a Handlebars 
-template and a Route.
+                    Views represent particular parts of your
+                    application (the visual parts that the user
+                    can see in the browser). A View is
+                    associated with a Controller, a Handlebars
+                    template and a Route.
                 </td>
                 <td>
-                    View is a container that supports layout with 
-flexbox, style, some touch handling, and 
-accessibility controls.
+                    View is a container that supports layout with
+                    flexbox, style, some touch handling, and
+                    accessibility controls.
                 </td>
                 <td>
-                    Angular assigns one view node per 
-DOM element. Each node holds a 
-reference to a matching element.
+                    Angular assigns one view node per
+                    DOM element. Each node holds a
+                    reference to a matching element.
                 </td>
                 <td>
                     View is a content which is displayed to
- the user. According to a user request,
- the view of an application is displayed 
-to the user. Since in one single page
- application, it can have a number of views.
+                    the user. According to a user request,
+                    the view of an application is displayed
+                    to the user. Since in one single page
+                    application, it can have a number of views.
                 </td>
                 <td>
-                    There is no difference between a view or 
-component in the Vue.js project. It’s more 
-of a folder structure that means a Vue 
-views component is a page, while a 
-component refers to something that is 
-reusable and can be used in a view.
+                    There is no difference between a view or
+                    component in the Vue.js project. It’s more
+                    of a folder structure that means a Vue
+                    views component is a page, while a
+                    component refers to something that is
+                    reusable and can be used in a view.
                 </td>
             </tr>
 
@@ -1427,13 +1447,13 @@ reusable and can be used in a view.
                 <th>Backbone.Collection</th>
                 <td></td>
                 <td>
-                    Any event that is triggered on a model in 
-a collection will also be triggered on the 
-collection directly, for convenience. 
-This allows you to listen for changes to 
-specific attributes in any model in a 
-collection, for example: 
-documents.on("change:selected", ...)
+                    Any event that is triggered on a model in
+                    a collection will also be triggered on the
+                    collection directly, for convenience.
+                    This allows you to listen for changes to
+                    specific attributes in any model in a
+                    collection, for example:
+                    documents.on("change:selected", ...)
                 </td>
                 <td></td>
                 <td></td>
