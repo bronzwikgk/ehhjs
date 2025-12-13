@@ -1,6 +1,5 @@
 import { IndexedDB } from "./Extensions/indexedDB.js";
 import { Message, MessageData } from "./Utility/message.js";
-import { isSelfClosingTag, specialToUnicode } from "./Utility/htmlHelpers.js";
 import { ActionWorker } from "./Interface/Worker.js";
 
 class Entity extends ActionWorker {
@@ -63,43 +62,6 @@ class Entity extends ActionWorker {
   handleClient = async (e) => {
     console.log(e);
   };
-  json2html(json) {
-    var response = "";
-    if (json.nodeType == 1) {
-      response += `<${json.tagName}`;
-      for (const key in json.attributes) {
-        response += " ";
-        response += key;
-        if (typeof json.attributes[key].value == "string") {
-          response += `= "${json.attributes[key].value}"`;
-        } else if (typeof json.attributes[key].value == "object") {
-          let res = JSON.stringify(json.attributes[key].value);
-          res = this.htmlHelpers.requestUnparser(res);
-          response += `= '${res}'`;
-        }
-      }
-      response += ">";
-      if ((!json.children || !json.children[0]) && json.textContent) {
-        json.textContent = specialToUnicode(json.textContent);
-        response += json.textContent;
-      }
-      if (json.children) {
-        let children = json.children;
-        for (let index = 0; index < children.length; index++) {
-          const child = children[index];
-          let res = this.json2html(child);
-          response += res;
-        }
-      }
-      if (isSelfClosingTag(json.tagName)) {
-        response = response.slice(0, -1);
-        response += `/>\n`;
-      } else {
-        response += `</${json.tagName}>\n`;
-      }
-    }
-    return response;
-  }
   construct() {
     if (this?.config?.application?.indexedDB) {
       this.indexedDB = new IndexedDB(

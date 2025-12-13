@@ -7,6 +7,7 @@ class Core {
   constructor(config) {
     this.config = config;
     this.clients = {};
+    this.views = {};
     if (this.config.METHOD === "INSTANCE") {
       this.controllers = {};
       this.entities = {};
@@ -49,13 +50,24 @@ class Core {
     });
   }
   async start() {
+    // initiate all views
+    let viewConfigs = this.config.VIEWS || null;
+    for (const viewConfig of viewConfigs) {
+      let { path, root, name, config } = viewConfig; // Destructure 'config' here
+      let module = await import(path);
+      let View = module[root];
+      let view = new View(config); // Pass the inner config object
+      this.views[name] = view;
+    }
+    
     // initiate all clients
     let clientConfigs = this.config.CLIENTS || null;
     for (const clientConfig of clientConfigs) {
-      let { path, root, name } = clientConfig;
+      let { path, root, name, view } = clientConfig;
       let module = await import(path);
       let Client = module[root];
       let client = new Client(clientConfig);
+      client.setView(this.views[view]); // Inject the view
       this.clients[name] = client;
     }
 
